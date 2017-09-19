@@ -1,9 +1,0 @@
-1)Wiki Journal Entry on XP/Agile Core Values
-
-
-XP: Courage:
-We will tell the truth about progress and estimates. We don’t document excuses for failure because we plan to succeed. We don’t fear anything because no one ever works alone.We will adapt changes whenever they happen.
-
-Our team is focusing on Courage principle which is one of the most important principle of XP. In team’s first meeting, we firstly met with every one’s own research work about project understanding and requirement. Then we discussed various technologies and games which can be implemented in given time frame and sticking with the intention of the project. The estimation of the research work about game and technology selection is around 2 weeks. We have to create prototype and try to run small model personally for final selection. After 2 weeks of research work and in between meetings one of efforts will be considered as final implementation approach for the project. In between if we face any difficulty related to integration or anything then whole team will figure it out.
-We are exploring in Java libraries as well as Javascript libraries to make a game.
-
