@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>hello phaser!</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.8.7/phaser.min.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+        //  Note that this html file is set to pull down Phaser 2.5.0 from the JS Delivr CDN.
+        //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
+        //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
+
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+
+        function preload () {
+
+            game.load.image('ball','tennis-ball.png');
+            game.load.image('bin','recycling-bin.png');
+
+        }
+
+        var ball;
+        var bin;
+
+        function create () {
+
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+
+            // set global gravity
+    		game.physics.arcade.gravity.y = 200;
+            
+            ball = game.add.sprite(100, 100, 'ball');
+            ball.anchor.setTo(0.5, 0.5);
+            ball.inputEnabled = true;
+    		ball.input.enableDrag(true);
+
+    		game.physics.enable(ball, Phaser.Physics.ARCADE);
+    		ball.body.allowRotation = true;
+    		ball.body.collideWorldBounds = true;
+    		ball.body.bounce.setTo(0.7, 0.7);
+
+
+
+    		bin = game.add.sprite(600, 300, 'bin');
+    		bin.anchor.setTo(0.5, 0.5);
+
+        }
+
+    };
+
+    </script>
+
+    </body>
+</html>
