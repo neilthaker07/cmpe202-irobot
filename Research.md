@@ -15,7 +15,7 @@
 - [x] **pixi.js** - A rendering library which allows to create an interactive, rich  graphics and cross platform applications with full support of WebGL and falls back to HTML5's canvas as needed. :x:
 - [x] **melon.js** - It is 2D sprite-based game development framework library with the support of modern HTML5, WebGL and WebAudio. Also provide native integration support for other 3rd party plugins/tools like cordova/phonegap, Tiled and many more.:x:
 
-As we have decided to develop a model of pong based game inspired from **cubeslam** [http://www.cubslam.com], which looks an amazing in 3D graphics.   
+As we have decided to develop a model of pong based game inspired from **cubeslam** [http://www.cubeslam.com], which looks an amazing in 3D graphics.   
   
 After doing research on above mentioned libraries/frameworks came to know that **pixi.js, phaser, and melon.js** support only 2D rendering.  
 
