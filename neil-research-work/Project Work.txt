@@ -1,4 +1,4 @@
-## Steps ##
+## Project Work ##
 
 1) Research about libGDX and its implementation for web based game
 2) LWJGl : https://www.lwjgl.org/ : java game library but only desktop java games will be feasible. So leaving it
