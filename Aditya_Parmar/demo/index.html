@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hello Babylon.js</title>
+    <script src="babylon.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<canvas id="renderCanvas"></canvas>
+</body>
+
+
+<script>
+    if (BABYLON.Engine.isSupported()) {
+        var canvas = document.getElementById("renderCanvas");
+        var engine = new BABYLON.Engine(canvas, true);
+
+        var newScene = new BABYLON.Scene(engine);
+
+        var camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", 0, 0, 0, BABYLON.Vector3.Zero(), newScene);
+        camera.setPosition(new BABYLON.Vector3(0,0,-3));
+
+        newScene.activeCamera = camera;
+        newScene.activeCamera.attachControl(canvas);
+
+        var sphere = new BABYLON.Mesh.CreateSphere("sphere",12,2,newScene);
+        sphere.material = new BABYLON.StandardMaterial("material",newScene);
+        sphere.material.emissiveColor = new BABYLON.Color3(1,0,0);
+
+
+        engine.runRenderLoop(function() {
+                    newScene.render();
+                });
+
+    }
+</script>
+</html>
+<!-- Ref : http://www.gamefromscratch.com/post/2015/05/08/A-Closer-Look-at-the-BabylonJS-Game-Engine.aspx -->

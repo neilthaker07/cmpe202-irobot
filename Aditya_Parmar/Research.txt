@@ -1,0 +1,23 @@
+Week -1
+During a first week, I researched on which javascript Framework is better.
+I identify that two frameworks are best for our purpose.
+
+1. Phaser.js
+
+->Phaser is a fast, free, and fun open source HTML5 game framework. It uses a custom build of Pixi.js for WebGL and Canvas rendering, and supports desktop and mobile web browsers. Games can be compiled to iOS, Android and native desktop apps via 3rd party tools. You can use JavaScript or TypeScript for development.
+
+Ref: https://github.com/photonstorm/phaser
+
+
+2. Babylon.js
+—>Babylon.js is an open source JavaScript framework through which you can build and render 3D games within a browser, with the help of WebGL, HTML5 and Web Audio. While drawing a simple 3D object in raw WebGL requires you to deal with a huge amount of JavaScript code, Babylon.js lets you do the same thing with a minimal amount of code and very low level of complexity.
+
+Babylon.js can be stated as "yet another Three.js" due to its powerful features, which give you the power to create almost everything, ranging from fully interactive 3D games to animated logos, in your browser. Though this JavaScript framework is currently on its early stage, but even it offers developers a solid foundation for crafting feature-rich WebGL creations that can be used almost everywhere.
+
+Ref:https://ourcodeworld.com/articles/read/308/top-15-best-open-source-javascript-game-engines
+
+From the both the framework I think pahser.js is best for game development.
+Why ?
+—> As we know both are powerful framework which can satisfy out needs for developing our project. But, Babylon is bit complex than phaser.js and we can’t find the more documents on Babylon than phaser. As our team is first time developing the game, Our main focus is to use such a framework which will not fulfill our requirements but we can find as many documents and examples from which we can learn.
+
+From My research and opinion,  I strongly advise to use phaser.js .  
