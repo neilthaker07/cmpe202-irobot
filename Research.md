@@ -28,4 +28,5 @@ So we have following options:
 
 Finally, I have decided to move ahead with **Babylon.js**.✅
 
-
+**2nd Week work output**
+This Week I developed very simple model of the pong game usng babylon.js 3D rendering library. I found that it is a bit difficult task to develop 3D game than using phaser in 2D. Also main focus of the project is to implement design pattern. So suggest to move forward with phaser.js for the project. Work can be found on the BabylonJS_handson directory.
