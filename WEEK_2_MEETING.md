@@ -11,7 +11,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Neil: Created a prototype of a sample game in Phasor JS to understand how it works and what features it offers. Figured out that Javascript game engines are better than Java web-based game engines.
 
-* Purvesh
+* Purvesh:  I have worked on applying the physics property to the objects in the game including rotation, collision and throw using Phaser JS. Also, I have started on exploring the Audio APIs for the Phaser so that I can include the sounds in the game.
 
 * Rahil: I learned basics of babylon.js and created the very simple model of the pong game using babylon.js and came to know that it will be very difficult and complex to develop a game using Babylon.js.
 
@@ -26,7 +26,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 * Neil: Almost finalized Javascript game engine and now game features and overall design will be decided. Features and design pattern will be divided into the team and understand how to implement it.
 
 
-* Purvesh
+* Purvesh: We will decide the game engines and technologies which will be used to create the game. Also, once we finalize the features, I will start work on one of the features of the game.
 
 
 * Rahil: As of this week work, I learned that babylon.js is a bit complex to develop a game than phaser.js and having the main focus of the project to implement design patterns. So will start learning **Phaser.js** and working on the game development which will be decided by the team.
@@ -40,7 +40,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Neil: I am facing no issues right now.
 
-* Purvesh
+* Purvesh: No issues/challanges at the moment.
 
 * Rahil: As of now I am not facing any challenges in my task.
 
