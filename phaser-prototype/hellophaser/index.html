@@ -11,11 +11,7 @@
 
     window.onload = function() {
 
-        //  Note that this html file is set to pull down Phaser 2.5.0 from the JS Delivr CDN.
-        //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
-        //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
-
-        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
 
         function preload () {
 
@@ -30,11 +26,8 @@
         function create () {
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
-
-            // set global gravity
-    		game.physics.arcade.gravity.y = 200;
             
-            ball = game.add.sprite(100, 100, 'ball');
+            ball = game.add.sprite(50, 50, 'ball');
             ball.anchor.setTo(0.5, 0.5);
             ball.inputEnabled = true;
     		ball.input.enableDrag(true);
@@ -45,13 +38,45 @@
     		ball.body.bounce.setTo(0.7, 0.7);
 
 
-
     		bin = game.add.sprite(600, 300, 'bin');
+    		
+    		game.physics.enable(bin, Phaser.Physics.ARCADE);
+			
+			bin.body.collideWorldBounds = true;
+			bin.body.checkCollision.up = false;
+			bin.body.immovable = true;
+
     		bin.anchor.setTo(0.5, 0.5);
+
+    		var button = game.add.button(400, 500, '', click, this, 0, 1, 2);
+			button.name = "Restart";
+			button.scale.set(2, 1.5);
+			button.smoothed = false;
+
+			
 
         }
 
+        function update () {
+        	
+        	game.physics.arcade.collide(ball, bin);
+        	
+        	if (game.input.activePointer.isDown){
+			        game.physics.arcade.moveToPointer(ball, 500);
+			}
+        }
+
+        function render () {
+        		
+        }
+
     };
+
+    function click(button) {
+
+	alert("Button Pressed");
+
+}
 
     </script>
 
