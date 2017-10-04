@@ -25,3 +25,6 @@ We will adopt changes whenever they happen.
 * We plan to succeed so that we are now focusing on Phaser js mainly and understanding how actually to use it in our project.   
 * Babylon js is very good for 3d gaming but the complexity of that game engine is relatively more than phaser js which is very good for 2d games.  
 * As the focus of the project is mainly about design pattern implementation, we have the courage to go with the 2d game engine. This conclusion of game engine has been made after making a prototype of it. 
+
+### Week: 3
+
