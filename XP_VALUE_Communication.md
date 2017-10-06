@@ -31,4 +31,9 @@ Extreme programming define Communication as vital process to be followed through
 
 * We have decided on *'Phasor JS'* as final term project stack.
 * Team has divided project into different models depending upon the game requirement and baclog priority.
-* Everyone has distributed different modules of project to work on. 
+* Everyone has distributed different modules of project to work on.
+* Purvesh will work on audio and sound related tasks in Phaser. Background sound and collision sound.
+* Neil will work on slider in game world and it's movement. And as an object.
+* Rahil will work on collision between ball and objects in breakout game.
+* Aditya and Afreen will work on developing the objects which will be hit by ball and user get the points. Designing objects   appears and behavior in each case.
+
