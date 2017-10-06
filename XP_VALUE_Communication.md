@@ -23,3 +23,12 @@ Extreme programming define Communication as vital process to be followed through
 * Team has decided on completing demos by this week.
 * Team has communicated about deciding backlogs and finalizing project scope and structure.
 * Team will be considering each members input for deciding game engine.
+
+
+### Week 3
+
+## MOM: Meeting 3
+
+* We have decided on *'Phasor JS'* as final term project stack.
+* Team has divided project into different models depending upon the game requirement and baclog priority.
+* Everyone has distributed different modules of project to work on. 
