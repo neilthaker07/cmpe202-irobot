@@ -5,7 +5,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 ## Week 3
 
 ### What did the team do the past week?
-* Aditya: 
+* Aditya: Take the decision about the framework and Game. Start learning phaserJs and designing the components. 
 
 * Afreen: 
 
@@ -16,7 +16,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 * Rahil: 
 
 ### What is the team going to do next week?
-* Aditya: 
+* Aditya:  start developing individual components. 
 
 * Afreen: 
 
@@ -27,7 +27,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 * Rahil: 
 
 ### What are the current blockers/challenges the team is facing?
-* Aditya: 
+* Aditya: Currently, I am not facing any issue.
 
 * Afreen: 
 
