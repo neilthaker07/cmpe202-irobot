@@ -1,0 +1,10 @@
+{"frames": [
+{
+	"filename": "paddle_big.png",
+	"frame": {"x":98,"y":40,"w":40,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":16},
+	"sourceSize": {"w":40,"h":16}
+}]
+}
