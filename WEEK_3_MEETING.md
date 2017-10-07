@@ -9,7 +9,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Afreen: 
 
-* Neil: 
+* Neil: Finalized a game with web based Javascript game engine. One of the features of a game which is slider in the game world was implemented. Phasor JS available libraries and how it can be used in the features of a game most efficiently was understood.
 
 * Purvesh: 
 
@@ -20,7 +20,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Afreen: 
 
-* Neil: 
+* Neil: As we have divided some features in whole team, I will maximize slider in the game world and how it works as an object and various activity with the ball can happen in game world will be exploerd and implemented.
 
 * Purvesh: 
 
@@ -31,7 +31,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Afreen: 
 
-* Neil:
+* Neil: Currently, I am not facing any issue.
 
 * Purvesh: 
 
