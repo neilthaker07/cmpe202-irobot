@@ -11,3 +11,7 @@ In this week, we all meet and decide how do we design and develop the project. E
 Week-2
 
 In this week, we all meet and discuss the complexity individuals' framework.Everyone gives pros and cons of their framework. we all listen each other very carefully. We did the cross-questioning to each other and respect everyone's research. After the discussion, Everyone felt that phaser.js is best for our requirement.
+
+Week-3
+
+In this week, we all meet and discuss which game should take as a projects. Everybody gave their idea and reason behind it. we carefully listern and finalize one game for which everybody vote in. After that we discuss which feature we should develop in game. We like an idea that we should all take one component and think about design and behaviour.
