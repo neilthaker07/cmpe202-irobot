@@ -13,7 +13,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh: 
 
-* Rahil: 
+* Rahil: We decided to move with phaser.io Javascript based game library and chose 'breakout' game for the project. Started to learn phaser library and developing the components using phaser. I started working on the my component collision detection and disappear the object when it occurs.
 
 ### What is the team going to do next week?
 * Aditya:  start developing individual components. 
@@ -24,7 +24,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh: 
 
-* Rahil: 
+* Rahil: In this week meeting we discussed various components of the game and assigned components to individuals. In coming week, I will complete my component design/implementation and start to design and add extra features like new object drops when collision occurs and when bat collects it we will change the properties of the ball, slider based on the object.
 
 ### What are the current blockers/challenges the team is facing?
 * Aditya: Currently, I am not facing any issue.
@@ -35,4 +35,4 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh: 
 
-* Rahil: 
+* Rahil: Currently, there is not any issue which hamper my development task.
