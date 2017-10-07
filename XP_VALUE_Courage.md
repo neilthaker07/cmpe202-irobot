@@ -28,3 +28,10 @@ We will adopt changes whenever they happen.
 
 ### Week: 3
 
+* Whole team comes up with their understanding of web based game engine in Java or Javascript.
+* How the game engine will be used with any web based game was main concern of discussion along with the features.
+* Initiallly we were expecting that Java web based game engine will be better to implement a game, but after research we have courageously concluded that javascript game engine would be chosen especially Phase js.
+* The documentation and its coding pattern with library in javascript will mostly suitable with design pattern which is main goal.
+* As of now we have divided a game in some separate objects and its activities to work on and then merge it.
+* We can adopt some changes afterwards as we start developing game in Phasor JS which is important skill of Courage.
+
