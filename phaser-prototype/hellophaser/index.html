@@ -18,14 +18,25 @@
             game.load.image('ball','tennis-ball.png');
             game.load.image('bin','recycling-bin.png');
 
+            game.load.audio('sfx', 'collision.mp3');
+            game.load.audio('background', 'gameplay.mp3');
+
+            game.load.spritesheet('button', 'mute.png',32,32);
+
         }
 
         var ball;
         var bin;
+        var fx;
+        var music;
+
 
         function create () {
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
+
+            fx = game.add.audio('sfx');
+            music = game.sound.play('background', 0.1, true);
             
             ball = game.add.sprite(50, 50, 'ball');
             ball.anchor.setTo(0.5, 0.5);
@@ -48,18 +59,12 @@
 
     		bin.anchor.setTo(0.5, 0.5);
 
-    		var button = game.add.button(400, 500, '', click, this, 0, 1, 2);
-			button.name = "Restart";
-			button.scale.set(2, 1.5);
-			button.smoothed = false;
-
-			
-
+            addButton();
         }
 
         function update () {
         	
-        	game.physics.arcade.collide(ball, bin);
+        	game.physics.arcade.collide(ball, bin, collisionHandler, null, this);
         	
         	if (game.input.activePointer.isDown){
 			        game.physics.arcade.moveToPointer(ball, 500);
@@ -70,13 +75,24 @@
         		
         }
 
+        function collisionHandler (ball, bin) {
+           fx.play();
+        }
+
+        function addButton(){
+
+            var button = game.add.button(300, 150, 'button', muteAudio, this);
+            button.name = "Mute";
+            button.scale.set(2, 1.5);
+            button.smoothed = false;    
+
+        }
+
+        function muteAudio(button){
+            music.pause();
+        }
+
     };
-
-    function click(button) {
-
-	alert("Button Pressed");
-
-}
 
     </script>
 
