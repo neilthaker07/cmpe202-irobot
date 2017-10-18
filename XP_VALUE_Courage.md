@@ -35,3 +35,8 @@ We will adopt changes whenever they happen.
 * As of now we have divided a game in some separate objects and its activities to work on and then merge it.
 * We can adopt some changes afterwards as we start developing game in Phasor JS which is important skill of Courage.
 
+
+### Week: 4
+
+* 
+
