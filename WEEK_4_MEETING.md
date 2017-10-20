@@ -9,7 +9,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Afreen:
 
-* Neil:
+* Neil: Added slider in game world and when ball hits slider it is returned. Slider movement with keyboard left, right button.
 
 * Purvesh:
 
@@ -20,7 +20,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Afreen:
 
-* Neil:
+* Neil: When ball hits particular group of bricks then slider size be changed. This functionality implementation.
 
 * Purvesh:
 
@@ -31,7 +31,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Afreen:
 
-* Neil:
+* Neil: No blocker/challenge at the moment.
 
 * Purvesh:
 
