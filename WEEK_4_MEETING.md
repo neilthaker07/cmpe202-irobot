@@ -7,7 +7,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 ### What did the team do the past week?
 * Aditya:
 
-* Afreen:
+* Afreen: Added bricks design module which has been assigned.
 
 * Neil: Added slider in game world and when ball hits slider it is returned. Slider movement with keyboard left, right button.
 
@@ -18,7 +18,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 ### What is the team going to do next week?
 * Aditya:
 
-* Afreen:
+* Afreen: Will be adding feature on the bricks breaking e.g. getting some power up on brick break which will be random.
 
 * Neil: When ball hits particular group of bricks then slider size be changed. This functionality implementation.
 
@@ -29,7 +29,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 ### What are the current blockers/challenges the team is facing?
 * Aditya:
 
-* Afreen:
+* Afreen: Team has blocker on requirement of design pattern.
 
 * Neil: No blocker/challenge at the moment.
 
