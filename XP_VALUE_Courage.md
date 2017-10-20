@@ -44,6 +44,7 @@ We will adopt changes whenever they happen.
 * This week basic game with major functionalities will be ready and along with that design pattern will be implemented. 
 * All team members have chosen "Project Deliverable" from the given list.  
 * Some of the features may be modified or added afterwards as per convenience.  
+* For first four week, we have followed Kanban. From next week, Scrum will be started.
 
 
 
