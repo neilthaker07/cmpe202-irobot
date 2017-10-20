@@ -1,1 +1,1 @@
-![Alt text](/game.gif?raw=true "Optional Title")
+![Alt text](game.gif?raw=true "Optional Title")
