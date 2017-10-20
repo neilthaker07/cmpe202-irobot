@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello iRobot!</title>
+        <script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+window.onload = function() {
+    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+
+    var leftBtn;
+    var rightBtn;
+    var speed = 15;
+    var slider;
+
+    // Extra
+    var ball;
+    var ballOnslider = true;
+    var s;
+
+    function preload() {
+        
+        game.load.atlas('breakout', 'breakout.png', 'breakout.json');
+        game.load.image('starfield', 'background.jpg');
+        game.load.image('skate', 'base2.png');    
+    }
+
+    function create() {
+
+        // background images
+        game.add.tileSprite(0, 0, 800, 600, 'starfield');
+
+        // Add slider
+        slider = game.add.sprite(game.world.centerX, 500, 'skate');
+        slider.scale.setTo(0.5,0.5);
+        slider.anchor.setTo(0.5, 0.5);
+
+        // Slider boundary
+        game.physics.enable(slider, Phaser.Physics.ARCADE); 
+        slider.body.collideWorldBounds = true;
+        slider.body.bounce.set(0);
+        slider.body.immovable = true;
+
+        // Add 2 sprite to display hold direction.
+        leftBtn = game.add.sprite();
+        leftBtn.alpha = 0;
+        rightBtn = game.add.sprite();
+        rightBtn.alpha = 0;
+
+
+        // Extra
+        // Add ball
+        ball = game.add.sprite(game.world.centerX, slider.y - 16, 'breakout', 'ball_1.png');
+        ball.anchor.set(0.5);
+        ball.checkWorldBounds = true;
+
+        game.physics.enable(ball, Phaser.Physics.ARCADE);
+        ball.body.collideWorldBounds = true;
+        ball.body.bounce.set(1);
+
+        ball.animations.add('spin', [ 'ball_1.png', 'ball_2.png', 'ball_3.png', 'ball_4.png', 'ball_5.png' ], 50, true, false);
+
+        ball.events.onOutOfBounds.add(ballLost, this);
+
+        game.input.onDown.add(releaseBall, this);
+    }
+
+    function update() {
+
+        // Slider movement using keyboard left and right
+        // Check key states every frame. Move ONLY one of the left and right key is hold.
+        if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+        {
+            slider.x -= speed;
+            leftBtn.alpha = 0.6;
+        }
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+        {
+            slider.x += speed;
+            rightBtn.alpha = 0.6;
+        }
+        else
+        {
+            slider.rotation = 0;
+            leftBtn.alpha = rightBtn.alpha = 0;
+        }
+
+
+        // Extra
+        if (ballOnslider)
+        {
+            ball.body.x = slider.x;
+        }
+        else
+        {
+            game.physics.arcade.collide(ball, slider, ballHitslider, null, this);
+        }
+    }
+
+    function releaseBall () {
+        if (ballOnslider)
+        {
+            ballOnslider = false;
+            ball.body.velocity.y = -300;
+            ball.body.velocity.x = -75;
+            ball.animations.play('spin');
+            introText.visible = false;
+        }
+    }
+
+    function ballLost () {
+    /*
+        lives--;
+        livesText.text = 'lives: ' + lives;
+
+        if (lives === 0)
+        {
+            gameOver();
+        }
+        else
+        {
+            ballOnslider = true;
+
+            ball.reset(slider.body.x + 16, slider.y - 16);
+            
+            ball.animations.stop();
+        }*/
+
+    }
+    /*
+    function gameOver () {
+
+        ball.body.velocity.setTo(0, 0);
+        
+        introText.text = 'Game Over!';
+        introText.visible = true;
+
+    }
+
+    function ballHitBrick (_ball, _brick) {
+
+        _brick.kill();
+
+        score += 10;
+
+        scoreText.text = 'score: ' + score;
+
+        //  Are they any bricks left?
+        if (bricks.countLiving() == 0)
+        {
+            //  New level starts
+            score += 1000;
+            scoreText.text = 'score: ' + score;
+            introText.text = '- Next Level -';
+
+            //  Let's move the ball back to the slider
+            ballOnslider = true;
+            ball.body.velocity.set(0);
+            ball.x = slider.x + 16;
+            ball.y = slider.y - 16;
+            ball.animations.stop();
+
+            //  And bring the bricks back from the dead :)
+            bricks.callAll('revive');
+        }
+
+    }
+    */
+
+    function ballHitslider (_ball, _slider) {
+
+        var diff = 0;
+
+        if (_ball.x < _slider.x)
+        {
+            //  Ball is on the left-hand side of the slider
+            diff = _slider.x - _ball.x;
+            _ball.body.velocity.x = (-10 * diff);
+        }
+        else if (_ball.x > _slider.x)
+        {
+            //  Ball is on the right-hand side of the slider
+            diff = _ball.x -_slider.x;
+            _ball.body.velocity.x = (10 * diff);
+        }
+        else
+        {
+            //  Ball is perfectly in the middle
+            //  Add a little random X to stop it bouncing straight up!
+            _ball.body.velocity.x = 2 + Math.random() * 8;
+        }
+    }
+
+    function render() {
+        game.debug.text('Hold left/right to move the ufo.');
+    }
+};
+  </script>
+
+    </body>
+</html>
