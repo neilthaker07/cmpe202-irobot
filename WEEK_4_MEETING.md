@@ -13,7 +13,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh: Worked on adding the Mute/Un-mute functionality with appropriate images with turn on/off background sound of the game. Explored examples to figure out APIs for changing the ball velocity dynamically.
 
-* Rahil:
+* Rahil: Implemented collision detection between object(bricks) and ball. When this happens object will be disappeared and player's score will be incremented accordingly. 
 
 ### What is the team going to do next week?
 * Aditya:
@@ -24,7 +24,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh: Will work on adding more functionalities related to the velocity of objects for the game.
 
-* Rahil:
+* Rahil: On collision of particular type of the object with ball, some object will fall and on collection of that object by slider, property of ball or slider will be changed depending on the type of the falling object.
 
 ### What are the current blockers/challenges the team is facing?
 * Aditya:
@@ -35,4 +35,4 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh: Implementing the logic for changing the velocity of the ball for certain amount of time.
 
-* Rahil:
+* Rahil: No blocking or challenges hampering my task.
