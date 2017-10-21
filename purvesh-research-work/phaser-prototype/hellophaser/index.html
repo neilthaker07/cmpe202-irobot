@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>hello phaser!</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.8.7/phaser.min.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    var start = Date.now();
+    var end = start + 10000;
+
+    window.onload = function() {
+
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+
+        function preload () {
+
+            game.load.image('ball','tennis-ball.png');
+            game.load.image('bin','recycling-bin.png');
+            game.load.image('muteButton','muteBtn.png');
+            game.load.image('volumeButton','volume.png');
+
+            game.load.audio('sfx', 'collision.mp3');
+            game.load.audio('background', 'gameplay.mp3');
+
+        }
+
+        var ball;
+        var bin;
+        var fx;
+        var music;
+        var isMusicOn = true;
+
+        var soundButton;
+
+        function create () {
+
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+
+            fx = game.add.audio('sfx');
+            music = game.sound.play('background', 0.1, true);
+            
+            ball = game.add.sprite(50, 50, 'ball');
+            ball.anchor.setTo(0.5, 0.5);
+            ball.inputEnabled = true;
+    		ball.input.enableDrag(true);
+
+    		game.physics.enable(ball, Phaser.Physics.ARCADE);
+    		ball.body.allowRotation = true;
+    		ball.body.collideWorldBounds = true;
+    		ball.body.bounce.setTo(1, 1);
+
+
+    		bin = game.add.sprite(600, 300, 'bin');
+    		
+    		game.physics.enable(bin, Phaser.Physics.ARCADE);
+			
+			bin.body.collideWorldBounds = true;
+			bin.body.checkCollision.up = false;
+			bin.body.immovable = true;
+
+    		bin.anchor.setTo(0.5, 0.5);
+
+            addButton();
+        }
+
+        function update () {
+        	
+        	game.physics.arcade.collide(ball, bin, collisionHandler, null, this);
+        	
+        	if (game.input.activePointer.isDown){
+			        game.physics.arcade.moveToPointer(ball, 900);
+			}
+        }
+
+        function render () {
+        		
+        }
+
+        function collisionHandler (ball, bin) {
+           fx.play();
+        }
+
+        function addButton(){
+
+            soundButton = game.add.button(750, 10, 'volumeButton', changeVolumePreference, this);
+            soundButton.name = "Mute";
+            soundButton.scale.set(1, 1);
+            soundButton.smoothed = false;    
+
+        }
+
+        function changeVolumePreference(button){
+            if(isMusicOn == true){
+                music.pause();
+                isMusicOn = false;
+                soundButton.loadTexture('muteButton');
+            } else{
+                music.resume();
+                isMusicOn = true;
+                soundButton.loadTexture('volumeButton');
+            }
+        }
+
+        function makeBallGoFaster() {
+            start = Date.now();
+
+
+
+            if(start > end) 
+                clearInterval(timer);
+        }
+        
+        var timer = setInterval(makeBallGoFaster, 200);
+
+    };
+
+    </script>
+
+    </body>
+</html>
