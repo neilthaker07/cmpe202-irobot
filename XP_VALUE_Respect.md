@@ -15,3 +15,7 @@ In this week, we all meet and discuss the complexity individuals' framework.Ever
 Week-3
 
 In this week, we all meet and discuss which game should take as a projects. Everybody gave their idea and reason behind it. we carefully listern and finalize one game for which everybody vote in. After that we discuss which feature we should develop in game. We like an idea that we should all take one component and think about design and behaviour.
+
+Week-4
+
+In this week, we all meet and discuss features. Everybody gave their inputs and take initiative to develop the feature they liked. Everyone presents how will they design and develop their respective feature and we gave some suggestion and asked our doubt. We took suggestion and start working on our features. 
