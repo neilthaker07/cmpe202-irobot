@@ -21,7 +21,6 @@ window.onload = function() {
     var ball;
     var ballOnslider = true;
     var s;
-    var counter = 0;
 
     function preload() {
         
@@ -68,21 +67,6 @@ window.onload = function() {
         ball.events.onOutOfBounds.add(ballLost, this);
 
         game.input.onDown.add(releaseBall, this);
-
-        //game timer : set for every second : called when ball hits particular brick
-        //game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
-    }
-
-    function updateCounter() {
-        counter++;
-        if(counter == 3)
-        {
-            slider.scale.setTo(1,1);
-        }
-        if(counter == 9)
-        {
-            slider.scale.setTo(0.5,0.5);
-        }
     }
 
     function update() {
@@ -129,10 +113,64 @@ window.onload = function() {
     }
 
     function ballLost () {
-   
+    /*
+        lives--;
+        livesText.text = 'lives: ' + lives;
+
+        if (lives === 0)
+        {
+            gameOver();
+        }
+        else
+        {
+            ballOnslider = true;
+
+            ball.reset(slider.body.x + 16, slider.y - 16);
+            
+            ball.animations.stop();
+        }*/
 
     }
-    
+    /*
+    function gameOver () {
+
+        ball.body.velocity.setTo(0, 0);
+        
+        introText.text = 'Game Over!';
+        introText.visible = true;
+
+    }
+
+    function ballHitBrick (_ball, _brick) {
+
+        _brick.kill();
+
+        score += 10;
+
+        scoreText.text = 'score: ' + score;
+
+        //  Are they any bricks left?
+        if (bricks.countLiving() == 0)
+        {
+            //  New level starts
+            score += 1000;
+            scoreText.text = 'score: ' + score;
+            introText.text = '- Next Level -';
+
+            //  Let's move the ball back to the slider
+            ballOnslider = true;
+            ball.body.velocity.set(0);
+            ball.x = slider.x + 16;
+            ball.y = slider.y - 16;
+            ball.animations.stop();
+
+            //  And bring the bricks back from the dead :)
+            bricks.callAll('revive');
+        }
+
+    }
+    */
+
     function ballHitslider (_ball, _slider) {
 
         var diff = 0;

@@ -41,7 +41,7 @@
 	"sourceSize": {"w":16,"h":16}
 },
 {
-	"filename": "brick_1_1.png",
+	"filename": "candy.png",
 	"frame": {"x":98,"y":21,"w":32,"h":17},
 	"rotated": false,
 	"trimmed": false,
@@ -49,7 +49,7 @@
 	"sourceSize": {"w":32,"h":17}
 },
 {
-	"filename": "brick_1_2.png",
+	"filename": "candy.png",
 	"frame": {"x":98,"y":2,"w":32,"h":17},
 	"rotated": false,
 	"trimmed": false,
@@ -57,7 +57,7 @@
 	"sourceSize": {"w":32,"h":17}
 },
 {
-	"filename": "brick_1_3.png",
+	"filename": "candy.png",
 	"frame": {"x":270,"y":17,"w":30,"h":13},
 	"rotated": false,
 	"trimmed": true,
@@ -65,7 +65,7 @@
 	"sourceSize": {"w":32,"h":17}
 },
 {
-	"filename": "brick_1_4.png",
+	"filename": "candy.png",
 	"frame": {"x":54,"y":52,"w":24,"h":9},
 	"rotated": false,
 	"trimmed": true,
@@ -73,7 +73,7 @@
 	"sourceSize": {"w":32,"h":17}
 },
 {
-	"filename": "brick_2_1.png",
+	"filename": "candy.png",
 	"frame": {"x":236,"y":19,"w":32,"h":15},
 	"rotated": false,
 	"trimmed": false,
@@ -81,7 +81,7 @@
 	"sourceSize": {"w":32,"h":15}
 },
 {
-	"filename": "brick_2_2.png",
+	"filename": "candy.png",
 	"frame": {"x":236,"y":2,"w":32,"h":15},
 	"rotated": false,
 	"trimmed": false,
@@ -89,7 +89,7 @@
 	"sourceSize": {"w":32,"h":15}
 },
 {
-	"filename": "brick_2_3.png",
+	"filename": "candy.png",
 	"frame": {"x":270,"y":2,"w":30,"h":13},
 	"rotated": false,
 	"trimmed": true,
@@ -97,7 +97,7 @@
 	"sourceSize": {"w":32,"h":15}
 },
 {
-	"filename": "brick_2_4.png",
+	"filename": "candy.png",
 	"frame": {"x":236,"y":50,"w":24,"h":11},
 	"rotated": false,
 	"trimmed": true,
@@ -105,7 +105,7 @@
 	"sourceSize": {"w":32,"h":15}
 },
 {
-	"filename": "brick_3_1.png",
+	"filename": "candy.png",
 	"frame": {"x":166,"y":20,"w":32,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -113,7 +113,7 @@
 	"sourceSize": {"w":32,"h":16}
 },
 {
-	"filename": "brick_3_2.png",
+	"filename": "candy.png",
 	"frame": {"x":166,"y":2,"w":32,"h":16},
 	"rotated": false,
 	"trimmed": false,
@@ -121,7 +121,7 @@
 	"sourceSize": {"w":32,"h":16}
 },
 {
-	"filename": "brick_3_3.png",
+	"filename": "candy.png",
 	"frame": {"x":236,"y":36,"w":30,"h":12},
 	"rotated": false,
 	"trimmed": true,
@@ -129,7 +129,7 @@
 	"sourceSize": {"w":32,"h":16}
 },
 {
-	"filename": "brick_3_4.png",
+	"filename": "candy.png",
 	"frame": {"x":28,"y":52,"w":24,"h":10},
 	"rotated": false,
 	"trimmed": true,
@@ -146,11 +146,11 @@
 },
 {
 	"filename": "paddle_big.png",
-	"frame": {"x":98,"y":40,"w":100,"h":30},
+	"frame": {"x":98,"y":40,"w":48,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":30},
-	"sourceSize": {"w":100,"h":30}
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":16},
+	"sourceSize": {"w":48,"h":16}
 },
 {
 	"filename": "paddle_small.png",

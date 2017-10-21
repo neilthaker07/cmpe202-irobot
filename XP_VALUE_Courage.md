@@ -35,3 +35,16 @@ We will adopt changes whenever they happen.
 * As of now we have divided a game in some separate objects and its activities to work on and then merge it.
 * We can adopt some changes afterwards as we start developing game in Phasor JS which is important skill of Courage.
 
+
+### Week: 4
+
+* Team has understood how PhasorJS works and which components and functionality needs to be implemented in a game. 
+* We have selected some of the advanced techniques such that at some point of time dynamically size of slider and ball speed can be changed. 
+* According to game implementation and correctness the functionality depends upon the javascript game engine. 
+* This week basic game with major functionalities will be ready and along with that design pattern will be implemented. 
+* All team members have chosen "Project Deliverable" from the given list.  
+* Some of the features may be modified or added afterwards as per convenience.  
+* For first four weeks, we have followed Kanban. From next week, Scrum will be started.
+
+
+

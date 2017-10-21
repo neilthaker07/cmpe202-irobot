@@ -37,3 +37,13 @@ Extreme programming define Communication as vital process to be followed through
 * Rahil will work on collision between ball and objects in breakout game.
 * Aditya and Afreen will work on developing the objects which will be hit by ball and user get the points. Designing objects   appears and behavior in each case.
 
+
+### Week 4
+
+## MOM: Meeting 4
+
+* Team has discussed about the progress and blockers.
+* Each team is is progressing towards the achieving required goals.
+* Team has decided on the distribution of designing diagrams need for project submission.
+* Team has blocker for design pattern requiorment.
+* Team will be discussing with professor about design pattern requirement and feasibility.
