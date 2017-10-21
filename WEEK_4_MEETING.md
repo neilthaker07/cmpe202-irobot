@@ -13,7 +13,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh:
 
-* Rahil:
+* Rahil: Implemented collision detection between object(bricks) and ball. When this happens object will be disappeared and player's score will be incremented accordingly. 
 
 ### What is the team going to do next week?
 * Aditya:
@@ -24,7 +24,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh:
 
-* Rahil:
+* Rahil: On collision of particular type of the object with ball, some object will fall and on collection of that object by slider, property of ball or slider will be changed depending on the type of the falling object.
 
 ### What are the current blockers/challenges the team is facing?
 * Aditya:
@@ -35,4 +35,4 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Purvesh:
 
-* Rahil:
+* Rahil: No blocking or challenges hampering my task.
