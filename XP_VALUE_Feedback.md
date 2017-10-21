@@ -18,3 +18,8 @@ Feedback is a way of determining the current state of the system, product, or pr
 * Each team member demonstrated their efforts by creating the prototype and after two weeks, each member provided their feedback on the simplicity, complexity, documentation and support for each technology. Also, other team members provided their input on the prototype.
 * Based on the discussion, we decided to use Phaser.io JavaScript game engine and discarded the prototypes created in Babylon.js and Greenfoot.
 
+## Week-4
+* This week, each team member gave their feedback on the work everyone has done for the project. I got the feedback from the team members about the sound files I selected for the game. They were approved by the team members.
+* Also, each team member gave feedback on the tasks done by everyone including handling paddle bar with the arrow keys on keyboard and hiding the elements when the collision occurs.
+* Also, we tested the functionalities implemented and tweaked based on the feedback got from the manual testing. 
+

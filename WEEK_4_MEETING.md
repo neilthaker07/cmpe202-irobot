@@ -11,7 +11,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Neil: Added slider in game world and when ball hits slider it is returned. Slider movement with keyboard left, right button.
 
-* Purvesh:
+* Purvesh: Worked on adding the Mute/Un-mute functionality with appropriate images with turn on/off background sound of the game. Explored examples to figure out APIs for changing the ball velocity dynamically.
 
 * Rahil:
 
@@ -22,7 +22,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Neil: When ball hits particular group of bricks then slider size be changed. This functionality implementation.
 
-* Purvesh:
+* Purvesh: Will work on adding more functionalities related to the velocity of objects for the game.
 
 * Rahil:
 
@@ -33,6 +33,6 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 * Neil: No blocker/challenge at the moment.
 
-* Purvesh:
+* Purvesh: Implementing the logic for changing the velocity of the ball for certain amount of time.
 
 * Rahil:
