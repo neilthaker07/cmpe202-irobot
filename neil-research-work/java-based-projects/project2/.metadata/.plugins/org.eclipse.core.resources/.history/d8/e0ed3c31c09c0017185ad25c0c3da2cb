@@ -1,0 +1,133 @@
+apply plugin: 'war'
+02
+apply plugin: 'java'
+03
+apply plugin: 'gwt'
+04
+apply plugin: 'eclipse'
+05
+apply plugin: 'jetty'
+06
+ 
+07
+//Java version compatibility to use when compiling Java source.
+08
+sourceCompatibility = 1.7
+09
+//Java version to generate classes for.
+10
+targetCompatibility = 1.7
+11
+//Script Version
+12
+version = '1.0'
+13
+ 
+14
+buildscript {
+15
+    repositories {
+16
+        jcenter() //repository where to fetch gwt gradle plugin
+17
+    }
+18
+    dependencies {
+19
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
+20
+    }
+21
+}
+22
+ 
+23
+// central repository to load the GWT library
+24
+repositories {
+25
+    mavenCentral()
+26
+}
+27
+ 
+28
+compileJava{
+29
+    //enable incremental compilation
+30
+    options.incremental = true
+31
+}
+32
+ 
+33
+gwt {
+34
+    gwtVersion='2.7.0'
+35
+    modules 'com.javacodegeeks.gradle.gwt.integration.build.GradleGWTIntegrationExampleJCG'
+36
+     
+37
+    sourceSets {
+38
+        main {
+39
+            java {
+40
+                srcDir 'src'
+41
+            }
+42
+        }
+43
+    }
+44
+     
+45
+    logLevel = 'ERROR'
+46
+     
+47
+    minHeapSize = "512M";
+48
+    maxHeapSize = "1024M";
+49
+     
+50
+    superDev {
+51
+        noPrecompile=true
+52
+    }
+53
+     
+54
+    // The following is only needed if you don't use the Google Plugin for Eclipse.
+55
+    eclipse{
+56
+        addGwtContainer=false // Default set to true
+57
+    }
+58
+     
+59
+    //Specify the deployment Port
+60
+    jettyRunWar.httpPort = 8089
+61
+}
+62
+ 
+63
+task jettyDraftWar(type: JettyRunWar) {
+64
+    dependsOn draftWar
+65
+    dependsOn.remove('war')
+66
+    webApp=draftWar.archivePath
+67
+}
