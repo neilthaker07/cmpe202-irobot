@@ -40,8 +40,15 @@ As of this weeks work, I learned that babylon.js is a bit complex to develop a g
 **What are current blockers/challenges I am facing?**    
 As of now, I am not facing any challenges in my task.
 
-## Week 3 (1st October to 7th October):
+## Week 3 (1st October to 7th October): MOM
 * According to the plan all team members came up with their prototype of the game and told which engine they used and why.  
 * As a team we discussed pros and cons of the each engine like phaser, babylon and decided to move forward with the phaser.io   because having nice documentation, examples and large community.  
 * Once the game library was finalized, next we chose the game **'breakout'**.  
 * We listed various components/functionalities of the game and assigned each individual a component Such as movement of the slider, collision of ball with object, etc. When assigning or selection of the component we consider the simplicity value and requested every body to follow simplicity in their task while designing/implementing the functionality by considering what is currently needed and scheduled not on the bases of the future requirements or scheduled tasks.
+
+## Week 4 (15th October to 21st October): MOM
+* Every one shared status of their task and blockers.
+* Each member has selected a topic from the given list of "Project Deliverables".
+* From the next week will follow scrum practice and we followed kanaban practice for the first 4 weeks.
+* Each member has been assigned a new task to enhance their existing task like I have implemented feature of collision detection between ball and objects. New task assigned for me to update score and create dynaic falling objects when collision occurrs to add extra features like change the size of slider and spedd of the ball.
+* We have decided to discuss with professor to clerify our doubts about design pattern implementation.
