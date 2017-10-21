@@ -12,7 +12,9 @@ window.onload = function() {
 		    game.load.image('obj_1_1','./Pack/Bricks/brick_violet_small_1.png');
 		    game.load.image('obj_2_1','./Pack/Bricks/brick_blue_small_1.png');
 		    game.load.image('obj_3_1','./Pack/Bricks/brick_green_small_1.png');
-		    game.load.image('obj_4_1','./Pack/Bricks/brick_yello_small_1.png');
+			game.load.image('obj_4_1','./Pack/Bricks/brick_yello_small_1.png');
+			game.load.image('power_up_1','./Pack/PowerUPs/plus.png');
+			game.load.image('power_up_2','./Pack/PowerUPs/negativesign.jpg');
 
 		}
 
@@ -23,6 +25,8 @@ window.onload = function() {
 		var ballOnPaddle = true;
 
 		var keyStart;
+		var score = 0;
+		var scoreText;
 
 		var backgroun;
 
@@ -45,7 +49,7 @@ window.onload = function() {
 
 		    //create objects
 		    var x=1,y=0;
-		    object = objects.create(120 + (x * 36), 100 + (y * 52), `obj_${++y}_1`);
+			object = objects.create(120 + (x * 36), 100 + (y * 52), `obj_${++y}_1`);
 		    object.scale.setTo(0.1,0.1);
             object.body.bounce.set(1);
             object.body.immovable = true;
@@ -89,7 +93,9 @@ window.onload = function() {
 		    game.physics.enable(ball, Phaser.Physics.ARCADE);
 
 		    ball.body.collideWorldBounds = true;
-		    ball.body.bounce.set(1);
+			ball.body.bounce.set(1);
+			
+			scoreText = game.add.text(32, 550, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
 
 		    //Game will start when user press SPACEBAR
 		    keyStart = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -100,7 +106,7 @@ window.onload = function() {
 		function update () {
 
 		    // keep the background moving accoring to the cursor movement
-		    background.tilePosition.x += (game.input.speed.x / 2);
+		    //background.tilePosition.x += (game.input.speed.x / 2);
 
 		    paddle.x = game.input.x;
 
@@ -127,6 +133,26 @@ window.onload = function() {
 
 		}
 
+		function createDynamicObject(posX, posY){
+			// object = objects.create(posX, posY, `power_up_1`);
+			var typeSelector = Math.floor((Math.random() * 2) + 1);
+			console.log(typeSelector);
+			if(typeSelector < 2){
+				object = game.add.sprite(posX,posY,'power_up_1');
+				object.type = "Slider+";
+				object.scale.setTo(0.1,0.1);
+			}else{
+				object = game.add.sprite(posX,posY,'power_up_2');
+				object.type = "Slider-";
+				object.scale.setTo(0.05,0.05);
+			}
+			//object = game.add.sprite(posX,posY,'power_up_1');
+			game.physics.enable(object, Phaser.Physics.ARCADE);
+			//Set gravity
+			object.body.gravity.y = 50;
+			return object;
+		}
+
 		function ballHitObject (ball, obj) {
 
 			//animation on the hit
@@ -134,8 +160,14 @@ window.onload = function() {
 
 			killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
 
+			score += 10;
+
+			scoreText.text = 'score: ' + score;
+
 			killTween.onComplete.addOnce(()=>{
 				obj.kill();
+				var test = createDynamicObject(obj.x,obj.y); //need to change for the case if the hit object was last.
+				console.log(test.type);
 			},this)
 
 		    killTween.start();
