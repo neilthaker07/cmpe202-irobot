@@ -22,6 +22,7 @@ window.onload = function() {
     var ballOnslider = true;
     var s;
     var counter = 0;
+    var obj;
 
     function preload() {
         
@@ -115,6 +116,22 @@ window.onload = function() {
         {
             game.physics.arcade.collide(ball, slider, ballHitslider, null, this);
         }
+
+ 		obj = game.add.sprite(250,250,'power_up_1');
+        obj.scale.setTo(0.1,0.1);
+        game.physics.enable(obj, Phaser.Physics.ARCADE);
+        obj.body.collideWorldBounds = true;
+        obj.body.gravity.y = 50;
+        //console.log(obj);
+
+        console.log(slider.y);
+        console.log(obj.y);
+        if(slider.body.y != obj.body.y)
+        {
+            console.log("done");
+            game.physics.arcade.collide(obj, slider, objHitsSlider, null, this);
+        }
+
     }
 
     function releaseBall () {
