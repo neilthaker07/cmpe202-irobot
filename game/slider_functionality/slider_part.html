@@ -16,23 +16,22 @@ window.onload = function() {
     var rightBtn;
     var speed = 15;
     var slider;
+    var obj;
+    var counter = 0;
 
     // Extra
     var ball;
     var ballOnslider = true;
     var s;
-    var counter = 0;
-    var obj;
-
+    
     function preload() {
-        
         game.load.atlas('breakout', 'breakout.png', 'breakout.json');
         game.load.image('starfield', 'background.jpg');
-        game.load.image('skate', 'base2.png');    
+        game.load.image('skate', 'base2.png');
+        game.load.image('power_up_1','plus.png');
     }
 
     function create() {
-
         // background images
         game.add.tileSprite(0, 0, 800, 600, 'starfield');
 
@@ -53,7 +52,6 @@ window.onload = function() {
         rightBtn = game.add.sprite();
         rightBtn.alpha = 0;
 
-
         // Extra
         // Add ball
         ball = game.add.sprite(game.world.centerX, slider.y - 16, 'breakout', 'ball_1.png');
@@ -70,20 +68,11 @@ window.onload = function() {
 
         game.input.onDown.add(releaseBall, this);
 
-        //game timer : set for every second : called when ball hits particular brick
-        //game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
-    }
-
-    function updateCounter() {
-        counter++;
-        if(counter == 3)
-        {
-            slider.scale.setTo(1,1);
-        }
-        if(counter == 9)
-        {
-            slider.scale.setTo(0.5,0.5);
-        }
+        obj = game.add.sprite(250,250,'power_up_1');
+        obj.scale.setTo(0.1,0.1);
+        game.physics.enable(obj, Phaser.Physics.ARCADE);
+        obj.body.collideWorldBounds = false;
+        obj.body.velocity.y = 100;
     }
 
     function update() {
@@ -106,7 +95,6 @@ window.onload = function() {
             leftBtn.alpha = rightBtn.alpha = 0;
         }
 
-
         // Extra
         if (ballOnslider)
         {
@@ -117,21 +105,23 @@ window.onload = function() {
             game.physics.arcade.collide(ball, slider, ballHitslider, null, this);
         }
 
- 		obj = game.add.sprite(250,250,'power_up_1');
-        obj.scale.setTo(0.1,0.1);
-        game.physics.enable(obj, Phaser.Physics.ARCADE);
-        obj.body.collideWorldBounds = true;
-        obj.body.gravity.y = 50;
-        //console.log(obj);
+        game.physics.arcade.collide(obj, slider, objHitSlider, null, this);
+    }
 
-        console.log(slider.y);
-        console.log(obj.y);
-        if(slider.body.y != obj.body.y)
+    function objHitSlider (_obj, _slider) {
+        _obj.body.velocity.y = 0;
+        _obj.kill();
+        
+        game.time.events.loop(Phaser.Timer.SECOND, largeSlider, this);
+    }
+
+    function largeSlider() {
+        slider.scale.setTo(1,1);
+        counter++;
+        if(counter > 5)
         {
-            console.log("done");
-            game.physics.arcade.collide(obj, slider, objHitsSlider, null, this);
+            slider.scale.setTo(0.5,0.5);
         }
-
     }
 
     function releaseBall () {
@@ -141,15 +131,13 @@ window.onload = function() {
             ball.body.velocity.y = -300;
             ball.body.velocity.x = -75;
             ball.animations.play('spin');
-            introText.visible = false;
         }
     }
 
     function ballLost () {
-   
-
-    }
     
+    }
+
     function ballHitslider (_ball, _slider) {
 
         var diff = 0;
@@ -178,7 +166,7 @@ window.onload = function() {
         game.debug.text('Hold left/right to move the ufo.');
     }
 };
-  </script>
+</script>
 
-    </body>
+</body>
 </html>
