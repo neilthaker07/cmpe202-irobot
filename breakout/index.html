@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello iRobot!</title>
+<script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+window.onload = function() 
+{
+    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+
+    // slider
+    var leftButton;
+    var rightButton;
+    var slider;
+    var sliderSpeed = 15;
+    
+    // powerUp
+    var objectPowerUp;
+    var counter = 0;
+
+    // ball
+    var ball;
+    var ballOnslider = true;
+    var s;
+    
+    // preloading components
+    function preload()
+    {
+        game.load.atlas('breakout', 'img/breakout.png', 'json/breakout.json');
+        game.load.image('background', 'img/background.jpg');
+        game.load.image('slider', 'img/slider.png');
+        game.load.image('powerUpPlus','img/plus.png');
+    }
+
+    // create components
+    function create() 
+    {
+        game.add.tileSprite(0, 0, 800, 600, 'background'); // background image
+        addSlider();
+        addBall();  
+        game.input.onDown.add(releaseBall, this); // Ball intial position
+        addPowerUp();
+    }
+
+    // update components at runtime
+    function update() 
+    {
+        updateSlider();
+        updateBall();
+        updatePowerUp();
+    }
+
+    function addSlider()
+    {
+        // Slider
+        slider = game.add.sprite(game.world.centerX, 500, 'slider');
+        slider.scale.setTo(0.5,0.5);
+        slider.anchor.setTo(0.5, 0.5);
+
+        // Slider boundary
+        game.physics.enable(slider, Phaser.Physics.ARCADE); 
+        slider.body.collideWorldBounds = true;
+        slider.body.bounce.set(0);
+        slider.body.immovable = true;
+
+        // Slider left right
+        leftButton = game.add.sprite();
+        leftButton.alpha = 0;
+        rightButton = game.add.sprite();
+        rightButton.alpha = 0;
+    }
+
+    function addBall()
+    {
+        // Ball
+        ball = game.add.sprite(game.world.centerX, slider.y - 16, 'breakout', 'ball_1.png');
+        ball.anchor.set(0.5);
+        ball.checkWorldBounds = true;
+
+        game.physics.enable(ball, Phaser.Physics.ARCADE);
+        ball.body.collideWorldBounds = true;
+        ball.body.bounce.set(1);
+
+        ball.animations.add('spin', [ 'ball_1.png', 'ball_2.png', 'ball_3.png', 'ball_4.png', 'ball_5.png' ], 50, true, false);
+
+        ball.events.onOutOfBounds.add(ballLost, this);
+    }
+
+    function addPowerUp()
+    {
+        objectPowerUp = game.add.sprite(250,250,'powerUpPlus');
+        objectPowerUp.scale.setTo(0.1,0.1);
+        game.physics.enable(objectPowerUp, Phaser.Physics.ARCADE);
+        objectPowerUp.body.collideWorldBounds = false; // goes down beyond bottom line 
+        objectPowerUp.body.velocity.y = 100;
+    }
+
+    function updateSlider()
+    {
+        // Slider movement using keyboard left and right
+        // Check key states every frame. Move ONLY one of the left and right key is hold.
+        if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+        {
+            slider.x -= sliderSpeed;
+            leftButton.alpha = 0.6;
+        }
+        else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+        {
+            slider.x += sliderSpeed;
+            rightButton.alpha = 0.6;
+        }
+        else
+        {
+            slider.rotation = 0;
+            leftButton.alpha = rightButton.alpha = 0;
+        }
+    }
+
+    function updateBall()
+    {
+        if (ballOnslider)
+        {
+            ball.body.x = slider.x;
+        }
+        else
+        {
+            game.physics.arcade.collide(ball, slider, ballHitSlider, null, this);
+        }
+    }
+
+    function updatePowerUp()
+    {
+        game.physics.arcade.collide(objectPowerUp, slider, powerUpHitSlider, null, this);
+
+        // Add some more power logic
+    }
+
+    function powerUpHitSlider (_objectPowerUp, _slider) 
+    {
+        _objectPowerUp.body.velocity.y = 0;
+        _objectPowerUp.kill();
+        
+        game.time.events.loop(Phaser.Timer.SECOND, varySliderSize, this);
+    }
+
+    function varySliderSize() 
+    {
+        slider.scale.setTo(1,1);
+        counter++;
+        if(counter > 15)
+        {
+            slider.scale.setTo(0.5,0.5);
+        }
+    }
+
+    function releaseBall() 
+    {
+        if (ballOnslider)
+        {
+            ballOnslider = false;
+            ball.body.velocity.y = -300;
+            ball.body.velocity.x = -75;
+            ball.animations.play('spin');
+        }
+    }
+
+    function ballLost () 
+    {
+    
+    }
+
+    function ballHitSlider (_ball, _slider) 
+    {
+        var diff = 0;
+        if (_ball.x < _slider.x)
+        {
+            //  Ball is on the left-hand side of the slider
+            diff = _slider.x - _ball.x;
+            _ball.body.velocity.x = (-10 * diff);
+        }
+        else if (_ball.x > _slider.x)
+        {
+            //  Ball is on the right-hand side of the slider
+            diff = _ball.x -_slider.x;
+            _ball.body.velocity.x = (10 * diff);
+        }
+        else
+        {
+            //  Ball is perfectly in the middle
+            //  Add a little random X to stop it bouncing straight up!
+            _ball.body.velocity.x = 2 + Math.random() * 8;
+        }
+    }
+
+    function render() 
+    {
+        game.debug.text('Hold left/right to move the ufo.');
+    }
+};
+</script>
+
+</body>
+</html>
