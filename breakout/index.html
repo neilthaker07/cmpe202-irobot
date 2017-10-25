@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Hello iRobot!</title>
-<script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -25,25 +25,42 @@ window.onload = function()
     // ball
     var ball;
     var ballOnslider = true;
-    var s;
+	
+	// music
+	var collisionSound;
+	var backgroundMusic;
+	var isBackgroundMusicOn = true;
+	var soundButton;
     
     // preloading components
     function preload()
     {
         game.load.atlas('breakout', 'img/breakout.png', 'json/breakout.json');
-        game.load.image('background', 'img/background.jpg');
+        
+		game.load.image('background', 'img/background.jpg');
         game.load.image('slider', 'img/slider.png');
         game.load.image('powerUpPlus','img/plus.png');
+		game.load.image('muteButton','img/muteBtn.png');
+        game.load.image('volumeButton','img/volume.png');
+		
+		game.load.audio('collisionSound', 'sound/collision.mp3');
+        game.load.audio('backgroundMusic', 'sound/gameplay.mp3');
     }
 
     // create components
     function create() 
     {
         game.add.tileSprite(0, 0, 800, 600, 'background'); // background image
+		
+		collisionSound = game.add.audio('collisionSound');
+        backgroundMusic = game.sound.play('backgroundMusic', 0.1, true);
+		
         addSlider();
         addBall();  
-        game.input.onDown.add(releaseBall, this); // Ball intial position
         addPowerUp();
+		addSoundButton();
+		
+		game.input.onDown.add(releaseBall, this); // Ball intial position
     }
 
     // update components at runtime
@@ -97,6 +114,27 @@ window.onload = function()
         game.physics.enable(objectPowerUp, Phaser.Physics.ARCADE);
         objectPowerUp.body.collideWorldBounds = false; // goes down beyond bottom line 
         objectPowerUp.body.velocity.y = 100;
+    }
+	
+	function addSoundButton(){
+		
+		soundButton = game.add.button(760, 10, 'volumeButton', changeVolumePreference, this);
+		soundButton.name = "Mute";
+		soundButton.scale.set(1, 1);
+		soundButton.smoothed = false;    
+    }
+	
+	function changeVolumePreference(button){
+		
+		if(isBackgroundMusicOn == true){
+			backgroundMusic.pause();
+			isBackgroundMusicOn = false;
+			soundButton.loadTexture('muteButton');
+		} else{
+			backgroundMusic.resume();
+			isBackgroundMusicOn = true;
+			soundButton.loadTexture('volumeButton');
+		}
     }
 
     function updateSlider()
@@ -200,6 +238,8 @@ window.onload = function()
     {
         game.debug.text('Hold left/right to move the ufo.');
     }
+	
+	
 };
 </script>
 
