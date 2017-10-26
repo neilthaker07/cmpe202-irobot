@@ -99,7 +99,7 @@ window.onload = function()
         bricks.physicsBodyType = Phaser.Physics.ARCADE;
 
         var brick;
-
+	/*
         for (var y = 0; y < 4; y++)
         {
             for (var x = 0; x < 15; x++)
@@ -108,7 +108,43 @@ window.onload = function()
                 brick.body.bounce.set(1);
                 brick.body.immovable = true;
             }
-        }
+        } 
+	*/
+	    
+	//generate parallelogram patten
+	for(var i=7;i>=1;i--)
+	{
+		for(var j=7;j>i;j--)
+		{
+		 brick = bricks.create(1 + (x * 36), 10 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
+		 brick.body.bounce.set(1);
+		 brick.body.immovable = true;
+		}
+	}
+
+	for(var i=1;i<=6;i++)
+	    {
+		for(var j=1;j<6;j++)
+		{
+		     brick = bricks.create(250 + (x * 36), 10 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
+		    brick.body.bounce.set(1);
+		    brick.body.immovable = true;
+		}
+	    }
+
+	for(var i =0;i<=6;i++)
+	{
+	    for(var j=0;j<i;j++)
+	    {
+		 brick = bricks.create(430 + (x * 36), 10 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
+		    brick.body.bounce.set(1);
+		    brick.body.immovable = true;
+	    }
+
+	}
+
+	//end of parallelogram pattern
+
     }
 
     function addSlider()
