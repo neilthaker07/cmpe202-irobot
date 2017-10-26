@@ -47,3 +47,13 @@ Extreme programming define Communication as vital process to be followed through
 * Team has decided on the distribution of designing diagrams need for project submission.
 * Team has blocker for design pattern requiorment.
 * Team will be discussing with professor about design pattern requirement and feasibility.
+
+
+### Week 5
+
+## MOM: Meeting 5
+
+* Team has discussed about code integration.
+* Team decided a common coding structure for following in individual module, for acheiving simplicity while merging code.
+* Team has communicated about responsiblity of integration and order of intergation.
+* Team has no blocker so far.
