@@ -27,7 +27,7 @@ window.onload = function()
 
     // ball
     var ball;
-    var ballOnslider = true;
+    var ballOnSlider = true;
 	
 	// music
 	var collisionSound;
@@ -49,9 +49,12 @@ window.onload = function()
     {
         game.load.atlas('breakout', 'img/breakout.png', 'json/breakout.json');
         
-		game.load.image('background', 'img/background.jpg');
+        //background image changed
+        game.load.image('background', 'img/background.jpg');
+        
         game.load.image('slider', 'img/slider.png');
         game.load.image('powerUpPlus','img/plus.png');
+        game.load.image('powerUpMinus','img/negativesign.jpg')
 		game.load.image('muteButton','img/muteBtn.png');
         game.load.image('volumeButton','img/volume.png');
 		
@@ -209,20 +212,21 @@ window.onload = function()
 
     function updateBall()
     {
-        if (ballOnslider)
+        if (ballOnSlider)
         {
             ball.body.x = slider.x;
         }
         else
         {
             game.physics.arcade.collide(ball, slider, ballHitSlider, null, this);
+            game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
         }
     }
 
     function updatePowerUp()
     {
         game.physics.arcade.collide(objectPowerUp, slider, powerUpHitSlider, null, this);
-       // game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
+        game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
 
         // Add some more power logic
     }
@@ -239,7 +243,7 @@ window.onload = function()
     {
         slider.scale.setTo(1,1);
         counter++;
-        if(counter > 15)
+        if(counter > 5)
         {
             slider.scale.setTo(0.5,0.5);
         }
@@ -247,9 +251,9 @@ window.onload = function()
 
     function releaseBall() 
     {
-        if (ballOnslider)
+        if (ballOnSlider)
         {
-            ballOnslider = false;
+            ballOnSlider = false;
             ball.body.velocity.y = -300;
             ball.body.velocity.x = -75;
             ball.animations.play('spin');
@@ -268,9 +272,9 @@ window.onload = function()
         }
         else
         {
-            ballOnPaddle = true;
+            ballOnSlider = true;
 
-            ball.reset(paddle.body.x + 16, paddle.y - 16);
+            ball.reset(slider.body.x + 16, slider.y - 16);
             
             ball.animations.stop();
         }
@@ -311,7 +315,73 @@ window.onload = function()
     {
         game.debug.text('Hold left/right to move the ufo.');
     }
-	
+    function checkToCreatePowerUp(){
+        var typeSelector = Math.floor((Math.random() * 8) + 1);
+        return typeSelector;
+    }
+    function createDynamicObject(posX, posY,type){
+            switch(type){
+                case 1:{
+                    object = game.add.sprite(posX,posY,'powerUpPlus');
+				    object.type = "Slider+";
+				    object.scale.setTo(0.1,0.1);
+                }
+                break;
+                case 2:{
+                    object = game.add.sprite(posX,posY,'powerUpMinus');
+				    object.type = "Slider-";
+				    object.scale.setTo(0.05,0.05);
+                }
+                break;
+                case 3:{
+                    object = game.add.sprite(posX,posY,'powerUpPlus');
+				    object.type = "Speed+";
+				    object.scale.setTo(0.1,0.1);
+                }
+                break;
+                case 4:{
+                    object = game.add.sprite(posX,posY,'powerUpMinus');
+				    object.type = "Speed-";
+				    object.scale.setTo(0.05,0.05);
+                }
+            }
+			game.physics.enable(object, Phaser.Physics.ARCADE);
+			//Set gravity
+			object.body.gravity.y = 50;
+		}
+
+		function ballHitBrick (ball, obj) {
+
+			//animation on the hit
+			var killTween = game.add.tween(obj.scale);
+
+			killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+            
+            updateScore();
+
+			killTween.onComplete.addOnce(()=>{
+                obj.kill();
+
+                let type = checkToCreatePowerUp();
+                if(type <= 4){
+                    createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
+                }
+			},this)
+
+		    killTween.start();
+        }
+        
+        function updateScore(){
+            score += 10;
+            scoreText.text = 'score: ' + score;
+        }
+
+        function nextLevelScoreUpdate(){
+            score += 100;
+            scoreText.text = 'score: ' + score;
+        }
+
+
 	
 };
 </script>
