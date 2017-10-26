@@ -19,3 +19,7 @@ In this week, we all meet and discuss which game should take as a projects. Ever
 Week-4
 
 In this week, we all meet and discuss features. Everybody gave their inputs and take initiative to develop the feature they liked. Everyone presents how will they design and develop their respective feature and we gave some suggestion and asked our doubt. We took suggestion and start working on our features. 
+
+Week-5
+
+In this week, we all meet and discuss about how we gonna integrate our work and make basic game with some feature. We all discuss each other idea and decide to do integrate one by one. We also discuss about which should be pattern for collision objects. I took intiative and gave some idea. Team listern and discuss on each pattern and finalize it.
