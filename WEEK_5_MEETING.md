@@ -10,7 +10,7 @@ Aditya:
 
 Afreen: 
 
-Neil:
+Neil: Integrated slider functionality with all other functionalities of a game. Implemented slider size change dynamically as oject hits it and its type.
 
 Purvesh: 
 
@@ -22,7 +22,7 @@ Aditya:
 
 Afreen:
 
-Neil: 
+Neil: Implement a desugn pattern related to a specific functionality and combine these design patterns.
 
 Purvesh: 
 
@@ -34,7 +34,7 @@ Aditya:
 
 Afreen: 
 
-Neil: 
+Neil: No blockers.
 
 Purvesh: 
 
