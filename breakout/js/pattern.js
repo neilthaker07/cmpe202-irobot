@@ -49,7 +49,7 @@ function pattern1(bricks){
         }
     return inside_brick;    
 }
-function pattern3(bricks){
+function pattern2(bricks){
     var inside_brick;
     for (var y = 0; y < 5; y++)
     {
