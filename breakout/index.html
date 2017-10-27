@@ -2,16 +2,16 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Hello iRobot!</title>
+<title>Breakout</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 <script type="text/javascript" src="./js/pattern.js"></script>
 </head>
-<body>
+<body style="margin-left:10%;margin-top:2%;background-color:#6AC2F8">
 <script type="text/javascript">
 
 window.onload = function() 
 {
-    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+    var game = new Phaser.Game(1000, 680, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
     //bricks or patterns
     var bricks;
@@ -80,7 +80,7 @@ window.onload = function()
     // create components
     function create() 
     {
-        game.add.tileSprite(0, 0, 800, 600, 'background'); // background image
+        game.add.tileSprite(0, 0, 1000, 700, 'background'); // background image
 		//  We check bounds collisions against all walls other than the bottom one
         game.physics.arcade.checkCollision.down = false;
 
@@ -114,7 +114,7 @@ window.onload = function()
     function addPatterns(){
         
         var brick;
-        var num = Math.floor(Math.random() * (2 - 0)) + 0;
+        var num = 2//Math.floor(Math.random() * (2 - 0)) + 0;
 	    switch (num) {
             case 0:
                 brick = pattern0(bricks);
@@ -123,7 +123,7 @@ window.onload = function()
                 brick = pattern1(bricks);
                 break;
             case 2:
-                brick = pattern1(bricks);
+                brick = pattern2(bricks);
                 break;
             case 3:
                 brick = pattern3(bricks);
@@ -142,7 +142,7 @@ window.onload = function()
     function addSlider()
     {
         // Slider
-        slider = game.add.sprite(game.world.centerX, 500, 'slider');
+        slider = game.add.sprite(game.world.centerX, 640, 'slider');
         slider.scale.setTo(0.5,0.5);
         slider.anchor.setTo(0.5, 0.5);
 
@@ -186,7 +186,7 @@ window.onload = function()
 	
 	function addSoundButton(){
 		
-		soundButton = game.add.button(760, 10, 'volumeButton', changeVolumePreference, this);
+		soundButton = game.add.button(900, 10, 'volumeButton', changeVolumePreference, this);
 		soundButton.name = "Mute";
 		soundButton.scale.set(1, 1);
 		soundButton.smoothed = false;    
@@ -195,7 +195,7 @@ window.onload = function()
     function calculateScore()
     {
         scoreText = game.add.text(32, 550, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
-        livesText = game.add.text(680, 550, 'lives: 3', { font: "20px Arial", fill: "#ffffff", align: "left" });
+        livesText = game.add.text(900, 550, 'lives: 3', { font: "20px Arial", fill: "#ffffff", align: "left" });
     }
 
     function addText()
