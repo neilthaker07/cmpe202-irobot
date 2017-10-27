@@ -23,8 +23,8 @@ window.onload = function()
     var sliderSpeed = 15;
     
     // powerUp
-    var objectPowerUp;
     var counter = 0;
+    var object;
 
     // ball
     var ball;
@@ -85,10 +85,10 @@ window.onload = function()
     function create() 
     {
         game.add.tileSprite(0, 0, 1000, 700, 'background'); // background image
-		//  We check bounds collisions against all walls other than the bottom one
+        //  We check bounds collisions against all walls other than the bottom one
         game.physics.arcade.checkCollision.down = false;
 
-		collisionSound = game.add.audio('collisionSound');
+        collisionSound = game.add.audio('collisionSound');
         backgroundMusic = game.sound.play('backgroundMusic', 0.1, true);
         
         bricks = game.add.group();
@@ -98,7 +98,6 @@ window.onload = function()
         addPatterns();
         addSlider();
         addBall();  
-        addPowerUp();
 		addSoundButton();
 		calculateScore();
         addText();
@@ -114,7 +113,6 @@ window.onload = function()
         updatePowerUp();
         updateBallVelocity();
     }
-
 
     function addPatterns(){
         
@@ -178,15 +176,6 @@ window.onload = function()
         ball.animations.add('spin', [ 'ball_1.png', 'ball_2.png', 'ball_3.png', 'ball_4.png', 'ball_5.png' ], 50, true, false);
 
         ball.events.onOutOfBounds.add(ballLost, this);
-    }
-
-    function addPowerUp()
-    {
-        objectPowerUp = game.add.sprite(250,250,'powerUpPlus');
-        objectPowerUp.scale.setTo(0.1,0.1);
-        game.physics.enable(objectPowerUp, Phaser.Physics.ARCADE);
-        objectPowerUp.body.collideWorldBounds = false; // goes down beyond bottom line 
-        objectPowerUp.body.velocity.y = 100;
     }
 	
 	function addSoundButton(){
@@ -272,28 +261,43 @@ window.onload = function()
 
     function updatePowerUp()
     {
-        game.physics.arcade.collide(objectPowerUp, slider, powerUpHitSlider, null, this);
-        game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
-
-        // Add some more power logic
+        game.physics.arcade.collide(object, slider, powerUpHitSlider, null, this);
     }
 
     function powerUpHitSlider (_objectPowerUp, _slider) 
     {
         _objectPowerUp.body.velocity.y = 0;
+        var objectType = _objectPowerUp.type;
         _objectPowerUp.kill();
         
-        game.time.events.loop(Phaser.Timer.SECOND, varySliderSize, this);
+        if(objectType === "Slider+")
+        {
+            increaseSliderSize();
+        }
+        else if(objectType === "Slider-")
+        {
+            decreaseSliderSize();
+        }
+        else if(objectType === "Speed+")
+        {
+            speedUp = true;
+        }
+        else if(objectType === "Speed-")
+        {
+            //decreaseBallSpeed();
+        }
     }
 
-    function varySliderSize() 
+    function increaseSliderSize() 
     {
         slider.scale.setTo(1,1);
-        counter++;
-        if(counter > 5)
-        {
-            slider.scale.setTo(0.5,0.5);
-        }
+        setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
+    }
+
+    function decreaseSliderSize() 
+    {
+        slider.scale.setTo(0.4,0.4);
+        setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
     }
 
     function releaseBall() 
