@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <title>Hello iRobot!</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
+<script type="text/javascript" src="./js/pattern.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -60,6 +61,20 @@ window.onload = function()
 		
 		game.load.audio('collisionSound', 'sound/collision.mp3');
         game.load.audio('backgroundMusic', 'sound/gameplay.mp3');
+
+        //pattern Images
+        game.load.image('candy', 'img/candy.png');
+        game.load.image('coin', 'img/coin.png');
+        game.load.image('redapple', 'img/redapple.png');
+        game.load.image('greenapple', 'img/greenapple.png');
+        game.load.image('custardapple', 'img/custardapple.png');
+        game.load.image('orange', 'img/orange.png');
+        game.load.image('peru', 'img/peru.png');
+        game.load.image('watermelon', 'img/watermelon.png');
+        game.load.image('banana', 'img/banana.png');
+        game.load.image('blackberry', 'img/blackberry.png');
+
+
     }
 
     // create components
@@ -71,7 +86,11 @@ window.onload = function()
 
 		collisionSound = game.add.audio('collisionSound');
         backgroundMusic = game.sound.play('backgroundMusic', 0.1, true);
-		
+        
+        bricks = game.add.group();
+        bricks.enableBody = true;
+        bricks.physicsBodyType = Phaser.Physics.ARCADE;
+
         addPatterns();
         addSlider();
         addBall();  
@@ -92,58 +111,31 @@ window.onload = function()
     }
 
 
-    function addPatterns()
-    {
-        bricks = game.add.group();
-        bricks.enableBody = true;
-        bricks.physicsBodyType = Phaser.Physics.ARCADE;
-
+    function addPatterns(){
+        
         var brick;
-	/*
-        for (var y = 0; y < 4; y++)
-        {
-            for (var x = 0; x < 15; x++)
-            {
-                brick = bricks.create(120 + (x * 36), 100 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
-                brick.body.bounce.set(1);
-                brick.body.immovable = true;
-            }
-        } 
-	*/
-	    
-	//generate parallelogram patten
-	for(var i=7;i>=1;i--)
-	{
-		for(var j=7;j>i;j--)
-		{
-		 brick = bricks.create(1 + (x * 36), 10 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
-		 brick.body.bounce.set(1);
-		 brick.body.immovable = true;
-		}
-	}
-
-	for(var i=1;i<=6;i++)
-	    {
-		for(var j=1;j<6;j++)
-		{
-		     brick = bricks.create(250 + (x * 36), 10 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
-		    brick.body.bounce.set(1);
-		    brick.body.immovable = true;
-		}
-	    }
-
-	for(var i =0;i<=6;i++)
-	{
-	    for(var j=0;j<i;j++)
-	    {
-		 brick = bricks.create(430 + (x * 36), 10 + (y * 52), 'breakout', 'brick_' + (y+1) + '_1.png');
-		    brick.body.bounce.set(1);
-		    brick.body.immovable = true;
-	    }
-
-	}
-
-	//end of parallelogram pattern
+        var num = Math.floor(Math.random() * (2 - 0)) + 0;
+	    switch (num) {
+            case 0:
+                brick = pattern0(bricks);
+                break;
+            case 1:
+                brick = pattern1(bricks);
+                break;
+            case 2:
+                brick = pattern1(bricks);
+                break;
+            case 3:
+                brick = pattern3(bricks);
+                break;
+            case 4:
+                brick = pattern4(bricks);
+                break;
+            
+        }
+       
+        
+        
 
     }
 
