@@ -35,6 +35,10 @@ window.onload = function()
 	var backgroundMusic;
 	var isBackgroundMusicOn = true;
 	var soundButton;
+	
+	// Ball veloctiy configuration
+    var speedUp = false;
+    var speedMultiplier = 10;
     
     // score
     var lives = 3;
@@ -108,6 +112,7 @@ window.onload = function()
         updateSlider();
         updateBall();
         updatePowerUp();
+        updateBallVelocity();
     }
 
 
@@ -250,6 +255,20 @@ window.onload = function()
             game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
         }
     }
+    
+    function updateBallVelocity()
+    {
+        if(speedUp == true){
+            
+            speedMultiplier = 25;
+            ball.body.velocity.x = -800;
+            ball.body.velocity.y = -200;
+            
+            speedUp = false;
+            
+            setTimeout(function() { resetBallVelocity(); }, 15000);
+        }
+    }
 
     function updatePowerUp()
     {
@@ -288,6 +307,14 @@ window.onload = function()
             introText.visible = false;
         }
     }
+    
+    function resetBallVelocity(){
+
+        speedMultiplier = 10;
+        
+        ball.body.velocity.y = -300;
+        ball.body.velocity.x = -75;
+    }
 
     function ballLost () 
     {
@@ -315,13 +342,13 @@ window.onload = function()
         {
             //  Ball is on the left-hand side of the slider
             diff = _slider.x - _ball.x;
-            _ball.body.velocity.x = (-10 * diff);
+            _ball.body.velocity.x = (-1 * speedMultiplier * diff);
         }
         else if (_ball.x > _slider.x)
         {
             //  Ball is on the right-hand side of the slider
             diff = _ball.x -_slider.x;
-            _ball.body.velocity.x = (10 * diff);
+            _ball.body.velocity.x = (speedMultiplier * diff);
         }
         else
         {
@@ -333,7 +360,7 @@ window.onload = function()
 
     function gameOver () {
         ball.body.velocity.setTo(0, 0);
-        
+        speedMultiplier = 10;
         introText.text = 'Game Over!';
         introText.visible = true;
 
