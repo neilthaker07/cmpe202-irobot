@@ -2,9 +2,9 @@ This page will have information about the weekly team meeting and the critical t
 
 Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0GxRSzE3tlZZzV5WAf419diBgUu_5J8/edit#gid=2
 
-Week 5
+## Week 5
 
-What did the team do the past week?
+### What did the team do the past week?
 
 Aditya: 
 
@@ -16,7 +16,7 @@ Purvesh:
 
 Rahil: 
 
-What is the team going to do next week?
+### What is the team going to do next week?
 
 Aditya:
 
@@ -28,7 +28,7 @@ Purvesh:
 
 Rahil: 
 
-What are the current blockers/challenges the team is facing?
+### What are the current blockers/challenges the team is facing?
 
 Aditya:
 
