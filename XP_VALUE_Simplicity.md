@@ -52,3 +52,9 @@ As of now, I am not facing any challenges in my task.
 * From the next week will follow scrum practice and we followed kanaban practice for the first 4 weeks.
 * Each member has been assigned a new task to enhance their existing task like I have implemented feature of collision detection between ball and objects. New task assigned for me to update score and create dynaic falling objects when collision occurrs to add extra features like change the size of slider and spedd of the ball.
 * We have decided to discuss with professor to clerify our doubts about design pattern implementation.
+
+## Week 5 (22nd October to 28th October): MOM
+* Every one shared status of their task.
+* We discussed about solution's folder structure and how we should integrate individual's work and in which order to achieve simplicity. 
+* Discussed on features and prioritize them. Decided to complete Slider size update and ball speed update features by the end of the week.
+* Discussed about few patterns which we can implement and asked every one to do research on this. so, we can implement paatterns in next week.

@@ -51,6 +51,8 @@ window.onload = function()
     var scoreText;
     var livesText;
     var introText;
+    var limitPowerUpsPerLevel = 5;
+    var numberOfPowerUpsGenerated = 0;
 
 
     // preloading components
@@ -62,8 +64,10 @@ window.onload = function()
         game.load.image('background', 'img/background.jpg');
         
         game.load.image('slider', 'img/slider.png');
-        game.load.image('powerUpPlus','img/plus.png');
-        game.load.image('powerUpMinus','img/negativesign.jpg')
+        game.load.image('sliderPlus','img/sliderSizePlus.png');
+        game.load.image('sliderMinus','img/sliderSizeDecrease.png');
+        game.load.image('speedPlus','img/speedIncrease.png');
+        game.load.image('speedMinus','img/speedDecrease.png');
 		game.load.image('muteButton','img/muteBtn.png');
         game.load.image('volumeButton','img/volume.png');
 		
@@ -140,9 +144,6 @@ window.onload = function()
                 break;
             
         }
-       
-        
-        
 
     }
 
@@ -407,7 +408,6 @@ window.onload = function()
         speedMultiplier = 10;
         introText.text = 'Game Over!';
         introText.visible = true;
-
     }
 
     function render() 
@@ -415,38 +415,49 @@ window.onload = function()
         game.debug.text('Hold left/right to move the ufo.');
     }
     function checkToCreatePowerUp(){
-        var typeSelector = Math.floor((Math.random() * 8) + 1);
+        var typeSelector;
+        if(limitPowerUpsPerLevel > numberOfPowerUpsGenerated)
+        {
+             typeSelector = Math.floor((Math.random() * 20) + 1);
+            console.log(typeSelector);
+        }else{
+            typeSelector = 5;
+        }
         return typeSelector;
     }
     function createDynamicObject(posX, posY,type){
+            console.log('inside createObject');
             switch(type){
                 case 1:{
-                    object = game.add.sprite(posX,posY,'powerUpPlus');
+                    object = game.add.sprite(posX,posY,'sliderPlus');
 				    object.type = "Slider+";
-				    object.scale.setTo(0.1,0.1);
+				    object.scale.setTo(0.3,0.3);
                 }
                 break;
                 case 2:{
-                    object = game.add.sprite(posX,posY,'powerUpMinus');
+                    object = game.add.sprite(posX,posY,'sliderMinus');
 				    object.type = "Slider-";
-				    object.scale.setTo(0.05,0.05);
+				    object.scale.setTo(0.3,0.3);
                 }
                 break;
                 case 3:{
-                    object = game.add.sprite(posX,posY,'powerUpPlus');
+                    object = game.add.sprite(posX,posY,'speedPlus');
 				    object.type = "Speed+";
-				    object.scale.setTo(0.1,0.1);
+				    object.scale.setTo(0.3,0.3);
                 }
                 break;
                 case 4:{
-                    object = game.add.sprite(posX,posY,'powerUpMinus');
+                    object = game.add.sprite(posX,posY,'speedMinus');
 				    object.type = "Speed-";
-				    object.scale.setTo(0.05,0.05);
+				    object.scale.setTo(0.3,0.3);
                 }
+                default:
+                    break;
             }
 			game.physics.enable(object, Phaser.Physics.ARCADE);
 			//Set gravity
-			object.body.gravity.y = 50;
+            object.body.gravity.y = 50;
+            numberOfPowerUpsGenerated++;
 		}
 
 		function ballHitBrick (ball, obj) {
@@ -462,14 +473,18 @@ window.onload = function()
 
 			killTween.onComplete.addOnce(()=>{
                 obj.kill();
+			},this)
 
+            killTween.start();
+            
+            if(!isLevelFinish()){
                 let type = checkToCreatePowerUp();
                 if(type <= 4){
                     createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
                 }
-			},this)
-
-		    killTween.start();
+            }else{
+                resetToNextLevel();
+            }
         }
         
         function updateScore(){
@@ -482,8 +497,35 @@ window.onload = function()
             scoreText.text = 'score: ' + score;
         }
 
+        function isLevelFinish(){
+            console.log(`bricks: ${bricks.countLiving()}`)
+            if(bricks.countLiving() == 1){
+                return true;
+            }
+            return false;
+        }
+        
+        function resetToNextLevel(){
+            score += 100;
+            scoreText.text = `score: ${score}`;
+            introText.text = 'Next Level';
+            introText.visible = true;
+            ballOnSlider = true;
+            ball.body.velocity.set(0);
+            ball.x = slider.x + 16;
+            ball.y = slider.y - 16;
+            ball.animations.stop();
+            numberOfPowerUpsGenerated = 0;
+            loadNewLevel();
+        }
 
-	
+        function loadNewLevel(){
+            setTimeout(()=>{
+                addPatterns();
+                introText.text = 'click to start'
+            }, 2500);
+            
+        }
 };
 </script>
 

@@ -14,7 +14,7 @@ Neil: Integrated slider functionality with all other functionalities of a game. 
 
 Purvesh: 
 
-Rahil: 
+Rahil: Integrated collision detection component of the game.
 
 ### What is the team going to do next week?
 
@@ -26,7 +26,7 @@ Neil: Implement a desugn pattern related to a specific functionality and combine
 
 Purvesh: 
 
-Rahil: 
+Rahil: Design pattern related to functionality will be implemented.
 
 ### What are the current blockers/challenges the team is facing?
 
@@ -38,4 +38,4 @@ Neil: No blockers.
 
 Purvesh: 
 
-Rahil: 
+Rahil: Currently no obstacles.
