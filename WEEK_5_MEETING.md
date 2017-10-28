@@ -6,7 +6,7 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 ### What did the team do the past week?
 
-Aditya: 
+Aditya:  Implement five patterns for stage one with many different objects and styles which will render dynamically. 
 
 Afreen: 
 
@@ -18,7 +18,7 @@ Rahil: Integrated collision detection component of the game.
 
 ### What is the team going to do next week?
 
-Aditya:
+Aditya:  Implement five patterns for stage two with many different objects and styles which will render dynamically. Add Design pattern concepts.
 
 Afreen:
 
@@ -30,7 +30,7 @@ Rahil: Design pattern related to functionality will be implemented.
 
 ### What are the current blockers/challenges the team is facing?
 
-Aditya:
+Aditya: How we are going to use Design Pattern concepts for our project.
 
 Afreen: 
 
