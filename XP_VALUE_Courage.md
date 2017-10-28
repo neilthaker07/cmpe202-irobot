@@ -33,12 +33,12 @@ We will adopt changes whenever they happen.
 * Initiallly we were expecting that Java web based game engine will be better to implement a game, but after research we have courageously concluded that javascript game engine would be chosen especially Phase js.
 * The documentation and its coding pattern with library in javascript will mostly suitable with design pattern which is main goal.
 * As of now we have divided a game in some separate objects and its activities to work on and then merge it.
-* We can adopt some changes afterwards as we start developing game in Phasor JS which is important skill of Courage.
+* We can adopt some changes afterwards as we start developing game in Phaser JS which is important skill of Courage.
 
 
 ### Week: 4
 
-* Team has understood how PhasorJS works and which components and functionality needs to be implemented in a game. 
+* Team has understood how PhaserJS works and which components and functionality needs to be implemented in a game. 
 * We have selected some of the advanced techniques such that at some point of time dynamically size of slider and ball speed can be changed. 
 * According to game implementation and correctness the functionality depends upon the javascript game engine. 
 * This week basic game with major functionalities will be ready and along with that design pattern will be implemented. 
@@ -47,4 +47,8 @@ We will adopt changes whenever they happen.
 * For first four weeks, we have followed Kanban. From next week, Scrum will be started.
 
 
-
+### Week: 5
+* Team has intengrated all of the features and make basic game ready.
+* Now with the game functionalities and javascript code how design patterns can be integrated will be discussed.
+* Some of the features may get some changes on the basis of overall flow of a game.
+* Phaser JS properties also plays a crucial role in deciding game features and functionalities. So Our upcoming plan is to decide whole design pattern strcuture with working model.
