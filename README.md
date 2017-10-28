@@ -13,4 +13,5 @@ Cumulative Flow Diagram:
 https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0GxRSzE3tlZZzV5WAf419diBgUu_5J8/edit#gid=2 
 
 Sprint Task Sheet:  
-https://docs.google.com/spreadsheets/d/1fLLk9UpbLoisvB3zJKp-0AxkN66jyBQ81VncRzcibiI/edit#gid=0
+https://docs.google.com/a/sjsu.edu/spreadsheets/d/1fLLk9UpbLoisvB3zJKp-0AxkN66jyBQ81VncRzcibiI/edit?usp=sharing
+
