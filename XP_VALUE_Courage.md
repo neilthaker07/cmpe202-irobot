@@ -48,6 +48,7 @@ We will adopt changes whenever they happen.
 
 
 ### Week: 5
+
 * Team has intengrated all of the features and make basic game ready.
 * Now with the game functionalities and javascript code how design patterns can be integrated will be discussed.
 * Some of the features may get some changes on the basis of overall flow of a game.
