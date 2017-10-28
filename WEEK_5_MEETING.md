@@ -6,9 +6,9 @@ Cumulative Flow Diagram: https://docs.google.com/spreadsheets/d/1RrzHPyfRseOM0Gx
 
 ### What did the team do the past week?
 
-Aditya:  Implement five patterns for stage one with many different objects and styles which will render dynamically. 
+Aditya: Implement five patterns for stage one with many different objects and styles which will render dynamically. 
 
-Afreen: 
+Afreen: Implement breakout patterns for different stages.
 
 Neil: Integrated slider functionality with all other functionalities of a game. Implemented slider size change dynamically as oject hits it and its type.
 
@@ -20,7 +20,7 @@ Rahil: Integrated collision detection component of the game.
 
 Aditya:  Implement five patterns for stage two with many different objects and styles which will render dynamically. Add Design pattern concepts.
 
-Afreen:
+Afreen: Implementing breakout pattern for stage one.
 
 Neil: Implement a desugn pattern related to a specific functionality and combine these design patterns.
 
@@ -32,7 +32,7 @@ Rahil: Design pattern related to functionality will be implemented.
 
 Aditya: How we are going to use Design Pattern concepts for our project.
 
-Afreen: 
+Afreen: So far no blockers.
 
 Neil: No blockers.
 
