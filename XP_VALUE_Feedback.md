@@ -21,5 +21,10 @@ Feedback is a way of determining the current state of the system, product, or pr
 ## Week-4
 * This week, each team member gave their feedback on the work everyone has done for the project. I got the feedback from the team members about the sound files I selected for the game. They were approved by the team members.
 * Also, each team member gave feedback on the tasks done by everyone including handling paddle bar with the arrow keys on keyboard and hiding the elements when the collision occurs.
-* Also, we tested the functionalities implemented and tweaked based on the feedback got from the manual testing. 
+* Also, we tested the functionalities implemented and tweaked based on the feedback got from the manual testing.
+
+## Week-5
+* This week, every team member gave their feedback on the patterns generated for the objects which ball can hit. Based on the feedback, we decided to use the some of the already implemented patterns and discard couple of patterns.
+* Also, based on the feedback, we decided to add couple of more patterns of objects in the game which will be changed after completion of each stage.
+* We discussed about the various power ups in the game and finalized some power up features for the same.
 
