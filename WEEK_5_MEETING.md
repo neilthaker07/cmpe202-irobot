@@ -14,7 +14,7 @@ Neil: Integrated slider functionality with all other functionalities of a game. 
 
 Purvesh: Worked on implementing power up features in the game where speed of the ball is increased for a certain amount of time and multiple balls will be simultaneously in play until a player looses all the live balls.
 
-Rahil: Integrated collision detection component of the game.
+Rahil: Integrated collision detection component of the game, added limit of powerups per level and new level on completion.
 
 ### What is the team going to do next week?
 
