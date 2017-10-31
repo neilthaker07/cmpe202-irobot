@@ -1,6 +1,5 @@
 // preloading components
-export function preload(game)
-    {
+export function preload(game) {
         game.load.atlas('breakout', '../images/breakout.png', '../json/breakout.json');
         
         //background image changed
@@ -32,3 +31,4 @@ export function preload(game)
         return game;
     }
  
+//export { preload };

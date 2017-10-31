@@ -1,4 +1,4 @@
-import {preload} from './preload';
+import { preload } from './p2';
 window.onload = function() 
 {
     var game = new Phaser.Game(1000, 680, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
@@ -46,7 +46,7 @@ window.onload = function()
 
 
     // preload
-    preload(game);
+    game = preload(game);
 
 
     // create components
