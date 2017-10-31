@@ -118,7 +118,7 @@ window.onload = function()
     {
         updateSlider();
         updateBall();
-        updatePowerUp();
+        game.physics.arcade.collide(object, slider, powerUpHitSlider, null, this);
         updateBallVelocity();
     }
 
@@ -292,11 +292,6 @@ window.onload = function()
             
             setTimeout(function() { resetBallVelocity(); }, 15000);
         }
-    }
-
-    function updatePowerUp()
-    {
-        game.physics.arcade.collide(object, slider, powerUpHitSlider, null, this);
     }
 
     function powerUpHitSlider (_objectPowerUp, _slider) 
