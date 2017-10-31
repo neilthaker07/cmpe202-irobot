@@ -5,13 +5,49 @@
 <title>Breakout</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 <script type="text/javascript" src="./js/pattern.js"></script>
+<style type="text/css">
+	.pauseBtn {
+		float: left;
+		margin-right: 30px;
+		width: 100px;
+		box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset;
+	    background-color: rgb(228, 104, 93);
+	    border-radius: 4px;
+	    border: 1px solid rgb(255, 255, 255);
+	    display: inline-block;
+	    cursor: pointer;
+	    color: rgb(255, 255, 255);
+	    font-family: Arial;
+	    font-size: 15px;
+	    padding: 6px 15px;
+	    text-decoration: none;
+	    text-shadow: rgb(178, 62, 53) 0px 1px 0px;
+	}
+</style>
 </head>
+
 <body style="margin-left:10%;margin-top:2%;background-color:#6AC2F8">
+
+<input class="pauseBtn" type="button" id="playPauseButton" onclick="toggleGameState()" value="Pause">
+
 <script type="text/javascript">
+
+var game;
+
+function toggleGameState(){
+
+	if (game.paused) {
+		game.paused = false;
+		document.getElementById("playPauseButton").value = "Pause";
+	} else {
+		game.paused = true;
+		document.getElementById("playPauseButton").value = "Play";
+	}
+}
 
 window.onload = function() 
 {
-    var game = new Phaser.Game(1000, 680, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+    game = new Phaser.Game(1000, 680, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
     //bricks or patterns
     var bricks;
