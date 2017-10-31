@@ -405,6 +405,9 @@ window.onload = function()
         speedMultiplier = 10;
         introText.text = 'Game Over!';
         introText.visible = true;
+        
+        // Once the game is over, restarting the game after 3 seconds
+        setTimeout(restartGame, 3000);
     }
 
     function render() 
@@ -529,6 +532,20 @@ window.onload = function()
                 introText.text = 'click to start'
             }, 2500);
             
+        }
+        
+		function restartGame(){
+        	
+        	backgroundMusic.destroy();
+	        
+	        //setting up the defaults
+	        ballOnSlider = true;
+	        numberOfPowerUpsGenerated = 0;
+	        lives = 3;
+	    	score = 0;
+	        
+	        //clearWorld=true, clearCache=false
+	        game.state.restart(true, false);
         }
 };
 </script>
