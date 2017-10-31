@@ -53,6 +53,7 @@ window.onload = function()
     var introText;
     var limitPowerUpsPerLevel = 5;
     var numberOfPowerUpsGenerated = 0;
+    var dualBallIsActive = false;
 
 
     // preloading components
@@ -85,6 +86,7 @@ window.onload = function()
         game.load.image('watermelon', 'img/watermelon.png');
         game.load.image('banana', 'img/banana.png');
         game.load.image('blackberry', 'img/blackberry.png');
+        game.load.image('plus','img/plus.png');
 
 
     }
@@ -416,7 +418,7 @@ window.onload = function()
              typeSelector = Math.floor((Math.random() * 20) + 1);
             console.log(typeSelector);
         }else{
-            typeSelector = 5;
+            typeSelector = 100;
         }
         return typeSelector;
     }
@@ -446,6 +448,13 @@ window.onload = function()
 				    object.type = "Speed-";
 				    object.scale.setTo(0.3,0.3);
                 }
+                case 5:{
+                    if(!dualBallIsActive)
+                        object = game.add.sprite(posX,posY,'plus');
+                        object.type = "DualBall";
+                        object.scale.setTo(0.5,0.5);
+                        dualBallIsActive = true;
+                }
                 default:
                     break;
             }
@@ -474,7 +483,7 @@ window.onload = function()
             
             if(!isLevelFinish()){
                 let type = checkToCreatePowerUp();
-                if(type <= 4){
+                if(type <= 5){
                     createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
                 }
             }else{
