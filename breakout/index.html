@@ -5,13 +5,50 @@
 <title>Breakout</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 <script type="text/javascript" src="./js/pattern.js"></script>
+<script type="text/javascript" src="./js/chain.js"></script>
+<style type="text/css">
+	.pauseBtn {
+		float: left;
+		margin-right: 30px;
+		width: 100px;
+		box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset;
+	    background-color: rgb(228, 104, 93);
+	    border-radius: 4px;
+	    border: 1px solid rgb(255, 255, 255);
+	    display: inline-block;
+	    cursor: pointer;
+	    color: rgb(255, 255, 255);
+	    font-family: Arial;
+	    font-size: 15px;
+	    padding: 6px 15px;
+	    text-decoration: none;
+	    text-shadow: rgb(178, 62, 53) 0px 1px 0px;
+	}
+</style>
 </head>
+
 <body style="margin-left:10%;margin-top:2%;background-color:#6AC2F8">
+
+<input class="pauseBtn" type="button" id="playPauseButton" onclick="toggleGameState()" value="Pause">
+
 <script type="text/javascript">
+
+var game;
+
+function toggleGameState(){
+
+	if (game.paused) {
+		game.paused = false;
+		document.getElementById("playPauseButton").value = "Pause";
+	} else {
+		game.paused = true;
+		document.getElementById("playPauseButton").value = "Play";
+	}
+}
 
 window.onload = function() 
 {
-    var game = new Phaser.Game(1000, 680, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+    game = new Phaser.Game(1000, 680, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
     //bricks or patterns
     var bricks;
@@ -23,7 +60,6 @@ window.onload = function()
     var sliderSpeed = 15;
     
     // powerUp
-    var counter = 0;
     var object;
 
     // ball
@@ -120,7 +156,7 @@ window.onload = function()
     {
         updateSlider();
         updateBall();
-        game.physics.arcade.collide(object, slider, powerUpHitSlider, null, this);
+        game.physics.arcade.collide(object, slider, new Chain().powerUpHitSlider, null, this);
         updateBallVelocity();
     }
 
@@ -296,42 +332,6 @@ window.onload = function()
         }
     }
 
-    function powerUpHitSlider (_objectPowerUp, _slider) 
-    {
-        _objectPowerUp.body.velocity.y = 0;
-        var objectType = _objectPowerUp.type;
-        _objectPowerUp.kill();
-        
-        if(objectType === "Slider+")
-        {
-            increaseSliderSize();
-        }
-        else if(objectType === "Slider-")
-        {
-            decreaseSliderSize();
-        }
-        else if(objectType === "Speed+")
-        {
-            speedUp = true;
-        }
-        else if(objectType === "Speed-")
-        {
-            //decreaseBallSpeed();
-        }
-    }
-
-    function increaseSliderSize() 
-    {
-        slider.scale.setTo(1,1);
-        setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
-    }
-
-    function decreaseSliderSize() 
-    {
-        slider.scale.setTo(0.4,0.4);
-        setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
-    }
-
     function releaseBall() 
     {
         if (ballOnSlider)
@@ -405,6 +405,9 @@ window.onload = function()
         speedMultiplier = 10;
         introText.text = 'Game Over!';
         introText.visible = true;
+        
+        // Once the game is over, restarting the game after 3 seconds
+        setTimeout(restartGame, 3000);
     }
 
     function render() 
@@ -529,6 +532,20 @@ window.onload = function()
                 introText.text = 'click to start'
             }, 2500);
             
+        }
+        
+		function restartGame(){
+        	
+        	backgroundMusic.destroy();
+	        
+	        //setting up the defaults
+	        ballOnSlider = true;
+	        numberOfPowerUpsGenerated = 0;
+	        lives = 3;
+	    	score = 0;
+	        
+	        //clearWorld=true, clearCache=false
+	        game.state.restart(true, false);
         }
 };
 </script>
