@@ -6,6 +6,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 <script type="text/javascript" src="./js/pattern.js"></script>
 <script type="text/javascript" src="./js/chain.js"></script>
+<script type="text/javascript" src="./js/bonusBall.js"></script>
+<script type="text/javascript" src="./js/ballLost.js"></script>
 <script type="text/javascript" src="./js/factoryPattern.js"></script>
 <style type="text/css">
 	.pauseBtn {
@@ -159,7 +161,7 @@ window.onload = function()
     {
         updateSlider();
         updateBall();
-        game.physics.arcade.collide(object, slider, new Chain().powerUpHitSlider, null, this);
+        game.physics.arcade.collide(object, slider, new Chain(game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider).powerUpHitSlider, null, this);
         updateBallVelocity();
     }
 
@@ -231,8 +233,9 @@ window.onload = function()
 		soundButton.scale.set(1, 1);
 		soundButton.smoothed = false;    
     }
-	
-	function addBonusBall()
+    
+/*	
+    function addBonusBall()
     {
         initializeBonusBall();
 
@@ -259,7 +262,7 @@ window.onload = function()
 
         bonusBall.events.onOutOfBounds.add(ballLost, this);
     }
-
+*/
     function calculateScore()
     {
         scoreText = game.add.text(32, 650, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });

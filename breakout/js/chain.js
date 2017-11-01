@@ -1,10 +1,9 @@
-var dualBallIsActive = false;
 function SliderIncreaseSizeHandler(next){
   this.next = next;
 }
 
 SliderIncreaseSizeHandler.prototype = {
-    handleRequest: function(request, slider){
+    handleRequest: function(request, slider, game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider){
       if(request === 'Slider+'){
         slider.scale.setTo(1,1);
         setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
@@ -15,7 +14,7 @@ SliderIncreaseSizeHandler.prototype = {
       {
         if(this.next!=null)
         {
-          this.next.handleRequest(request, slider);
+          this.next.handleRequest(request, slider, game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider);
         }
       }
     },
@@ -31,7 +30,7 @@ function SliderDecreaseSizeHandler(next){
 }
 
 SliderDecreaseSizeHandler.prototype = {
-    handleRequest: function(request, slider){
+    handleRequest: function(request, slider, game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider){
       if(request === 'Slider-'){
         slider.scale.setTo(0.4,0.4);
         setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
@@ -42,7 +41,7 @@ SliderDecreaseSizeHandler.prototype = {
       {
         if(this.next!=null)
         {
-          this.next.handleRequest(request, slider);
+          this.next.handleRequest(request, slider, game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider);
         }
       }
     },
@@ -58,16 +57,16 @@ function BallSpeedUpHandler(next){
 }
 
 BallSpeedUpHandler.prototype = {
-    handleRequest: function(request, slider){
+    handleRequest: function(request, slider, game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider){
       if(request === 'Speed+'){
           console.log(request+" speed up ");
-      //  speedUp = true;
+          this.speedUp = true;
       }
       else
       {
         if(this.next!=null)
         {
-          this.next.handleRequest(request, slider);
+          this.next.handleRequest(request, slider, game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider);
         }
       }
     },
@@ -83,17 +82,20 @@ function DoubleBallHandler(next){
 }
 
 DoubleBallHandler.prototype = {
-    handleRequest: function(request, slider){
+    handleRequest: function(request, slider, game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider){
       if(request === 'DualBall'){
+        
         console.log(request+" ball double");
+        
         dualBallIsActive = true;
-        //addBonusBall();
+     //   new addBonusBall(game, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider, slider);
+
       }
       else
       {
         if(this.next!=null)
         {
-          this.next.handleRequest(request, slider);
+          this.next.handleRequest(request, slider, game,  speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider);
         }
       }
     },
@@ -104,27 +106,38 @@ DoubleBallHandler.prototype = {
     }
 }
 
-function Chain(){
+function Chain(game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider){
+  this.speedUp = speedUp;
+  this.dualBallIsActive = dualBallIsActive;
+  this.isBonusBallLive =isBonusBallLive;
+  this.bonusBall=bonusBall;
+  this.ball = ball;
+  this.lives = lives;
+  this.livesText = livesText;
+  this.ballOnSlider = ballOnSlider;
 }
 
 Chain.prototype = {
-  handleAllRequests: function(request, slider){    
+  handleAllRequests: function(request, slider,game, speedUp,  dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider ){
     var c1 = new SliderIncreaseSizeHandler();
     var c2 = new SliderDecreaseSizeHandler();
     var c3 = new BallSpeedUpHandler();
     var c4 = new DoubleBallHandler();
 
+    console.log("step2");
+
     c1.setNext(c2).setNext(c3).setNext(c4);
-    return c1.handleRequest(request, slider);
+    return c1.handleRequest(request, slider,game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider);
   },
 
-  powerUpHitSlider: function(_objectPowerUp,_slider, _dualBallIsActive) {
+  powerUpHitSlider: function(_objectPowerUp,_slider){
     _objectPowerUp.body.velocity.y = 0;
     var objectType = _objectPowerUp.type;
     _objectPowerUp.kill();
     console.log(objectType);
-    dualBallIsActive = _dualBallIsActive;
-    new Chain().handleAllRequests(objectType, _slider);
+    console.log("step1");
+
+    new Chain().handleAllRequests(objectType, _slider, game, this.speedUp, this.dualBallIsActive, this.isBonusBallLive, this.bonusBall, this.ball, this.lives, this.livesText, this.ballOnSlider);
   }
 }
 
