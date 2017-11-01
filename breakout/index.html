@@ -5,6 +5,7 @@
 <title>Breakout</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 <script type="text/javascript" src="./js/pattern.js"></script>
+<script type="text/javascript" src="./js/chain.js"></script>
 </head>
 <body style="margin-left:10%;margin-top:2%;background-color:#6AC2F8">
 <script type="text/javascript">
@@ -23,7 +24,6 @@ window.onload = function()
     var sliderSpeed = 15;
     
     // powerUp
-    var counter = 0;
     var object;
 
     // ball
@@ -120,7 +120,7 @@ window.onload = function()
     {
         updateSlider();
         updateBall();
-        game.physics.arcade.collide(object, slider, powerUpHitSlider, null, this);
+        game.physics.arcade.collide(object, slider, new Chain().powerUpHitSlider, null, this);
         updateBallVelocity();
     }
 
@@ -294,42 +294,6 @@ window.onload = function()
             
             setTimeout(function() { resetBallVelocity(); }, 15000);
         }
-    }
-
-    function powerUpHitSlider (_objectPowerUp, _slider) 
-    {
-        _objectPowerUp.body.velocity.y = 0;
-        var objectType = _objectPowerUp.type;
-        _objectPowerUp.kill();
-        
-        if(objectType === "Slider+")
-        {
-            increaseSliderSize();
-        }
-        else if(objectType === "Slider-")
-        {
-            decreaseSliderSize();
-        }
-        else if(objectType === "Speed+")
-        {
-            speedUp = true;
-        }
-        else if(objectType === "Speed-")
-        {
-            //decreaseBallSpeed();
-        }
-    }
-
-    function increaseSliderSize() 
-    {
-        slider.scale.setTo(1,1);
-        setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
-    }
-
-    function decreaseSliderSize() 
-    {
-        slider.scale.setTo(0.4,0.4);
-        setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
     }
 
     function releaseBall() 
