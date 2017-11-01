@@ -1,53 +1,48 @@
-'use strict';
+function Factory(){
 
-class factory{
-    constructor(){
+}
 
-    }
-    createPowerUp(type){
+Factory.prototype = {
+
+    createPowerUp: function (game, posX, posY, type) {
         var powerUp;
         if(type === 'Slider+')
-            powerUp = new BiggerSlider();
+            powerUp = new BiggerSlider(game,posX, posY);
         if(type === 'Slider-')
-            powerUp = new SmallerSlider();
+            powerUp = new SmallerSlider(game,posX, posY);
         if(type === 'Speed+')
-            powerUp = new FasterSpeed();
-        if(type === 'Speed-')
-            powerUp = new SlowerSpeed();
-        if(type === 'DoubleBall')
-            powerUp = new DualBall();
+            powerUp = new FasterSpeed(game,posX, posY);
+        if(type === 'DualBall')
+            powerUp = new DualBall(game,posX, posY);
+        console.log(powerUp);
         return powerUp;
     }
-
 }
 
-class BiggerSlider{
-    constructor(){
-        this.type = "Slider+";
-    }
-}
+var BiggerSlider = function (game,posX,posY) {
+    var object = game.add.sprite(posX,posY,'sliderPlus');
+    object.type = "Slider+";
+    object.scale.setTo(0.3,0.3);
+    return object;
+};
+ 
+var SmallerSlider = function (game,posX, posY) {
+    var object = game.add.sprite(posX,posY,'sliderMinus');
+	object.type = "Slider-";
+    object.scale.setTo(0.3,0.3);
+    return object
+};
+ 
+var FasterSpeed = function (game,posX, posY) {
+    var object = game.add.sprite(posX,posY,'speedPlus');
+    object.type = "Speed+";
+    object.scale.setTo(0.3,0.3);
+    return object;
+};
 
-class SmallerSlider{
-    constructor(){
-        this.type = "Slider-";
-    }
+var DualBall = function(game,posX, posY){
+    var object = game.add.sprite(posX,posY,'plus');
+    object.type = "DualBall";
+    object.scale.setTo(0.5,0.5);
+    return object;
 }
-class FasterSpeed{
-    constructor(){
-        this.type = "Speed+";
-    }
-}
-class SlowerSpeed{
-    constructor(){
-        this.type = "Speed-";
-    }
-}
-class DualBall{
-    constructor(){
-        this.type = "DoubleBall";
-    }
-}
-
-let factoryIns = new factory();
-var powerUp = factoryIns.createPowerUp("Slider+")
-console.log(powerUp);

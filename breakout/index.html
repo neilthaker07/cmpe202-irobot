@@ -6,6 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 <script type="text/javascript" src="./js/pattern.js"></script>
 <script type="text/javascript" src="./js/chain.js"></script>
+<script type="text/javascript" src="./js/factoryPattern.js"></script>
 <style type="text/css">
 	.pauseBtn {
 		float: left;
@@ -87,9 +88,12 @@ window.onload = function()
     var scoreText;
     var livesText;
     var introText;
-    var limitPowerUpsPerLevel = 5;
+    var limitPowerUpsPerLevel = 1;
     var numberOfPowerUpsGenerated = 0;
     var dualBallIsActive = false;
+
+    var factory = new Factory();
+
 
 
     // preloading components
@@ -147,7 +151,6 @@ window.onload = function()
 		addSoundButton();
 		calculateScore();
         addText();
-
 		game.input.onDown.add(releaseBall, this); // Ball intial position
     }
 
@@ -426,37 +429,64 @@ window.onload = function()
         return typeSelector;
     }
     function createDynamicObject(posX, posY,type){
+            
             console.log('inside createObject');
+            // switch(type){
+            //     case 1:{
+            //         object = game.add.sprite(posX,posY,'sliderPlus');
+			// 	    object.type = "Slider+";
+			// 	    object.scale.setTo(0.3,0.3);
+            //     }
+            //     break;
+            //     case 2:{
+            //         object = game.add.sprite(posX,posY,'sliderMinus');
+			// 	    object.type = "Slider-";
+			// 	    object.scale.setTo(0.3,0.3);
+            //     }
+            //     break;
+            //     case 3:{
+            //         object = game.add.sprite(posX,posY,'speedPlus');
+			// 	    object.type = "Speed+";
+			// 	    object.scale.setTo(0.3,0.3);
+            //     }
+            //     break;
+            //     case 4:{
+            //         if(!dualBallIsActive){
+            //             object = game.add.sprite(posX,posY,'plus');
+            //             object.type = "DualBall";
+            //             object.scale.setTo(0.5,0.5);
+            //         }
+            //     break;
+            //     }
+            //     default:
+            //         break;
+            // }
+            console.log(type);
             switch(type){
                 case 1:{
-                    object = game.add.sprite(posX,posY,'sliderPlus');
-				    object.type = "Slider+";
-				    object.scale.setTo(0.3,0.3);
+                    object = factory.createPowerUp(game,posX,posY,'Slider+');
                 }
                 break;
                 case 2:{
-                    object = game.add.sprite(posX,posY,'sliderMinus');
-				    object.type = "Slider-";
-				    object.scale.setTo(0.3,0.3);
+                    object = factory.createPowerUp(game,posX,posY,'Slider-');
                 }
                 break;
                 case 3:{
-                    object = game.add.sprite(posX,posY,'speedPlus');
-				    object.type = "Speed+";
-				    object.scale.setTo(0.3,0.3);
+                    object = factory.createPowerUp(game,posX,posY,'Speed+');
                 }
                 break;
                 case 4:{
                     if(!dualBallIsActive){
-                        object = game.add.sprite(posX,posY,'plus');
-                        object.type = "DualBall";
-                        object.scale.setTo(0.5,0.5);
+                        object = factory.createPowerUp(game,posX,posY,'DualBall');
                     }
                 break;
                 }
                 default:
                     break;
             }
+
+            console.log(object);
+
 			game.physics.enable(object, Phaser.Physics.ARCADE);
 			//Set gravity
             object.body.gravity.y = 50;
