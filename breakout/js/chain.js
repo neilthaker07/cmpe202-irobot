@@ -1,3 +1,4 @@
+var dualBallIsActive = false;
 function SliderIncreaseSizeHandler(next){
   this.next = next;
 }
@@ -85,6 +86,7 @@ DoubleBallHandler.prototype = {
     handleRequest: function(request, slider){
       if(request === 'DualBall'){
         console.log(request+" ball double");
+        dualBallIsActive = true;
         //addBonusBall();
       }
       else
@@ -116,12 +118,12 @@ Chain.prototype = {
     return c1.handleRequest(request, slider);
   },
 
-  powerUpHitSlider: function(_objectPowerUp,_slider) {
+  powerUpHitSlider: function(_objectPowerUp,_slider, _dualBallIsActive) {
     _objectPowerUp.body.velocity.y = 0;
     var objectType = _objectPowerUp.type;
     _objectPowerUp.kill();
     console.log(objectType);
-
+    dualBallIsActive = _dualBallIsActive;
     new Chain().handleAllRequests(objectType, _slider);
   }
 }

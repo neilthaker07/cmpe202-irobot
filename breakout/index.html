@@ -447,16 +447,12 @@ window.onload = function()
                 }
                 break;
                 case 4:{
-                    object = game.add.sprite(posX,posY,'speedMinus');
-				    object.type = "Speed-";
-				    object.scale.setTo(0.3,0.3);
-                }
-                case 5:{
-                    if(!dualBallIsActive)
+                    if(!dualBallIsActive){
                         object = game.add.sprite(posX,posY,'plus');
                         object.type = "DualBall";
                         object.scale.setTo(0.5,0.5);
-                        dualBallIsActive = true;
+                    }
+                break;
                 }
                 default:
                     break;
@@ -486,7 +482,7 @@ window.onload = function()
             
             if(!isLevelFinish()){
                 let type = checkToCreatePowerUp();
-                if(type <= 5){
+                if(type <= 4){
                     createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
                 }
             }else{
