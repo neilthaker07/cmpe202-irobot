@@ -23,3 +23,7 @@ In this week, we all meet and discuss features. Everybody gave their inputs and 
 Week-5
 
 In this week, we all meet and discuss about how we gonna integrate our work and make basic game with some feature. We all discuss each other idea and decide to do integrate one by one. We also discuss about which should be pattern for collision objects. I took intiative and gave some idea. Team listern and discuss on each pattern and finalize it.
+
+Week-6
+
+In this week, we all meet and discuss about how we further with our game, which development is crucial and which development work should complete first in order to complete our project on time, We also discuss out which design pattern should be implemented and how ? We listern all suggestion and vote for best.
