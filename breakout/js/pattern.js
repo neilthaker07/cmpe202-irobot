@@ -40,7 +40,7 @@ function pattern1(bricks){
                 for (var x = 0; x < 15; x++)
                 {
                     if(x%2!=0){
-                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), images[image]);
+                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
                         inside_brick.scale.setTo(.08, .08);
                         inside_brick.body.bounce.set(1);
                         inside_brick.body.immovable = true;
@@ -71,7 +71,7 @@ function pattern2(bricks){
                      }
                      else{
                          if((y==2&(x==2||x==7||x==12))){
-                            inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), images[image1]);
+                            inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
                             inside_brick.scale.setTo(.08, .08);
                             inside_brick.body.bounce.set(1);
                             inside_brick.body.immovable = true; 
