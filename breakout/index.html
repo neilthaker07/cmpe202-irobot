@@ -6,8 +6,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.9.1/phaser.min.js"></script>
 <script type="text/javascript" src="./js/pattern.js"></script>
 <script type="text/javascript" src="./js/chain.js"></script>
-<script type="text/javascript" src="./js/bonusBall.js"></script>
-<script type="text/javascript" src="./js/ballLost.js"></script>
 <script type="text/javascript" src="./js/factoryPattern.js"></script>
 <style type="text/css">
 	.pauseBtn {
@@ -130,6 +128,10 @@ window.onload = function()
         game.load.image('blackberry', 'img/blackberry.png');
         game.load.image('plus','img/plus.png');
 
+        //three hit pattern Image
+
+        game.load.image('hitOne' , 'img/hit1.png');
+        game.load.image('hitTwo' , 'img/hit2.png');
 
     }
 
@@ -137,6 +139,7 @@ window.onload = function()
     function create() 
     {
         game.add.tileSprite(0, 0, 1000, 700, 'background'); // background image
+        
         //  We check bounds collisions against all walls other than the bottom one
         game.physics.arcade.checkCollision.down = false;
 
@@ -161,14 +164,14 @@ window.onload = function()
     {
         updateSlider();
         updateBall();
-        game.physics.arcade.collide(object, slider, new Chain(game, speedUp, dualBallIsActive, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider).powerUpHitSlider, null, this);
+        game.physics.arcade.collide(object, slider, new Chain().powerUpHitSlider, null, this);
         updateBallVelocity();
     }
 
     function addPatterns(){
         
         var brick;
-        var num = Math.floor(Math.random() * (4 - 0)) + 0;
+        var num = Math.floor(Math.random() * (5 - 0)) + 0;
 	    switch (num) {
             case 0:
                 brick = pattern0(bricks);
@@ -184,6 +187,9 @@ window.onload = function()
                 break;
             case 4:
                 brick = pattern4(bricks);
+                break;
+            case 5:
+                brick = pattern5(bricks);
                 break;
             
         }
@@ -233,9 +239,8 @@ window.onload = function()
 		soundButton.scale.set(1, 1);
 		soundButton.smoothed = false;    
     }
-    
-/*	
-    function addBonusBall()
+	
+	function addBonusBall()
     {
         initializeBonusBall();
 
@@ -262,7 +267,7 @@ window.onload = function()
 
         bonusBall.events.onOutOfBounds.add(ballLost, this);
     }
-*/
+
     function calculateScore()
     {
         scoreText = game.add.text(32, 650, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
@@ -497,30 +502,85 @@ window.onload = function()
 		}
 
 		function ballHitBrick (ball, obj) {
-			
-			collisionSound.play();
 
-			//animation on the hit
-			var killTween = game.add.tween(obj.scale);
-
-			killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+            var images = ['redapple','greenapple','custardapple','orange','peru','watermelon','banana','blackberry'];
             
-            updateScore();
+            var img = Math.floor(Math.random() * (7 - 0)) + 0;
 
-			killTween.onComplete.addOnce(()=>{
-                obj.kill();
-			},this)
+            var brick_img;
 
-            killTween.start();
-            
-            if(!isLevelFinish()){
-                let type = checkToCreatePowerUp();
-                if(type <= 4){
-                    createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
-                }
-            }else{
-                resetToNextLevel();
+            if(obj.key=='hitOne')
+            {
+                collisionSound.play();
+
+                //animation on the hit
+                var killTween = game.add.tween(obj.scale);
+
+                killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+                
+                updateScore();
+
+                killTween.onComplete.addOnce(()=>{
+                    obj.kill();
+                },this)
+
+                killTween.start();
+                
+                 brick_img=bricks.create(obj.x, obj.y, 'hitTwo');
+                 brick_img.scale.setTo(.08, .08);
+                 brick_img.body.bounce.set(1);
+                 brick_img.body.immovable = true; 
+                 
             }
+            else if(obj.key=='hitTwo')
+            {
+                 collisionSound.play();
+
+                //animation on the hit
+                var killTween = game.add.tween(obj.scale);
+
+                killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+                
+                updateScore();
+
+                killTween.onComplete.addOnce(()=>{
+                    obj.kill();
+                },this)
+
+                killTween.start();
+                
+                 brick_img=bricks.create(obj.x, obj.y, images[img]);
+                 brick_img.scale.setTo(.08, .08);
+                 brick_img.body.bounce.set(1);
+                 brick_img.body.immovable = true; 
+            }
+			else
+            {
+                collisionSound.play();
+
+                //animation on the hit
+                var killTween = game.add.tween(obj.scale);
+
+                killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+                
+                updateScore();
+
+                killTween.onComplete.addOnce(()=>{
+                    obj.kill();
+                },this)
+
+                killTween.start();
+                
+                if(!isLevelFinish()){
+                    let type = checkToCreatePowerUp();
+                    if(type <= 4){
+                        createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
+                    }
+                }else{
+                    resetToNextLevel();
+                }
+            }
+			
         }
         
         function updateScore(){
