@@ -1,4 +1,5 @@
-var images = ['redapple','greenapple','custardapple','orange','peru','watermelon','banana','blackberry']
+var images = ['redapple','greenapple','custardapple','orange','peru','watermelon','banana','blackberry'];
+var trippleHit=['hitOne', 'hitTwo'];
 var image = Math.floor(Math.random() * (7 - 0)) + 0;
 var image1 = Math.floor(Math.random() * (7 - 0)) + 0;
 var image2 = Math.floor(Math.random() * (7 - 0)) + 0;
@@ -18,6 +19,7 @@ function pattern0(bricks){
     }
     return inside_brick;    
 }
+
 function pattern1(bricks){
     var inside_brick;
     for (var y = 0; y < 5; y++)
@@ -49,6 +51,7 @@ function pattern1(bricks){
         }
     return inside_brick;    
 }
+
 function pattern2(bricks){
     var inside_brick;
     for (var y = 0; y < 5; y++)
@@ -81,6 +84,7 @@ function pattern2(bricks){
     }
     return inside_brick;    
 }
+
 function pattern3(bricks){
     var inside_brick;
     for (var y = 0; y < 5; y++)
@@ -106,6 +110,7 @@ function pattern3(bricks){
     }
     return inside_brick;    
 }
+
 function pattern4(bricks){
     var inside_brick;
     for (var y = 0; y < 5; y++)
@@ -129,5 +134,37 @@ function pattern4(bricks){
            
         }
     }
+    return inside_brick;    
+}
+
+function pattern5(bricks){
+    var inside_brick;
+    for (var y = 0; y < 5; y++)
+        {
+            if(y%2==0){
+                for (var x = 0; x < 15; x++)
+                {
+                    if(x%2==0){
+                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), images[image]);
+                        inside_brick.scale.setTo(.08, .08);
+                        inside_brick.body.bounce.set(1);
+                        inside_brick.body.immovable = true;
+                    }
+                   
+                }
+            }
+            else{
+                for (var x = 0; x < 15; x++)
+                {
+                    if(x%2!=0){
+                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                        inside_brick.scale.setTo(.08, .08);
+                        inside_brick.body.bounce.set(1);
+                        inside_brick.body.immovable = true;
+                    }
+                }
+            }
+           
+        }
     return inside_brick;    
 }
