@@ -9,8 +9,7 @@
 <script type="text/javascript" src="./js/factoryPattern.js"></script>
 <style type="text/css">
 	.pauseBtn {
-		float: left;
-		margin-right: 30px;
+		float: right;
 		width: 100px;
 		box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset;
 	    background-color: rgb(228, 104, 93);
@@ -28,7 +27,7 @@
 </style>
 </head>
 
-<body style="margin-left:10%;margin-top:2%;background-color:#6AC2F8">
+<body style="margin-left:10%;margin-top:2%;background-color:#000000">
 
 <input class="pauseBtn" type="button" id="playPauseButton" onclick="toggleGameState()" value="Pause">
 
@@ -171,11 +170,9 @@ window.onload = function()
     function addPatterns(){
         
         var brick;
-        var num = Math.floor(Math.random() * (5 - 0)) + 0;
+        var num = Math.floor(Math.random() * (5 - 1)) + 1;
 	    switch (num) {
-            case 0:
-                brick = pattern0(bricks);
-                break;
+          
             case 1:
                 brick = pattern1(bricks);
                 break;
@@ -190,6 +187,9 @@ window.onload = function()
                 break;
             case 5:
                 brick = pattern5(bricks);
+                break;
+            case 6:
+                brick = pattern6(bricks);
                 break;
             
         }
@@ -503,10 +503,7 @@ window.onload = function()
 
 		function ballHitBrick (ball, obj) {
 
-            var images = ['redapple','greenapple','custardapple','orange','peru','watermelon','banana','blackberry'];
             
-            var img = Math.floor(Math.random() * (7 - 0)) + 0;
-
             var brick_img;
 
             if(obj.key=='hitOne')
@@ -549,7 +546,7 @@ window.onload = function()
 
                 killTween.start();
                 
-                 brick_img=bricks.create(obj.x, obj.y, images[img]);
+                 brick_img=bricks.create(obj.x, obj.y, images[image]);
                  brick_img.scale.setTo(.08, .08);
                  brick_img.body.bounce.set(1);
                  brick_img.body.immovable = true; 

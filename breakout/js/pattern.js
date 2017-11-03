@@ -4,21 +4,6 @@ var image = Math.floor(Math.random() * (7 - 0)) + 0;
 var image1 = Math.floor(Math.random() * (7 - 0)) + 0;
 var image2 = Math.floor(Math.random() * (7 - 0)) + 0;
 
-function pattern0(bricks){
-   
-    var inside_brick;
-    for (var y = 0; y < 5; y++)
-    {
-        for (var x = 0; x < 15; x++)
-        {
-            inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), images[image]);
-            inside_brick.scale.setTo(.08, .08);
-            inside_brick.body.bounce.set(1);
-            inside_brick.body.immovable = true;
-        }
-    }
-    return inside_brick;    
-}
 
 function pattern1(bricks){
     var inside_brick;
@@ -166,5 +151,52 @@ function pattern5(bricks){
             }
            
         }
+    return inside_brick;    
+}
+
+function pattern6(bricks){
+    var inside_brick;
+    for (var y = 0; y < 5; y++)
+        {
+                for (var x = 0; x < 15; x++)
+                {
+                   
+                            if((y==0 && (x!=5 && x!=6 && x!=7 && x!= 8 && x!= 9))
+                                || (y==1&&(x!=1 && x!=2 && x!=6 && x!=7 && x!=8 && x!=12 && x!=13))
+                                || (y==2)
+                                || (y==3&&(x!=1 && x!=2 && x!=6 && x!=7 && x!=8 && x!=12 && x!=13))
+                                || (y==4)&& (x!=5 && x!=6 && x!=7 && x!= 8 && x!= 9))
+                            {
+                                //var type = Math.floor(Math.random() * (100 - 1)) + 1;
+                                if(y!=2){
+                                    inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), images[image]);
+                                    inside_brick.scale.setTo(.08, .08);
+                                    inside_brick.body.bounce.set(1);
+                                    inside_brick.body.immovable = true;
+                                }
+                                else{
+                                    if(x%2==0){
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                                        inside_brick.scale.setTo(.08, .08);
+                                        inside_brick.body.bounce.set(1);
+                                        inside_brick.body.immovable = true;
+                                    }
+                                    else{
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[1]);
+                                        inside_brick.scale.setTo(.08, .08);
+                                        inside_brick.body.bounce.set(1);
+                                        inside_brick.body.immovable = true;
+                                    }
+                                    
+                                }
+                              
+                            }
+                          
+                        
+                    
+                }
+            }
+           
+        
     return inside_brick;    
 }
