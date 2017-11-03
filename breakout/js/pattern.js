@@ -153,7 +153,10 @@ function pattern5(bricks){
         }
     return inside_brick;    
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 function pattern6(bricks){
     var inside_brick;
     for (var y = 0; y < 5; y++)
