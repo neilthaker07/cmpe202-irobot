@@ -189,10 +189,19 @@ function pattern6(bricks){
                                     inside_brick.body.immovable = true;
                                 }
                                 else{
-                                    inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
-                                    inside_brick.scale.setTo(.08, .08);
-                                    inside_brick.body.bounce.set(1);
-                                    inside_brick.body.immovable = true;
+                                    if(x%2==0){
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                                        inside_brick.scale.setTo(.08, .08);
+                                        inside_brick.body.bounce.set(1);
+                                        inside_brick.body.immovable = true;
+                                    }
+                                    else{
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[1]);
+                                        inside_brick.scale.setTo(.08, .08);
+                                        inside_brick.body.bounce.set(1);
+                                        inside_brick.body.immovable = true;
+                                    }
+                                    
                                 }
                               
                             }
