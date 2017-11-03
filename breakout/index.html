@@ -284,7 +284,7 @@ window.onload = function()
 
     function addText()
     {
-        introText = game.add.text(game.world.centerX, 400, '- click to start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
+        introText = game.add.text(game.world.centerX, 400, '- Click to Start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
         introText.anchor.setTo(0.5, 0.5);
     }
 	
@@ -513,47 +513,27 @@ window.onload = function()
 
             
             var brick_img;
+            
+            collisionSound.play();
+            
+          	//animation on the hit
+            var killTween = game.add.tween(obj.scale);
+            killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+            killTween.onComplete.addOnce(()=>{
+                obj.kill();
+            },this)
+
+            killTween.start();
 
             if(obj.key=='hitOne')
-            {
-                collisionSound.play();
-
-                //animation on the hit
-                var killTween = game.add.tween(obj.scale);
-
-                killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
-                
-                updateScore();
-
-                killTween.onComplete.addOnce(()=>{
-                    obj.kill();
-                },this)
-
-                killTween.start();
-                
+            {  
                  brick_img=bricks.create(obj.x, obj.y, 'hitTwo');
                  brick_img.scale.setTo(.08, .08);
                  brick_img.body.bounce.set(1);
-                 brick_img.body.immovable = true; 
-                 
+                 brick_img.body.immovable = true;     
             }
             else if(obj.key=='hitTwo')
             {
-                 collisionSound.play();
-
-                //animation on the hit
-                var killTween = game.add.tween(obj.scale);
-
-                killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
-                
-                updateScore();
-
-                killTween.onComplete.addOnce(()=>{
-                    obj.kill();
-                },this)
-
-                killTween.start();
-                
                  brick_img=bricks.create(obj.x, obj.y, images[image]);
                  brick_img.scale.setTo(.08, .08);
                  brick_img.body.bounce.set(1);
@@ -561,21 +541,8 @@ window.onload = function()
             }
 			else
             {
-                collisionSound.play();
-
-                //animation on the hit
-                var killTween = game.add.tween(obj.scale);
-
-                killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
-                
                 theBallSubject.setState("collided");
                 updateScore();
-
-                killTween.onComplete.addOnce(()=>{
-                    obj.kill();
-                },this)
-
-                killTween.start();
                 
                 if(!isLevelFinish()){
                     let type = checkToCreatePowerUp();
@@ -591,11 +558,6 @@ window.onload = function()
         
         function updateScore(){
             scoreText.text = 'score: ' + scoreObserver.getObserverState();
-        }
-
-        function nextLevelScoreUpdate(){
-            score += 100;
-            scoreText.text = 'score: ' + score;
         }
 
         function isLevelFinish(){
