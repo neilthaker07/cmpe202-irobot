@@ -57,3 +57,13 @@ Extreme programming define Communication as vital process to be followed through
 * Team decided a common coding structure for following in individual module, for acheiving simplicity while merging code.
 * Team has communicated about responsiblity of integration and order of intergation.
 * Team has no blocker so far.
+
+
+### Week 6
+
+## MOM: Meeting 6
+
+* Team has decided to implement design pattern.
+* Team has communicated about the individual choice about design pattern implementation.
+* Team will be adding game power ups and new level design pattern.
+* Team will be communicating about differnet blocker faced during the week.
