@@ -1,5 +1,5 @@
 var images = ['redapple','greenapple','custardapple','orange','peru','watermelon','banana','blackberry'];
-var trippleHit=['hitOne', 'hitTwo'];
+var tripleHit=['hitOne', 'hitTwo'];
 var image = Math.floor(Math.random() * (7 - 0)) + 0;
 var image1 = Math.floor(Math.random() * (7 - 0)) + 0;
 var image2 = Math.floor(Math.random() * (7 - 0)) + 0;
@@ -25,7 +25,7 @@ function pattern1(bricks){
                 for (var x = 0; x < 15; x++)
                 {
                     if(x%2!=0){
-                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[0]);
                         inside_brick.scale.setTo(.08, .08);
                         inside_brick.body.bounce.set(1);
                         inside_brick.body.immovable = true;
@@ -56,7 +56,7 @@ function pattern2(bricks){
                      }
                      else{
                          if((y==2&(x==2||x==7||x==12))){
-                            inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                            inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[0]);
                             inside_brick.scale.setTo(.08, .08);
                             inside_brick.body.bounce.set(1);
                             inside_brick.body.immovable = true; 
@@ -142,7 +142,7 @@ function pattern5(bricks){
                 for (var x = 0; x < 15; x++)
                 {
                     if(x%2!=0){
-                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[0]);
                         inside_brick.scale.setTo(.08, .08);
                         inside_brick.body.bounce.set(1);
                         inside_brick.body.immovable = true;
@@ -176,13 +176,13 @@ function pattern6(bricks){
                                 }
                                 else{
                                     if(x%2==0){
-                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[0]);
                                         inside_brick.scale.setTo(.08, .08);
                                         inside_brick.body.bounce.set(1);
                                         inside_brick.body.immovable = true;
                                     }
                                     else{
-                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[1]);
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[1]);
                                         inside_brick.scale.setTo(.08, .08);
                                         inside_brick.body.bounce.set(1);
                                         inside_brick.body.immovable = true;
