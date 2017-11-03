@@ -44,7 +44,7 @@ window.onload = function()
     var sliderSpeed = 15;
     
     // powerUp
-    var object;
+    //var object;
 
     // ball
     var ball;
@@ -67,7 +67,8 @@ window.onload = function()
     var scoreText;
     var livesText;
     var introText;
-    var limitPowerUpsPerLevel = 1;
+    var limitPowerUpsPerLevel = 5;
+    var PowerUps = [];
     var numberOfPowerUpsGenerated = 0;
     var dualBallIsActive = false;
 
@@ -153,7 +154,10 @@ window.onload = function()
     {
         updateSlider();
         updateBall();
-        game.physics.arcade.collide(object, slider, new Chain().powerUpHitSlider, null, this);
+        PowerUps.forEach((object)=>{
+            console.log('inside powerUp');
+            game.physics.arcade.collide(object, slider, new Chain().powerUpHitSlider, null, this);
+        })
         updateBallVelocity();
     }
 
@@ -476,18 +480,18 @@ window.onload = function()
                 case 4:{
                     if(!dualBallIsActive){
                         object = factory.createPowerUp(game,posX,posY,'DualBall');
+                        dualBallIsActive = true;
                     }
                 break;
                 }
                 default:
                     break;
             }
-
-            console.log(object);
-
+            
 			game.physics.enable(object, Phaser.Physics.ARCADE);
 			//Set gravity
             object.body.gravity.y = 50;
+            PowerUps.push(object);
             numberOfPowerUpsGenerated++;
 		}
 
