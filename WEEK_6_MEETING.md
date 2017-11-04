@@ -9,9 +9,9 @@ Sprint Task Sheet: https://docs.google.com/a/sjsu.edu/spreadsheets/d/1fLLk9UpbLo
 
 Aditya:
 
-Afreen:
+Afreen: Implemented breakout design for triple hit pattern.
 
-Neil:
+Neil: Implemeted chain of responsibility design pattern for powerup collection by slider and then decide action on the basis of the type of power up. Code implementation of this and separated out code, related fcuntional testing. Code correction.
 
 Purvesh:
 
@@ -22,9 +22,9 @@ Rahil:
 
 Aditya:
 
-Afreen:
+Afreen: Adding functionality for triple hit, implementing state design pattern. 
 
-Neil:
+Neil: Integrate various design pattern code. Breakout game testing various functionalities. Finalize the code and overall design patterns to work.
 
 Purvesh:
 
@@ -34,9 +34,9 @@ Rahil:
 
 Aditya:
 
-Afreen:
+Afreen: No blocker.
 
-Neil:
+Neil: Js calls from various files for the game world, especially for functions.
 
 Purvesh:
 
