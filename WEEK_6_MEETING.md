@@ -7,7 +7,7 @@ Sprint Task Sheet: https://docs.google.com/a/sjsu.edu/spreadsheets/d/1fLLk9UpbLo
 
 ### What did the team do the past week?
 
-Aditya:
+Aditya: Implemented more pattern, improve overall design of game.
 
 Afreen: Implemented breakout design for triple hit pattern.
 
@@ -20,7 +20,7 @@ Rahil:
 
 ### What is the team going to do next week?
 
-Aditya:
+Aditya: Implement Design pattern for the pattern component.
 
 Afreen: Adding functionality for triple hit, implementing state design pattern. 
 
@@ -32,7 +32,7 @@ Rahil:
 
 ### What are the current blockers/challenges the team is facing?
 
-Aditya:
+Aditya: No
 
 Afreen: No blocker.
 
