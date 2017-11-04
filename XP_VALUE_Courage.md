@@ -53,3 +53,13 @@ We will adopt changes whenever they happen.
 * Now with the game functionalities and javascript code how design patterns can be integrated will be discussed.
 * Some of the features may get some changes on the basis of overall flow of a game.
 * Phaser JS properties also plays a crucial role in deciding game features and functionalities. So Our upcoming plan is to decide whole design pattern strcuture with working model.
+
+
+### Week: 6
+
+* Each person in team has implemented their related functionality design pattern.  
+* Couragrously, some of the design patterns can't fit in the game, so those are not been implemented. Only selected and functionally any pattern makes sense those only patterns are used.  
+* Separated code out from a few files. Made it more readable and manageable.
+* Now onwards all patterns will be integrated, so while integrating it if we come across any problem then we may modify code as per the situation.
+* We do stand up meetigs as a part of scrum. We discuss previously done, upcoming goals and blockers as a practice. 
+* In burn down chart each team member puts daily log of hours and item in github is divided in tasks.
