@@ -11,7 +11,7 @@ Aditya:
 
 Afreen:
 
-Neil:
+Neil: Implemeted chain of responsibility design pattern for powerup collection by slider and then decide action on the basis of the type of power up. Code implementation of this and separated out code, related fcuntional testing. Code correction.
 
 Purvesh:
 
@@ -24,7 +24,7 @@ Aditya:
 
 Afreen:
 
-Neil:
+Neil: Integrate various design pattern code. Breakout game testing various functionalities. Finalize the code and overall design patterns to work.
 
 Purvesh:
 
@@ -36,7 +36,7 @@ Aditya:
 
 Afreen:
 
-Neil:
+Neil: Js calls from various files for the game world, especially for functions.
 
 Purvesh:
 
