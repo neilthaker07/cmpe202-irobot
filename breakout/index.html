@@ -164,7 +164,7 @@ window.onload = function()
     function addPatterns(){
         
         var brick;
-        var num = Math.floor(Math.random() * (5 - 1)) + 1;
+        var num = Math.floor(Math.random() * (8 - 1)) + 1;
 	    switch (num) {
           
             case 1:
@@ -184,6 +184,9 @@ window.onload = function()
                 break;
             case 6:
                 brick = pattern6(bricks);
+                break;
+            case 7:
+                brick = pattern7(bricks);
                 break;
             
         }
