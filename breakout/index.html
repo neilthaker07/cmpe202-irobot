@@ -156,7 +156,20 @@ window.onload = function()
         updateBall();
         PowerUps.forEach((object)=>{
             console.log('inside powerUp');
-            game.physics.arcade.collide(object, slider, new Chain().powerUpHitSlider, null, this);
+            game.physics.arcade.collide(object, slider, function() 
+                {
+                    console.log("before speedUp ==== "+speedUp);
+                    var chain = new Chain();
+                    var powerUpCases = chain.powerUpHitSlider(object, slider, speedUp, dualBallIsActive);
+                    speedUp = powerUpCases[0];
+                    var tempDualBall = powerUpCases[1];
+                    if(tempDualBall)
+                    {
+                        addBonusBall();
+                    }
+                    console.log("after speedUp ==== "+speedUp);
+
+                } , null, this);
         })
         updateBallVelocity();
     }
