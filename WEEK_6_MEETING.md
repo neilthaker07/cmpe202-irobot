@@ -15,7 +15,7 @@ Neil: Implemeted chain of responsibility design pattern for powerup collection b
 
 Purvesh:
 
-Rahil:
+Rahil: Implemented factory design pattern for power up creation. Fixed the bug of multiple power up in same game play. Code separation and correction.
 
 
 ### What is the team going to do next week?
@@ -28,7 +28,7 @@ Neil: Integrate various design pattern code. Breakout game testing various funct
 
 Purvesh:
 
-Rahil:
+Rahil: Integerate various design patterns. Finalize the code, overall working and testing of the implemented code.
 
 ### What are the current blockers/challenges the team is facing?
 
@@ -40,5 +40,5 @@ Neil: Js calls from various files for the game world, especially for functions.
 
 Purvesh:
 
-Rahil:
+Rahil: No issues.
 
