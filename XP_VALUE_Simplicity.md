@@ -58,3 +58,10 @@ As of now, I am not facing any challenges in my task.
 * We discussed about solution's folder structure and how we should integrate individual's work and in which order to achieve simplicity. 
 * Discussed on features and prioritize them. Decided to complete Slider size update and ball speed update features by the end of the week.
 * Discussed about few patterns which we can implement and asked every one to do research on this. so, we can implement paatterns in next week.
+
+
+## Week 6 (29th October to 4th November): MOM
+* We do stand up meetings as a part of the scrum, every one shares the status and blockers about tasks. Also discuss about future tasks. Also log the daily hours in the burndown sheet.
+* We discussed which patterns can be implemented in their respected functionalities.
+* To achive simplicity we decided to split the code into other files as modules so code becomes more understandable and readable. 
+* We discussed that how we should integrate patterns so that game remains in the working state.
