@@ -13,7 +13,7 @@ Afreen: Implemented breakout design for triple hit pattern.
 
 Neil: Implemeted chain of responsibility design pattern for powerup collection by slider and then decide action on the basis of the type of power up. Code implementation of this and separated out code, related fcuntional testing. Code correction.
 
-Purvesh:
+Purvesh: Worked on adding the functionality to automatically restart the game once the game is over. Added a Play/Pause button in the game. Also, implemented the Observer pattern for score and lives to change the states based on the ball. 
 
 Rahil: Implemented factory design pattern for power up creation. Fixed the bug of multiple power up in same game play. Code separation and correction.
 
@@ -26,7 +26,7 @@ Afreen: Adding functionality for triple hit, implementing state design pattern.
 
 Neil: Integrate various design pattern code. Breakout game testing various functionalities. Finalize the code and overall design patterns to work.
 
-Purvesh:
+Purvesh: Will figure out more design patterns possible in the game and will work on implementing the design pattern.
 
 Rahil: Integerate various design patterns. Finalize the code, overall working and testing of the implemented code.
 
@@ -38,7 +38,7 @@ Afreen: No blocker.
 
 Neil: Js calls from various files for the game world, especially for functions.
 
-Purvesh:
+Purvesh: No blocker/challenges at the moment.
 
 Rahil: No issues.
 
