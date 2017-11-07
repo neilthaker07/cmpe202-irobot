@@ -18,5 +18,9 @@
 .bodyStyle{
     margin-left:10%;
     margin-top:2%;
-    background-color:#000000
+    background-color:black
+}
+
+canvas{
+    border:3px solid white;
 }
