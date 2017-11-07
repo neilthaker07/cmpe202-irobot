@@ -18,7 +18,7 @@ function pattern1(bricks){
                         inside_brick.body.bounce.set(1);
                         inside_brick.body.immovable = true;
                     }
-                   
+
                 }
             }
             else{
@@ -32,9 +32,9 @@ function pattern1(bricks){
                     }
                 }
             }
-           
+
         }
-    return inside_brick;    
+    return inside_brick;
 }
 
 function pattern2(bricks){
@@ -59,15 +59,15 @@ function pattern2(bricks){
                             inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[0]);
                             inside_brick.scale.setTo(.08, .08);
                             inside_brick.body.bounce.set(1);
-                            inside_brick.body.immovable = true; 
+                            inside_brick.body.immovable = true;
                          }
                      }
-               
-            
-           
+
+
+
         }
     }
-    return inside_brick;    
+    return inside_brick;
 }
 
 function pattern3(bricks){
@@ -87,13 +87,13 @@ function pattern3(bricks){
                         inside_brick.body.bounce.set(1);
                         inside_brick.body.immovable = true;
                      }
-                    
-               
-            
-           
+
+
+
+
         }
     }
-    return inside_brick;    
+    return inside_brick;
 }
 
 function pattern4(bricks){
@@ -113,13 +113,13 @@ function pattern4(bricks){
                         inside_brick.body.bounce.set(1);
                         inside_brick.body.immovable = true;
                      }
-                    
-               
-            
-           
+
+
+
+
         }
     }
-    return inside_brick;    
+    return inside_brick;
 }
 
 function pattern5(bricks){
@@ -135,7 +135,7 @@ function pattern5(bricks){
                         inside_brick.body.bounce.set(1);
                         inside_brick.body.immovable = true;
                     }
-                   
+
                 }
             }
             else{
@@ -149,9 +149,9 @@ function pattern5(bricks){
                     }
                 }
             }
-           
+
         }
-    return inside_brick;    
+    return inside_brick;
 }
 
 function pattern6(bricks){
@@ -160,7 +160,7 @@ function pattern6(bricks){
         {
                 for (var x = 0; x < 15; x++)
                 {
-                   
+
                             if((y==0 && (x!=5 && x!=6 && x!=7 && x!= 8 && x!= 9))
                                 || (y==1&&(x!=1 && x!=2 && x!=6 && x!=7 && x!=8 && x!=12 && x!=13))
                                 || (y==2)
@@ -187,18 +187,18 @@ function pattern6(bricks){
                                         inside_brick.body.bounce.set(1);
                                         inside_brick.body.immovable = true;
                                     }
-                                    
+
                                 }
-                              
+
                             }
-                          
-                        
-                    
+
+
+
                 }
             }
-           
-        
-    return inside_brick;    
+
+
+    return inside_brick;
 }
 
 function pattern7(bricks){
@@ -207,7 +207,7 @@ function pattern7(bricks){
         {
                 for (var x = 0; x < 15; x++)
                 {
-                   
+
                             if((y%2==0 && x%2==1 )||(y%2==1 && x%2==0))
                             {
                                 //var type = Math.floor(Math.random() * (100 - 1)) + 1;
@@ -225,27 +225,27 @@ function pattern7(bricks){
                                 }
                                 else{
                                     if(x%3==0){
-                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[0]);
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[0]);
                                         inside_brick.scale.setTo(.08, .08);
                                         inside_brick.body.bounce.set(1);
                                         inside_brick.body.immovable = true;
                                     }
                                     else{
-                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), trippleHit[1]);
+                                        inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[1]);
                                         inside_brick.scale.setTo(.08, .08);
                                         inside_brick.body.bounce.set(1);
                                         inside_brick.body.immovable = true;
                                     }
-                                    
+
                                 }
-                              
+
                             }
-                          
-                        
-                    
+
+
+
                 }
             }
-           
-        
-    return inside_brick;    
+
+
+    return inside_brick;
 }

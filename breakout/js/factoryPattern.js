@@ -25,14 +25,14 @@ var BiggerSlider = function (game,posX,posY) {
     object.scale.setTo(0.3,0.3);
     return object;
 };
- 
+
 var SmallerSlider = function (game,posX, posY) {
     var object = game.add.sprite(posX,posY,'sliderMinus');
 	object.type = "Slider-";
     object.scale.setTo(0.3,0.3);
     return object
 };
- 
+
 var FasterSpeed = function (game,posX, posY) {
     var object = game.add.sprite(posX,posY,'speedPlus');
     object.type = "Speed+";
@@ -43,6 +43,6 @@ var FasterSpeed = function (game,posX, posY) {
 var DualBall = function(game,posX, posY){
     var object = game.add.sprite(posX,posY,'plus');
     object.type = "DualBall";
-    object.scale.setTo(0.5,0.5);
+    object.scale.setTo(0.2,0.2);
     return object;
 }

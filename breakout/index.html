@@ -30,7 +30,7 @@ function toggleGameState(){
 	}
 }
 
-window.onload = function() 
+window.onload = function()
 {
     game = new Phaser.Game(1000, 680, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
@@ -42,24 +42,24 @@ window.onload = function()
     var rightButton;
     var slider;
     var sliderSpeed = 15;
-    
+
     // powerUp
     //var object;
 
     // ball
     var ball;
     var ballOnSlider = true;
-	
+
 	// music
 	var collisionSound;
 	var backgroundMusic;
 	var isBackgroundMusicOn = true;
 	var soundButton;
-	
+
 	// Ball veloctiy configuration
     var speedUp = false;
     var speedMultiplier = 10;
-   
+
   	//Bonus Ball Power Up
     var bonusBall;
     var isBonusBallLive = false;
@@ -83,10 +83,10 @@ window.onload = function()
     function preload()
     {
         game.load.atlas('breakout', 'img/breakout.png', 'json/breakout.json');
-        
+
         //background image changed
         game.load.image('background', 'img/background.jpg');
-        
+
         game.load.image('slider', 'img/slider.png');
         game.load.image('sliderPlus','img/sliderSizePlus.png');
         game.load.image('sliderMinus','img/sliderSizeDecrease.png');
@@ -94,7 +94,7 @@ window.onload = function()
         game.load.image('speedMinus','img/speedDecrease.png');
 		game.load.image('muteButton','img/muteBtn.png');
         game.load.image('volumeButton','img/volume.png');
-		
+
 		game.load.audio('collisionSound', 'sound/collision.mp3');
         game.load.audio('backgroundMusic', 'sound/gameplay.mp3');
 
@@ -119,28 +119,28 @@ window.onload = function()
     }
 
     // create components
-    function create() 
+    function create()
     {
         game.add.tileSprite(0, 0, 1000, 700, 'background'); // background image
-        
+
         //  We check bounds collisions against all walls other than the bottom one
         game.physics.arcade.checkCollision.down = false;
 
         collisionSound = game.add.audio('collisionSound');
         backgroundMusic = game.sound.play('backgroundMusic', 0.1, true);
-        
+
         bricks = game.add.group();
         bricks.enableBody = true;
         bricks.physicsBodyType = Phaser.Physics.ARCADE;
 
         addPatterns();
         addSlider();
-        addBall();  
+        addBall();
 		addSoundButton();
 		calculateScore();
         addText();
 		game.input.onDown.add(releaseBall, this); // Ball intial position
-		
+
 		// Attaching the observers to the subject
         theBallSubject = new TheBall();
         scoreObserver = new Score();
@@ -150,13 +150,13 @@ window.onload = function()
     }
 
     // update components at runtime
-    function update() 
+    function update()
     {
         updateSlider();
         updateBall();
         PowerUps.forEach((object)=>{
             console.log('inside powerUp');
-            game.physics.arcade.collide(object, slider, function() 
+            game.physics.arcade.collide(object, slider, function()
                 {
                     console.log("before speedUp ==== "+speedUp);
                     var chain = new Chain();
@@ -177,11 +177,11 @@ window.onload = function()
     }
 
     function addPatterns(){
-        
+
         var brick;
         var num = Math.floor(Math.random() * (8 - 1)) + 1;
 	    switch (num) {
-          
+
             case 1:
                 brick = pattern1(bricks);
                 break;
@@ -203,7 +203,7 @@ window.onload = function()
             case 7:
                 brick = pattern7(bricks);
                 break;
-            
+
         }
 
     }
@@ -216,7 +216,7 @@ window.onload = function()
         slider.anchor.setTo(0.5, 0.5);
 
         // Slider boundary
-        game.physics.enable(slider, Phaser.Physics.ARCADE); 
+        game.physics.enable(slider, Phaser.Physics.ARCADE);
         slider.body.collideWorldBounds = true;
         slider.body.bounce.set(0);
         slider.body.immovable = true;
@@ -243,15 +243,15 @@ window.onload = function()
 
         ball.events.onOutOfBounds.add(ballLost, this);
     }
-	
+
 	function addSoundButton(){
-		
+
 		soundButton = game.add.button(900, 10, 'volumeButton', changeVolumePreference, this);
 		soundButton.name = "Mute";
 		soundButton.scale.set(1, 1);
-		soundButton.smoothed = false;    
+		soundButton.smoothed = false;
     }
-	
+
 	function addBonusBall()
     {
         initializeBonusBall();
@@ -263,7 +263,7 @@ window.onload = function()
         bonusBall.animations.play('spin');
 
     }
-	
+
 	function initializeBonusBall()
     {
         // Ball
@@ -291,9 +291,9 @@ window.onload = function()
         introText = game.add.text(game.world.centerX, 400, '- Click to Start -', { font: "40px Arial", fill: "#ffffff", align: "center" });
         introText.anchor.setTo(0.5, 0.5);
     }
-	
+
 	function changeVolumePreference(button){
-		
+
 		if(isBackgroundMusicOn == true){
 			backgroundMusic.pause();
 			isBackgroundMusicOn = false;
@@ -340,22 +340,22 @@ window.onload = function()
             game.physics.arcade.collide(bonusBall, bricks, ballHitBrick, null, this);
         }
     }
-    
+
     function updateBallVelocity()
     {
         if(speedUp == true){
-            
-            speedMultiplier = 25;
-            ball.body.velocity.x = -800;
-            ball.body.velocity.y = -200;
-            
+
+            //speedMultiplier = 25;
+            ball.body.velocity.x *= 1.25;
+            ball.body.velocity.y *= 1.25;
+
             speedUp = false;
-            
+
             setTimeout(function() { resetBallVelocity(); }, 15000);
         }
     }
 
-    function releaseBall() 
+    function releaseBall()
     {
         if (ballOnSlider)
         {
@@ -366,23 +366,23 @@ window.onload = function()
             introText.visible = false;
         }
     }
-    
+
     function resetBallVelocity(){
 
         speedMultiplier = 10;
-        
-        ball.body.velocity.y = -300;
-        ball.body.velocity.x = -75;
+
+        ball.body.velocity.y /= 1.25;
+        ball.body.velocity.x /= 1.25;
     }
 
-    function ballLost () 
+    function ballLost ()
     {
-    	
+
     	if(isBonusBallLive == false)
         {
     		theBallSubject.setState("dead");
   	        livesText.text = 'lives: ' + lifeObserver.getObserverState();
-	
+
 	        if (lifeObserver.getObserverState() === 0)
 	        {
 	            gameOver();
@@ -390,9 +390,9 @@ window.onload = function()
 	        else
 	        {
 	            ballOnSlider = true;
-	
+
 	            ball.reset(slider.body.x + 16, slider.y - 16);
-	            
+
 	            ball.animations.stop();
 	        }
         } else {
@@ -400,7 +400,7 @@ window.onload = function()
         }
     }
 
-    function ballHitSlider (_ball, _slider) 
+    function ballHitSlider (_ball, _slider)
     {
         var diff = 0;
         if (_ball.x < _slider.x)
@@ -428,12 +428,12 @@ window.onload = function()
         speedMultiplier = 10;
         introText.text = 'Game Over!';
         introText.visible = true;
-        
+
         // Once the game is over, restarting the game after 3 seconds
         setTimeout(restartGame, 3000);
     }
 
-    function render() 
+    function render()
     {
         game.debug.text('Hold left/right to move the ufo.');
     }
@@ -449,7 +449,7 @@ window.onload = function()
         return typeSelector;
     }
     function createDynamicObject(posX, posY,type){
-            
+
             console.log('inside createObject');
             // switch(type){
             //     case 1:{
@@ -505,7 +505,7 @@ window.onload = function()
                 default:
                     break;
             }
-            
+
 			game.physics.enable(object, Phaser.Physics.ARCADE);
 			//Set gravity
             object.body.gravity.y = 50;
@@ -515,11 +515,11 @@ window.onload = function()
 
 		function ballHitBrick (ball, obj) {
 
-            
+
             var brick_img;
-            
+
             collisionSound.play();
-            
+
           	//animation on the hit
             var killTween = game.add.tween(obj.scale);
             killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
@@ -530,24 +530,24 @@ window.onload = function()
             killTween.start();
 
             if(obj.key=='hitOne')
-            {  
+            {
                  brick_img=bricks.create(obj.x, obj.y, 'hitTwo');
                  brick_img.scale.setTo(.08, .08);
                  brick_img.body.bounce.set(1);
-                 brick_img.body.immovable = true;     
+                 brick_img.body.immovable = true;
             }
             else if(obj.key=='hitTwo')
             {
                  brick_img=bricks.create(obj.x, obj.y, images[image]);
                  brick_img.scale.setTo(.08, .08);
                  brick_img.body.bounce.set(1);
-                 brick_img.body.immovable = true; 
+                 brick_img.body.immovable = true;
             }
 			else
             {
                 theBallSubject.setState("collided");
                 updateScore();
-                
+
                 if(!isLevelFinish()){
                     let type = checkToCreatePowerUp();
                     if(type <= 4){
@@ -557,9 +557,9 @@ window.onload = function()
                     resetToNextLevel();
                 }
             }
-			
+
         }
-        
+
         function updateScore(){
             scoreText.text = 'score: ' + scoreObserver.getObserverState();
         }
@@ -571,7 +571,7 @@ window.onload = function()
             }
             return false;
         }
-        
+
         function resetToNextLevel(){
         	scoreObserver.addLevelCompletionBonus();
             updateScore();
@@ -591,17 +591,17 @@ window.onload = function()
                 addPatterns();
                 introText.text = 'click to start'
             }, 2500);
-            
+
         }
-        
+
 		function restartGame(){
-        	
+
         	backgroundMusic.destroy();
-	        
+
 	        //setting up the defaults
 	        ballOnSlider = true;
 	        numberOfPowerUpsGenerated = 0;
-	        
+
 	        //clearWorld=true, clearCache=false
 	        game.state.restart(true, false);
         }
