@@ -7,7 +7,8 @@ SliderIncreaseSizeHandler.prototype = {
       if(request === 'Slider+'){
         slider.scale.setTo(1,1);
         setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
-
+        speedUp = false;
+        dualBallIsActive = false;
         console.log(request+" slider + + ");
       }
       else
@@ -34,7 +35,8 @@ SliderDecreaseSizeHandler.prototype = {
       if(request === 'Slider-'){
         slider.scale.setTo(0.4,0.4);
         setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
-
+        speedUp = false;
+        dualBallIsActive = false;
         console.log(request+" slider - - ");
       }
       else
@@ -60,6 +62,7 @@ BallSpeedUpHandler.prototype = {
     handleRequest: function(request, slider){
       if(request === 'Speed+'){
          speedUp = true;
+         dualBallIsActive = false;
       }
       else
       {
@@ -85,6 +88,7 @@ DoubleBallHandler.prototype = {
       if(request === 'DualBall'){
         console.log(request+" ball double");
         dualBallIsActive = true;
+        speedUp = false;
       }
       else
       {

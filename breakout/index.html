@@ -165,8 +165,10 @@ window.onload = function()
                     var tempDualBall = powerUpCases[1];
                     if(tempDualBall)
                     {
+                        dualBallIsActive = true;
                         addBonusBall();
                     }
+                    tempDualBall = false;
                     console.log("after speedUp ==== "+speedUp);
 
                 } , null, this);
