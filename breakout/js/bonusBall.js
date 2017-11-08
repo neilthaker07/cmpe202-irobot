@@ -1,6 +1,6 @@
-var addBonusBall = function(game, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider, slider)
+var addBonusBall = function(game, isBonusBallLive, bonusBall, slider)
 {
-    initializeBonusBall(game, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider, slider);
+    bonusBall = initializeBonusBall(game, bonusBall, slider);
 
     isBonusBallLive = true;
 
@@ -8,9 +8,10 @@ var addBonusBall = function(game, isBonusBallLive, bonusBall, ball, lives, lives
     bonusBall.body.velocity.x = -75;
     bonusBall.animations.play('spin');
 
+    return bonusBall;
 }
 
-function initializeBonusBall(game, isBonusBallLive, bonusBall, ball, lives, livesText, ballOnSlider, slider)
+function initializeBonusBall(game, bonusBall, slider)
 {
     // Ball
     bonusBall = game.add.sprite(game.world.centerX, slider.y - 16, 'breakout', 'ball_1.png');
@@ -23,5 +24,6 @@ function initializeBonusBall(game, isBonusBallLive, bonusBall, ball, lives, live
 
     bonusBall.animations.add('spin', [ 'ball_1.png', 'ball_2.png', 'ball_3.png', 'ball_4.png', 'ball_5.png' ], 50, true, false);
 
-    bonusBall.events.onOutOfBounds.add(ballLost, this);
+    //bonusBall.events.onOutOfBounds.add(ballLost, this); // moved to main file
+    return bonusBall;
 }

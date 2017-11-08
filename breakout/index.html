@@ -8,6 +8,7 @@
 <script type="text/javascript" src="./js/chain.js"></script>
 <script type="text/javascript" src="./js/factoryPattern.js"></script>
 <script type="text/javascript" src="./js/observerPattern.js"></script>
+<script type="text/javascript" src="./js/bonusBall.js"></script>
 <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -166,7 +167,8 @@ window.onload = function()
                     if(tempDualBall)
                     {
                         dualBallIsActive = true;
-                        addBonusBall();
+                        bonusBall = addBonusBall(game, isBonusBallLive, bonusBall, slider);
+                        bonusBall.events.onOutOfBounds.add(ballLost, this);
                     }
                     tempDualBall = false;
                     console.log("after speedUp ==== "+speedUp);
@@ -250,34 +252,6 @@ window.onload = function()
 		soundButton.name = "Mute";
 		soundButton.scale.set(1, 1);
 		soundButton.smoothed = false;
-    }
-
-	function addBonusBall()
-    {
-        initializeBonusBall();
-
-        isBonusBallLive = true;
-
-        bonusBall.body.velocity.y = -300;
-        bonusBall.body.velocity.x = -75;
-        bonusBall.animations.play('spin');
-
-    }
-
-	function initializeBonusBall()
-    {
-        // Ball
-        bonusBall = game.add.sprite(game.world.centerX, slider.y - 16, 'breakout', 'ball_1.png');
-        bonusBall.anchor.set(0.5);
-        bonusBall.checkWorldBounds = true;
-
-        game.physics.enable(bonusBall, Phaser.Physics.ARCADE);
-        bonusBall.body.collideWorldBounds = true;
-        bonusBall.body.bounce.set(1);
-
-        bonusBall.animations.add('spin', [ 'ball_1.png', 'ball_2.png', 'ball_3.png', 'ball_4.png', 'ball_5.png' ], 50, true, false);
-
-        bonusBall.events.onOutOfBounds.add(ballLost, this);
     }
 
     function calculateScore()
