@@ -67,3 +67,12 @@ Extreme programming define Communication as vital process to be followed through
 * Team has communicated about the individual choice about design pattern implementation.
 * Team will be adding game power ups and new level design pattern.
 * Team will be communicating about differnet blocker faced during the week.
+
+
+### Week 7
+
+## MOM: Meeting 7
+
+* Team has communicated to each member to complete the remaining design pattern.
+* Team will be doing in coming week.
+* Team will be working on remaining functionality.
