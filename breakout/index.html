@@ -9,6 +9,7 @@
 <script type="text/javascript" src="./js/factoryPattern.js"></script>
 <script type="text/javascript" src="./js/observerPattern.js"></script>
 <script type="text/javascript" src="./js/bonusBall.js"></script>
+<script type="text/javascript" src="./js/volumeState.js"></script>
 <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -79,6 +80,8 @@ window.onload = function()
     var theBallSubject;
     var scoreObserver;
     var lifeObserver;
+
+    var volumeState;
 
     // preloading components
     function preload()
@@ -247,11 +250,8 @@ window.onload = function()
     }
 
 	function addSoundButton(){
-
-		soundButton = game.add.button(900, 10, 'volumeButton', changeVolumePreference, this);
-		soundButton.name = "Mute";
-		soundButton.scale.set(1, 1);
-		soundButton.smoothed = false;
+        volumeState = new ProcessVolume();
+        soundButton = volumeState.processing(game, soundButton, backgroundMusic, isBackgroundMusicOn);
     }
 
     function calculateScore()
@@ -266,20 +266,7 @@ window.onload = function()
         introText.anchor.setTo(0.5, 0.5);
     }
 
-	function changeVolumePreference(button){
-
-		if(isBackgroundMusicOn == true){
-			backgroundMusic.pause();
-			isBackgroundMusicOn = false;
-			soundButton.loadTexture('muteButton');
-		} else{
-			backgroundMusic.resume();
-			isBackgroundMusicOn = true;
-			soundButton.loadTexture('volumeButton');
-		}
-    }
-
-    function updateSlider()
+	function updateSlider()
     {
         // Slider movement using keyboard left and right
         // Check key states every frame. Move ONLY one of the left and right key is hold.
