@@ -10,6 +10,8 @@
 <script type="text/javascript" src="./js/observerPattern.js"></script>
 <script type="text/javascript" src="./js/bonusBall.js"></script>
 <script type="text/javascript" src="./js/volumeState.js"></script>
+<script type="text/javascript" src="./js/gameState.js"></script>
+
 <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -23,13 +25,16 @@ var game;
 
 function toggleGameState(){
 
+   var gameState = new ManageGameState();
+    gameState.processing(game);
+/*
 	if (game.paused) {
 		game.paused = false;
 		document.getElementById("playPauseButton").value = "Pause";
 	} else {
 		game.paused = true;
 		document.getElementById("playPauseButton").value = "Play";
-	}
+	} */
 }
 
 window.onload = function()
@@ -82,6 +87,9 @@ window.onload = function()
     var lifeObserver;
 
     var volumeState;
+
+    var gameState;
+   
 
     // preloading components
     function preload()
