@@ -27,3 +27,7 @@ In this week, we all meet and discuss about how we gonna integrate our work and 
 Week-6
 
 In this week, we all meet and discuss about how we further with our game, which development is crucial and which development work should complete first in order to complete our project on time, We also discuss out which design pattern should be implemented and how ? We listern all suggestion and vote for best.
+
+week-7
+
+In this week, we all discuss about how we implemented design pattern and which design pattern can be implemented and which way or contex. We also discuss that how we resolve current issues and bug. Everyone gives inputs and we decide which is better for our project. 
