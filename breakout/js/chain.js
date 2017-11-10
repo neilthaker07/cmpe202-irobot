@@ -10,6 +10,7 @@ SliderIncreaseSizeHandler.prototype = {
         speedUp = false;
         dualBallIsActive = false;
         bonusPoint = false;
+        bullets = false; //new bullet powerup
         console.log(request+" slider + + ");
       }
       else
@@ -39,6 +40,7 @@ SliderDecreaseSizeHandler.prototype = {
         speedUp = false;
         dualBallIsActive = false;
         bonusPoint = false;
+        bullets = false; //new bullet powerup
         console.log(request+" slider - - ");
       }
       else
@@ -66,6 +68,7 @@ BallSpeedUpHandler.prototype = {
          speedUp = true;
          dualBallIsActive = false;
          bonusPoint = false;
+         bullets = false; //new bullet powerup
       }
       else
       {
@@ -93,6 +96,7 @@ DoubleBallHandler.prototype = {
         dualBallIsActive = true;
         speedUp = false;
         bonusPoint = false;
+        bullets = false; //new bullet powerup
       }
       else
       {
@@ -120,6 +124,35 @@ BonusPointHandler.prototype = {
         dualBallIsActive = false;
         speedUp = false;
         bonusPoint = true;
+        bullets = false; //new bullet powerup
+      }
+      else
+      {
+        if(this.next!=null)
+        {
+          this.next.handleRequest(request, slider);
+        }
+      }
+    },
+
+    setNext: function(next){
+        this.next = next;
+        return next;
+    }
+}
+
+function BulletPowerUpHandler(next){
+  this.next = next;
+}
+
+BulletPowerUpHandler.prototype = {
+    handleRequest: function(request, slider){
+      if(request === 'BulletsPowerUp'){
+        console.log("bullet power up");
+        dualBallIsActive = false;
+        speedUp = false;
+        bonusPoint = false;
+        bullets = true;  //new bullet powerup
       }
       else
       {
@@ -149,8 +182,9 @@ Chain.prototype = {
     var c3 = new BallSpeedUpHandler();
     var c4 = new DoubleBallHandler();
     var c5 = new BonusPointHandler();
+    var c6 = new BulletPowerUpHandler(); //new bullet power up
 
-    c1.setNext(c2).setNext(c3).setNext(c4).setNext(c5);
+    c1.setNext(c2).setNext(c3).setNext(c4).setNext(c5).setNext(c6); //new bullet powerup
     return c1.handleRequest(request, slider);
   },
 
@@ -163,7 +197,7 @@ Chain.prototype = {
     dualBallIsActive = _dualBallIsActive;
     new Chain().handleAllRequests(objectType, _slider);
 
-    var powerUpList = [speedUp, dualBallIsActive, bonusPoint];
+    var powerUpList = [speedUp, dualBallIsActive, bonusPoint, bullets];
     return powerUpList;
   }
 }

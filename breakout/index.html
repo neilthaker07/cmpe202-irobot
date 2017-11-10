@@ -89,6 +89,13 @@ window.onload = function()
     var volumeState;
 
     var gameState;
+
+    //new power up bullets
+    var bullets;
+    var bullet; 
+    var bulletPowerUpInterval;
+    var bulletTime = 200;
+
    
 
     // preloading components
@@ -122,7 +129,10 @@ window.onload = function()
         game.load.image('banana', 'img/banana.png');
         game.load.image('blackberry', 'img/blackberry.png');
         game.load.image('plus','img/plus.png');
-        game.load.image('bonus','img/BonusPoint.png')
+        game.load.image('bonus','img/BonusPoint.png');
+        //new power up bullets
+        game.load.image('bullet','img/bullet.png'); 
+        game.load.image('BulletsPowerUp','img/BulletPowerUp.png');
 
         //three hit pattern Image
 
@@ -146,13 +156,23 @@ window.onload = function()
         bricks.enableBody = true;
         bricks.physicsBodyType = Phaser.Physics.ARCADE;
 
+        //  //new power up bullets
+        bullets = game.add.group();
+        bullets.enableBody = true;
+        bullets.physicsBodyType = Phaser.Physics.ARCADE;
+        bullets.createMultiple(30, 'bullet');
+        bullets.setAll('anchor.x', 0.5);
+        bullets.setAll('anchor.y', 1);
+        bullets.setAll('outOfBoundsKill', true);
+        bullets.setAll('checkWorldBounds', true);
+
         addPatterns();
         addSlider();
         addBall();
 		addSoundButton();
 		calculateScore();
         addText();
-		game.input.onDown.add(releaseBall, this); // Ball intial position
+        game.input.onDown.add(releaseBall, this); // Ball intial position
 
 		// Attaching the observers to the subject
         theBallSubject = new TheBall();
@@ -168,7 +188,7 @@ window.onload = function()
         updateSlider();
         updateBall();
         PowerUps.forEach((object)=>{
-            console.log('inside powerUp');
+            //console.log('inside powerUp');
             game.physics.arcade.collide(object, slider, function()
                 {
                     console.log("before speedUp ==== "+speedUp);
@@ -185,6 +205,11 @@ window.onload = function()
                     if(powerUpCases[2]){
                         scoreObserver.addBonusScore();
                         updateScore();
+                    }
+                    //new power up bullets
+                    if(powerUpCases[3]){
+                        console.log('checkking..');
+                        bulletPowerUP();
                     }
                     tempDualBall = false;
                     console.log("after speedUp ==== "+speedUp);
@@ -309,8 +334,11 @@ window.onload = function()
         {
             game.physics.arcade.collide(ball, slider, ballHitSlider, null, this);
             game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
+
             game.physics.arcade.collide(bonusBall, slider, ballHitSlider, null, this);
             game.physics.arcade.collide(bonusBall, bricks, ballHitBrick, null, this);
+
+            game.physics.arcade.collide(bullet, bricks, bulletHitBrick, null, this);
         }
     }
 
@@ -449,6 +477,10 @@ window.onload = function()
                     object = factory.createPowerUp(game,posX,posY,'BonusPoint');
                 }
                 break;
+                case 6:{ //new power up bullets
+                    object = factory.createPowerUp(game,posX,posY,'bulletspower');
+                }
+                break;
                 default:
                     break;
             }
@@ -461,7 +493,6 @@ window.onload = function()
 		}
 
 		function ballHitBrick (ball, obj) {
-
 
             var brick_img;
 
@@ -497,7 +528,7 @@ window.onload = function()
 
                 if(!isLevelFinish()){
                     let type = checkToCreatePowerUp();
-                    if(type <= 5){
+                    if(type <= 6){
                         createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
                     }
                 }else{
@@ -551,6 +582,41 @@ window.onload = function()
 
 	        //clearWorld=true, clearCache=false
 	        game.state.restart(true, false);
+        }
+
+        //new power up
+        var bulletPowerUP = ()=>{
+            bulletPowerUpInterval = setInterval(fireBullet,500);
+            clearPowerUp();
+        }
+
+        var clearPowerUp = ()=>{
+            console.log('inside clear..')
+            clearInterval(bulletPowerUpInterval);
+        }
+        //new power up
+        function fireBullet () {
+             //  Grab the first bullet we can from the pool
+                bullet = bullets.getFirstExists(false);
+                if(bullet){
+                    bullet.reset(slider.x, slider.y + 8);
+                    bullet.body.velocity.y = -400;
+                }
+        }
+
+        function resetBullet (bullet) {
+            bullet.kill();
+        }
+
+        function bulletHitBrick (bullet, obj) {
+            resetBullet(bullet);
+            var killTween = game.add.tween(obj.scale);
+            killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+            killTween.onComplete.addOnce(()=>{
+                obj.kill();
+            },this)
+
+            killTween.start();
         }
 };
 </script>

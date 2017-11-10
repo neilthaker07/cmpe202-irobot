@@ -16,6 +16,8 @@ Factory.prototype = {
             powerUp = new DualBall(game,posX, posY);
         if(type === 'BonusPoint')
             powerUp = new BonusPoints(game, posX, posY);
+        if(type==='bulletspower')
+            powerUp = new BulletsPowerUp(game, posX, posY);
         console.log(powerUp);
         return powerUp;
     }
@@ -52,6 +54,13 @@ var DualBall = function(game,posX, posY){
 var BonusPoints = function(game,posX, posY){
     var object = game.add.sprite(posX,posY,'bonus');
     object.type = "BonusPoint";
+    object.scale.setTo(0.2,0.2);
+    return object;
+}
+
+var BulletsPowerUp = function(game,posX, posY){
+    var object = game.add.sprite(posX,posY,'BulletsPowerUp');
+    object.type = "BulletsPowerUp";
     object.scale.setTo(0.2,0.2);
     return object;
 }
