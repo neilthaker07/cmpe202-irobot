@@ -6,7 +6,7 @@ Sprint Task Sheet: https://docs.google.com/a/sjsu.edu/spreadsheets/d/1fLLk9UpbLo
 
 ## What did the team do the past week?
 
-Aditya: 
+Aditya: working on Builder Design Pattern
 
 Afreen: Worked on the design pattern implementation and pattern for multiple hit object.
 
@@ -18,9 +18,9 @@ Rahil:
 
 ## What is the team going to do next week?
 
-Aditya: 
+Aditya: Test the game and resolve issues. 
 
-Afreen: Will be working on sate design pattern and overall game testing.
+Afreen: Will be working on state design pattern and overall game testing.
 
 Neil: 
 
@@ -30,7 +30,7 @@ Rahil:
 
 ## What are the current blockers/challenges the team is facing?
 
-Aditya: 
+Aditya: No issues
 
 Afreen: No issues faced.
 
