@@ -337,7 +337,8 @@ window.onload = function()
 
             game.physics.arcade.collide(bonusBall, slider, ballHitSlider, null, this);
             game.physics.arcade.collide(bonusBall, bricks, ballHitBrick, null, this);
-
+            
+            //new power up bullets
             game.physics.arcade.collide(bullet, bricks, bulletHitBrick, null, this);
         }
     }
@@ -586,13 +587,14 @@ window.onload = function()
 
         //new power up
         var bulletPowerUP = ()=>{
+            console.log('inside bullet power up')
             bulletPowerUpInterval = setInterval(fireBullet,500);
             clearPowerUp();
         }
 
         var clearPowerUp = ()=>{
             console.log('inside clear..')
-            clearInterval(bulletPowerUpInterval);
+            setTimeout(()=>clearInterval(bulletPowerUpInterval),2000);
         }
         //new power up
         function fireBullet () {
