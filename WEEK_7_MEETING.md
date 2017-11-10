@@ -8,7 +8,7 @@ What did the team do the past week?
 
 Aditya: 
 
-Afreen: 
+Afreen: Worked on the design pattern implementation and pattern for multiple hit object.
 
 Neil: 
 
@@ -20,7 +20,7 @@ What is the team going to do next week?
 
 Aditya: 
 
-Afreen: 
+Afreen: Will be working on sate design pattern and overall game testing.
 
 Neil: 
 
@@ -32,7 +32,7 @@ What are the current blockers/challenges the team is facing?
 
 Aditya: 
 
-Afreen: 
+Afreen: No issues faced.
 
 Neil: 
 
