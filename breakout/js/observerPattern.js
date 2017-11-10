@@ -51,6 +51,10 @@ var Score = function() {
     this.addLevelCompletionBonus = function(){
     	observerState = observerState + 100; 
     }
+
+    this.addBonusScore = function(){
+        observerState += 50;
+    }
 };
 
 var Life = function() { 

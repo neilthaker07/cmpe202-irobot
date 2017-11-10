@@ -9,6 +9,7 @@ SliderIncreaseSizeHandler.prototype = {
         setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
         speedUp = false;
         dualBallIsActive = false;
+        bonusPoint = false;
         console.log(request+" slider + + ");
       }
       else
@@ -37,6 +38,7 @@ SliderDecreaseSizeHandler.prototype = {
         setTimeout(function(){ slider.scale.setTo(0.5,0.5); }, 5000);
         speedUp = false;
         dualBallIsActive = false;
+        bonusPoint = false;
         console.log(request+" slider - - ");
       }
       else
@@ -63,6 +65,7 @@ BallSpeedUpHandler.prototype = {
       if(request === 'Speed+'){
          speedUp = true;
          dualBallIsActive = false;
+         bonusPoint = false;
       }
       else
       {
@@ -89,6 +92,34 @@ DoubleBallHandler.prototype = {
         console.log(request+" ball double");
         dualBallIsActive = true;
         speedUp = false;
+        bonusPoint = false;
+      }
+      else
+      {
+        if(this.next!=null)
+        {
+          this.next.handleRequest(request, slider);
+        }
+      }
+    },
+
+    setNext: function(next){
+        this.next = next;
+        return next;
+    }
+}
+
+function BonusPointHandler(next){
+  this.next = next;
+}
+
+BonusPointHandler.prototype = {
+    handleRequest: function(request, slider){
+      if(request === 'BonusPoint'){
+        console.log(request+" bonus 20 points");
+        dualBallIsActive = false;
+        speedUp = false;
+        bonusPoint = true;
       }
       else
       {
@@ -117,8 +148,9 @@ Chain.prototype = {
     var c2 = new SliderDecreaseSizeHandler();
     var c3 = new BallSpeedUpHandler();
     var c4 = new DoubleBallHandler();
+    var c5 = new BonusPointHandler();
 
-    c1.setNext(c2).setNext(c3).setNext(c4);
+    c1.setNext(c2).setNext(c3).setNext(c4).setNext(c5);
     return c1.handleRequest(request, slider);
   },
 
@@ -131,7 +163,7 @@ Chain.prototype = {
     dualBallIsActive = _dualBallIsActive;
     new Chain().handleAllRequests(objectType, _slider);
 
-    var powerUpList = [speedUp, dualBallIsActive];
+    var powerUpList = [speedUp, dualBallIsActive, bonusPoint];
     return powerUpList;
   }
 }
