@@ -4,26 +4,17 @@ var image1 = Math.floor(Math.random() * (7 - 0)) + 0;
 var image2 = Math.floor(Math.random() * (7 - 0)) + 0;
 
 function singleHit(x,y,bricks,inside_brick,imgnum){
-    inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), images[imgnum]);
-    inside_brick.scale.setTo(.08, .08);
-    inside_brick.body.bounce.set(1);
-    inside_brick.body.immovable = true;
-    return inside_brick
+    inside_brick = new BrickStateManager(x, y, bricks, inside_brick, images[imgnum], 0);
+    return inside_brick;
 }
 
 function doubleHit(x,y,bricks,inside_brick){
-    inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[0]);
-    inside_brick.scale.setTo(.08, .08);
-    inside_brick.body.bounce.set(1);
-    inside_brick.body.immovable = true;
-    return inside_brick
+    inside_brick = new BrickStateManager(x, y, bricks, inside_brick, tripleHit[0], 1);
+    return inside_brick;
 }
 function trippleHit(x,y,bricks,inside_brick){
-    inside_brick = bricks.create(100 + (x * 56), 80 + (y * 72), tripleHit[1]);
-    inside_brick.scale.setTo(.08, .08);
-    inside_brick.body.bounce.set(1);
-    inside_brick.body.immovable = true;
-    return inside_brick
+    inside_brick = new BrickStateManager(x, y, bricks, inside_brick, tripleHit[1], 2);
+    return inside_brick;
 }
 
 function pattern1(bricks){

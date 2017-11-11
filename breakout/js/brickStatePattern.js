@@ -1,51 +1,86 @@
-var BrickStateManager = function () {
+var BrickStateManager = function (x,y,bricks,inside_brick,imageKey,param) {
 
-		var currentState = new ZeroHit(this);
+		this.x = x;
+		this.y = y;
+		this.inside_brick = inside_brick
+		this.bricks = bricks;
+		this.imageKey = imageKey;
+
+		var currentState;
+		
+		if(param == 0){
+			currentState = new ZeroHit(this);
+		}
+
+		if(param == 1){
+			currentState = new OneHit(this);
+		}
+
+		if(param == 2){
+			currentState = new TwoHit(this);
+		}
 
 		this.setState = function(state){
 			currentState = state;
 		};
 
-		this.showState = function(){
-			console.log("Current State: " + currentState.description);
+		this.getState = function(){
+			return currentState;
 		};
 
 		this.collisionOccured = function(){
 			currentState.collisionOccured();
 		};
 
+		return currentState;
+
 	}
 
 	var ZeroHit = function(brickStateManager){
 
-		this.description = "Brick Initialized with ZeroHit State";
+		brickStateManager.inside_brick = brickStateManager.bricks.create(100 + (brickStateManager.x * 56), 
+			80 + (brickStateManager.y * 72), brickStateManager.imageKey);
+    	brickStateManager.inside_brick.scale.setTo(.08, .08);
+    	brickStateManager.inside_brick.body.bounce.set(1);
+    	brickStateManager.inside_brick.body.immovable = true;
 
 		this.collisionOccured = function(){
-
 			brickStateManager.setState(new OneHit(brickStateManager));
 		}
+
+		return brickStateManager;
 
 	}
 
 	var OneHit = function(brickStateManager){
 
-		this.description = "Brick after one hit with the ball";
+		brickStateManager.inside_brick = brickStateManager.bricks.create(100 + (brickStateManager.x * 56), 
+			80 + (brickStateManager.y * 72), brickStateManager.imageKey);
+    	brickStateManager.inside_brick.scale.setTo(.08, .08);
+    	brickStateManager.inside_brick.body.bounce.set(1);
+    	brickStateManager.inside_brick.body.immovable = true;
 
 		this.collisionOccured = function(){
-
 			brickStateManager.setState(new TwoHit(brickStateManager));
 		}
+
+		return brickStateManager;
 
 	};
 
 	var TwoHit = function(brickStateManager){
 
-		this.description = "Brick after two hit with the ball";
+		brickStateManager.inside_brick = brickStateManager.bricks.create(100 + (brickStateManager.x * 56), 
+			80 + (brickStateManager.y * 72), brickStateManager.imageKey);
+    	brickStateManager.inside_brick.scale.setTo(.08, .08);
+    	brickStateManager.inside_brick.body.bounce.set(1);
+    	brickStateManager.inside_brick.body.immovable = true;
 
 		this.collisionOccured = function(){
-
 			brickStateManager.setState(new Destroyed(brickStateManager));
 		}
+
+		return brickStateManager;
 
 	};
 
