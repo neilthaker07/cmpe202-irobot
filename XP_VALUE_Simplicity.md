@@ -65,3 +65,9 @@ As of now, I am not facing any challenges in my task.
 * We discussed which patterns can be implemented in their respected functionalities.
 * To achive simplicity we decided to split the code into other files as modules so code becomes more understandable and readable. 
 * We discussed that how we should integrate patterns so that game remains in the working state.
+
+## Week 7 (5th November to 11th November): MOM
+* Everyone shared the status, progress and blockers of their task in the meeting.
+* We discussed which other patterns can be implemented in the game and extra features can be added to the game. Patterns like state pattern for the type of bricks, volume mute and unmute, etc and features like bonus point and bullet powerup.
+* Each member will perform testing of their functionality, fix the issues and code refactoring.
+* Most of the features of the game are implemented and integrated. So we can start testing as a whole game from the next week.
