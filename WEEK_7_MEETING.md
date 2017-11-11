@@ -14,7 +14,7 @@ Neil: Implemented State Pattern for volume state change mute/unmute. Code correc
 
 Purvesh:
 
-Rahil: 
+Rahil: Fixed typos and improved gameplay in speedup power up case. Also added support for extra power ups like Bonus points and bullets.
 
 ## What is the team going to do next week?
 
@@ -26,7 +26,7 @@ Neil: Integrate design pattern code and test functionalities. Check cross scenar
 
 Purvesh:
 
-Rahil: 
+Rahil: Will verify the corner cases in game play and fix the issues
 
 ## What are the current blockers/challenges the team is facing?
 
@@ -38,4 +38,4 @@ Neil: No blockers.
 
 Purvesh:
 
-Rahil: 
+Rahil: No issues blocking the tasks.
