@@ -63,3 +63,11 @@ We will adopt changes whenever they happen.
 * Now onwards all patterns will be integrated, so while integrating it if we come across any problem then we may modify code as per the situation.
 * We do stand up meetigs as a part of scrum. We discuss previously done, upcoming goals and blockers as a practice. 
 * In burn down chart each team member puts daily log of hours and item in github is divided in tasks.
+
+### Week: 7
+
+* Each person in the team has implemented own section of a functionality design pattern. 
+* Decided some new features to implement in a game. We combined all design patterns and implement extra patterns for some of the features like volume state change mute/unmute state pattern. 
+* Most of the features of a breakout game are ready and integrated. Some of the object images and UI may be updated.
+* Some of the bugs will be fixed and whole team will do final testing.
+* Our team has decided to implement as many design patterns as we can and also code optimization with code refactoring done.
