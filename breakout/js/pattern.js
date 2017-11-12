@@ -216,3 +216,38 @@ function pattern7(bricks){
 
     return inside_brick;
 }
+function pattern8(bricks){
+    var inside_brick;
+    for (var y = 0; y < 5; y++)
+        {
+                for (var x = 0; x < 15; x++)
+                {
+                    var divnum = Math.floor(Math.random() * (100000 - 2)) + 2;
+                    if(divnum%(x+y+1)==13){
+                        inside_brick = singleHit(x,y,bricks,inside_brick,image1)
+                    }
+                    else if(divnum%(x+y+1)==11){
+                        inside_brick = doubleHit(x,y,bricks,inside_brick)
+                    }
+                    else if(divnum%(x+y+1)==2){
+                        inside_brick = trippleHit(x,y,bricks,inside_brick)
+                    }
+                    else if(divnum%(x+y+1)==3){
+                        inside_brick = singleHit(x,y,bricks,inside_brick,image1)
+                    }
+                    else if(divnum%(x+y+1)==5){
+                        inside_brick = doubleHit(x,y,bricks,inside_brick)
+                    }
+                    else if(divnum%(x+y+1)==7){
+                        inside_brick = trippleHit(x,y,bricks,inside_brick)
+                    }
+                    else{
+
+                    }
+                            
+                }
+            }
+
+
+    return inside_brick;
+}
