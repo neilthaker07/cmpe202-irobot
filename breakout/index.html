@@ -26,17 +26,8 @@
 var game;
 
 function toggleGameState(){
-
    var gameState = new ManageGameState();
     gameState.processing(game);
-/*
-	if (game.paused) {
-		game.paused = false;
-		document.getElementById("playPauseButton").value = "Pause";
-	} else {
-		game.paused = true;
-		document.getElementById("playPauseButton").value = "Play";
-	} */
 }
 
 window.onload = function()
@@ -51,9 +42,6 @@ window.onload = function()
     var rightButton;
     var slider;
     var sliderSpeed = 15;
-
-    // powerUp
-    //var object;
 
     // ball
     var ball;
@@ -98,7 +86,6 @@ window.onload = function()
     var bulletPowerUpInterval;
     var bulletTime = 200;
 
-   
 
     // preloading components
     function preload()
@@ -158,7 +145,7 @@ window.onload = function()
         bricks.enableBody = true;
         bricks.physicsBodyType = Phaser.Physics.ARCADE;
 
-        //  //new power up bullets
+        // new power up bullets
         bullets = game.add.group();
         bullets.enableBody = true;
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
