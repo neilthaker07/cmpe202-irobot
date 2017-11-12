@@ -33,3 +33,8 @@ Feedback is a way of determining the current state of the system, product, or pr
 * Also, we have all the power ups finalized and implemented in the game, we discussed about those features and everyone gave their feedback on the power ups. We also decided to change the behavior of a couple of power ups feature based on the feedback received.
 * Every team member came up the with possible design patterns which can be implemented. All gave their feedback on the ideas of the design pattern and finalized Chain of Responsibility, Factory Method and Observer design patterns and decided to implement those patterns first.  
 
+## Week-7
+* During this week, we tested the game with different scenarios and found out some bugs in the game. This way we got the primary feedback from testing the code.
+* Also, team members gave their feedback on the design patterns implemented in the game. Based on the feedback, we were able to figure out couple of more design patterns and decided to add those patterns in the game.
+* Team members gave their feedback on the UI of the game and some members suggested to update the icons for the power up features. So, we decided to fine tune the UI as well.
+
