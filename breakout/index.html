@@ -248,7 +248,7 @@ window.onload = function()
     {
         // Slider
         slider = game.add.sprite(game.world.centerX, 640, 'slider');
-        slider.scale.setTo(0.7,0.7);
+        slider.scale.setTo(0.8,0.8);
         slider.anchor.setTo(0.5, 0.5);
 
         // Slider boundary
@@ -372,26 +372,28 @@ window.onload = function()
 
     function ballLost ()
     {
-
     	if(isBonusBallLive == false)
         {
     		theBallSubject.setState("dead");
   	        livesText.text = 'lives: ' + lifeObserver.getObserverState();
-
-	        if (lifeObserver.getObserverState() === 0)
-	        {
-	            gameOver();
-	        }
-	        else
-	        {
-	            ballOnSlider = true;
-
-	            ball.reset(slider.body.x + 16, slider.y - 16);
-
-	            ball.animations.stop();
-	        }
+            gameOverOrNextChance();
+	        
         } else {
         	isBonusBallLive = false;
+        }
+    }
+
+    function gameOverOrNextChance()
+    {
+        if (lifeObserver.getObserverState() === 0)
+        {
+            gameOver();
+        }
+        else
+        {
+            ballOnSlider = true;
+            ball.reset(slider.body.x + 16, slider.y - 16);
+            ball.animations.stop();
         }
     }
 
@@ -432,6 +434,7 @@ window.onload = function()
     {
         game.debug.text('Hold left/right to move the ufo.');
     }
+
     function checkToCreatePowerUp(){
         var typeSelector;
         if(limitPowerUpsPerLevel > numberOfPowerUpsGenerated)
@@ -443,6 +446,7 @@ window.onload = function()
         }
         return typeSelector;
     }
+    
     function createDynamicObject(posX, posY,type){
 
             console.log('inside createObject');
@@ -484,135 +488,134 @@ window.onload = function()
             object.body.gravity.y += 50;
             PowerUps.push(object);
             numberOfPowerUpsGenerated++;
-		}
+	}
 
-		function ballHitBrick (ball, obj) {
+	function ballHitBrick (ball, obj) {
 
-            var brick_img;
+        var brick_img;
 
-            collisionSound.play();
+        collisionSound.play();
 
-          	//animation on the hit
-            var killTween = game.add.tween(obj.scale);
-            killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
-            killTween.onComplete.addOnce(()=>{
-                obj.kill();
-            },this)
+      	//animation on the hit
+        var killTween = game.add.tween(obj.scale);
+        killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+        killTween.onComplete.addOnce(()=>{
+            obj.kill();
+        },this)
 
-            killTween.start();
+        killTween.start();
 
-            if(obj.key=='hitOne')
-            {
-                 brick_img=bricks.create(obj.x, obj.y, 'hitTwo');
-                 brick_img.scale.setTo(.08, .08);
-                 brick_img.body.bounce.set(1);
-                 brick_img.body.immovable = true;
-            }
-            else if(obj.key=='hitTwo')
-            {
-                 brick_img=bricks.create(obj.x, obj.y, images[image1]);
-                 brick_img.scale.setTo(.08, .08);
-                 brick_img.body.bounce.set(1);
-                 brick_img.body.immovable = true;
-            }
-			else
-            {
-                theBallSubject.setState("collided");
-                updateScore();
-
-                if(!isLevelFinish()){
-                    let type = checkToCreatePowerUp();
-                    if(type <= 6){
-                        createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
-                    }
-                }else{
-                    resetToNextLevel();
-                }
-            }
-
+        if(obj.key=='hitOne')
+        {
+             brick_img=bricks.create(obj.x, obj.y, 'hitTwo');
+             brick_img.scale.setTo(.08, .08);
+             brick_img.body.bounce.set(1);
+             brick_img.body.immovable = true;
         }
-
-        function updateScore(){
-            scoreText.text = 'score: ' + scoreObserver.getObserverState();
+        else if(obj.key=='hitTwo')
+        {
+             brick_img=bricks.create(obj.x, obj.y, images[image1]);
+             brick_img.scale.setTo(.08, .08);
+             brick_img.body.bounce.set(1);
+             brick_img.body.immovable = true;
         }
-
-        function isLevelFinish(){
-            console.log(`bricks: ${bricks.countLiving()}`)
-            if(bricks.countLiving() == 1){
-                return true;
-            }
-            return false;
-        }
-
-        function resetToNextLevel(){
-        	scoreObserver.addLevelCompletionBonus();
+		else
+        {
+            theBallSubject.setState("collided");
             updateScore();
-            introText.text = 'Next Level';
-            introText.visible = true;
-            ballOnSlider = true;
-            ball.body.velocity.set(0);
-            ball.x = slider.x + 16;
-            ball.y = slider.y - 16;
-            ball.animations.stop();
-            numberOfPowerUpsGenerated = 0;
-            loadNewLevel();
-        }
 
-        function loadNewLevel(){
-            setTimeout(()=>{
-                addPatterns();
-                introText.text = 'click to start'
-            }, 2500);
-
-        }
-
-		function restartGame(){
-
-        	backgroundMusic.destroy();
-
-	        //setting up the defaults
-	        ballOnSlider = true;
-	        numberOfPowerUpsGenerated = 0;
-
-	        //clearWorld=true, clearCache=false
-	        game.state.restart(true, false);
-        }
-
-        //new power up
-        var bulletPowerUP = ()=>{
-            console.log('inside bullet power up')
-            bulletPowerUpInterval = setInterval(fireBullet,500);
-            clearPowerUp();
-        }
-
-        var clearPowerUp = ()=>{
-            console.log('inside clear..')
-            setTimeout(()=>clearInterval(bulletPowerUpInterval),2000);
-        }
-        //new power up
-        function fireBullet () {
-             //  Grab the first bullet we can from the pool
-                bullet = bullets.getFirstExists(false);
-                if(bullet){
-                    bullet.reset(slider.x, slider.y + 8);
-                    bullet.body.velocity.y = -400;
+            if(!isLevelFinish()){
+                let type = checkToCreatePowerUp();
+                if(type <= 6){
+                    createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
                 }
+            }else{
+                resetToNextLevel();
+            }
         }
 
-        function resetBullet (bullet) {
-            bullet.kill();
-        }
+    }
 
-        function bulletHitBrick (bullet, obj) {
-            resetBullet(bullet);
-            var killTween = game.add.tween(obj.scale);
-            killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
-            killTween.onComplete.addOnce(()=>{
-                obj.kill();
-            },this)
+    function updateScore(){
+        scoreText.text = 'score: ' + scoreObserver.getObserverState();
+    }
 
-            killTween.start();
+    function isLevelFinish(){
+        console.log(`bricks: ${bricks.countLiving()}`)
+        if(bricks.countLiving() == 1){
+            return true;
         }
+        return false;
+    }
+
+    function resetToNextLevel(){
+    	scoreObserver.addLevelCompletionBonus();
+        updateScore();
+        introText.text = 'Next Level';
+        introText.visible = true;
+        ballOnSlider = true;
+        ball.body.velocity.set(0);
+        ball.x = slider.x + 16;
+        ball.y = slider.y - 16;
+        ball.animations.stop();
+        numberOfPowerUpsGenerated = 0;
+        loadNewLevel();
+    }
+
+    function loadNewLevel(){
+        setTimeout(()=>{
+            addPatterns();
+            introText.text = 'click to start'
+        }, 2500);
+    }
+
+	function restartGame(){
+
+    	backgroundMusic.destroy();
+
+        //setting up the defaults
+        ballOnSlider = true;
+        numberOfPowerUpsGenerated = 0;
+
+        //clearWorld=true, clearCache=false
+        game.state.restart(true, false);
+    }
+
+    //new power up
+    var bulletPowerUP = ()=>{
+        console.log('inside bullet power up')
+        bulletPowerUpInterval = setInterval(fireBullet,500);
+        clearPowerUp();
+    }
+
+    var clearPowerUp = ()=>{
+        console.log('inside clear..')
+        setTimeout(()=>clearInterval(bulletPowerUpInterval),2000);
+    }
+    //new power up
+    function fireBullet () {
+         //  Grab the first bullet we can from the pool
+            bullet = bullets.getFirstExists(false);
+            if(bullet){
+                bullet.reset(slider.x, slider.y + 8);
+                bullet.body.velocity.y = -400;
+            }
+    }
+
+    function resetBullet (bullet) {
+        bullet.kill();
+    }
+
+    function bulletHitBrick (bullet, obj) {
+        resetBullet(bullet);
+        var killTween = game.add.tween(obj.scale);
+        killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+        killTween.onComplete.addOnce(()=>{
+            obj.kill();
+        },this)
+
+        killTween.start();
+    }
 };
 </script>
 
