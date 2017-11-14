@@ -201,6 +201,3 @@ Chain.prototype = {
     return powerUpList;
   }
 }
-
-//new Chain().handleAllRequests("DualBall");
-//new Chain().powerUpHitSlider("DualBall","");

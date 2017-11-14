@@ -449,45 +449,45 @@ window.onload = function()
     
     function createDynamicObject(posX, posY,type){
 
-            console.log('inside createObject');
-            console.log(type);
-            switch(type){
-                case 1:{
-                    object = factory.createPowerUp(game,posX,posY,'Slider+');
-                }
-                break;
-                case 2:{
-                    object = factory.createPowerUp(game,posX,posY,'Slider-');
-                }
-                break;
-                case 3:{
-                    object = factory.createPowerUp(game,posX,posY,'Speed+');
-                }
-                break;
-                case 4:{
-                    if(!dualBallIsActive){
-                        object = factory.createPowerUp(game,posX,posY,'DualBall');
-                        dualBallIsActive = true;
-                    }
-                }
-                break;
-                case 5:{
-                    object = factory.createPowerUp(game,posX,posY,'BonusPoint');
-                }
-                break;
-                case 6:{ //new power up bullets
-                    object = factory.createPowerUp(game,posX,posY,'bulletspower');
-                }
-                break;
-                default:
-                    break;
+        console.log('inside createObject');
+        console.log(type);
+        switch(type){
+            case 1:{
+                object = factory.createPowerUp(game,posX,posY,'Slider+');
             }
+            break;
+            case 2:{
+                object = factory.createPowerUp(game,posX,posY,'Slider-');
+            }
+            break;
+            case 3:{
+                object = factory.createPowerUp(game,posX,posY,'Speed+');
+            }
+            break;
+            case 4:{
+                if(!dualBallIsActive){
+                    object = factory.createPowerUp(game,posX,posY,'DualBall');
+                    dualBallIsActive = true;
+                }
+            }
+            break;
+            case 5:{
+                object = factory.createPowerUp(game,posX,posY,'BonusPoint');
+            }
+            break;
+            case 6:{ //new power up bullets
+                object = factory.createPowerUp(game,posX,posY,'bulletspower');
+            }
+            break;
+            default:
+                break;
+        }
 
-			game.physics.enable(object, Phaser.Physics.ARCADE);
-			//Set gravity
-            object.body.gravity.y += 50;
-            PowerUps.push(object);
-            numberOfPowerUpsGenerated++;
+		game.physics.enable(object, Phaser.Physics.ARCADE);
+		//Set gravity
+        object.body.gravity.y += 50;
+        PowerUps.push(object);
+        numberOfPowerUpsGenerated++;
 	}
 
 	function ballHitBrick (ball, obj) {
