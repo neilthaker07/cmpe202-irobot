@@ -76,3 +76,14 @@ Extreme programming define Communication as vital process to be followed through
 * Team has communicated to each member to complete the remaining design pattern.
 * Team will be doing in coming week.
 * Team will be working on remaining functionality.
+
+
+### Week 8
+
+## MOM: Meeting 8
+
+* Team has decided on task disrtibution ass follows 
+1. Neil and Purvesh will work on bug fixing
+2. Aditya and Afreen will work on testing complete application, creating test scenarios, reporting bug if found
+3. Rahil will continue working on adding remaining features of power ups
+
