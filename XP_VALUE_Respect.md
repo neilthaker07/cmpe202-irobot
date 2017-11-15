@@ -31,3 +31,7 @@ In this week, we all meet and discuss about how we further with our game, which 
 week-7
 
 In this week, we all discuss about how we implemented design pattern and which design pattern can be implemented and which way or contex. We also discuss that how we resolve current issues and bug. Everyone gives inputs and we decide which is better for our project. 
+
+week-8
+
+In this week, we all discuss about how we gonna test our game. We have discused team divides and half members are doing testing and others are fixing problem, We all agree on this opinion.
