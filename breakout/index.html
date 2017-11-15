@@ -177,6 +177,12 @@ window.onload = function()
     {
         updateSlider();
         updateBall();
+        updatePowerUps();
+        updateBallVelocity();
+    }
+
+    function updatePowerUps()
+    {
         PowerUps.forEach((object)=>{
             //console.log('inside powerUp');
             game.physics.arcade.collide(object, slider, function()
@@ -207,8 +213,7 @@ window.onload = function()
                     console.log("after speedUp ==== "+speedUp);
 
                 } , null, this);
-        })
-        updateBallVelocity();
+        });
     }
 
     function addPatterns(){
