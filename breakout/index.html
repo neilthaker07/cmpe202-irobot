@@ -82,9 +82,10 @@ window.onload = function()
 
     //new power up bullets
     var bullets;
-    var bullet; 
+    var Firedbullets=[]; 
     var bulletPowerUpInterval;
     var bulletTime = 200;
+    var limitBulletPower = 1; 
 
 
     // preloading components
@@ -198,6 +199,8 @@ window.onload = function()
                     //new power up bullets
                     if(powerUpCases[3]){
                         console.log('checkking..');
+                        isBulletPowerCreated = false;
+                        isBulletPowerCollected = true;
                         bulletPowerUP();
                     }
                     tempDualBall = false;
@@ -332,7 +335,9 @@ window.onload = function()
             game.physics.arcade.collide(bonusBall, bricks, ballHitBrick, null, this);
             
             //new power up bullets
-            game.physics.arcade.collide(bullet, bricks, bulletHitBrick, null, this);
+            Firedbullets.forEach((bullet)=>{
+                game.physics.arcade.collide(bullet, bricks, bulletHitBrick, null, this);
+            })
         }
     }
 
@@ -439,10 +444,16 @@ window.onload = function()
         var typeSelector;
         if(limitPowerUpsPerLevel > numberOfPowerUpsGenerated)
         {
-             typeSelector = Math.floor((Math.random() * 20) + 1);
-            console.log(typeSelector);
+            typeSelector = Math.floor((Math.random() * 20) + 1);
+            if(typeSelector == 6){
+                console.log(typeSelector);
+                console.log(limitBulletPower)
+            }
+            if(typeSelector == 6 && (limitBulletPower != 1)){
+                typeSelector = Number.MAX_VALUE;
+            }
         }else{
-            typeSelector = 100;
+            typeSelector = Number.MAX_VALUE;
         }
         return typeSelector;
     }
@@ -476,6 +487,7 @@ window.onload = function()
             }
             break;
             case 6:{ //new power up bullets
+                limitBulletPower--;
                 object = factory.createPowerUp(game,posX,posY,'bulletspower');
             }
             break;
@@ -587,18 +599,21 @@ window.onload = function()
         bulletPowerUpInterval = setInterval(fireBullet,500);
         clearPowerUp();
     }
-
+    var removeBulletPower = ()=>{
+        clearInterval(bulletPowerUpInterval);
+    }
     var clearPowerUp = ()=>{
         console.log('inside clear..')
-        setTimeout(()=>clearInterval(bulletPowerUpInterval),2000);
+        setTimeout(removeBulletPower,2000);
     }
     //new power up
     function fireBullet () {
          //  Grab the first bullet we can from the pool
-            bullet = bullets.getFirstExists(false);
+            var bullet = bullets.getFirstExists(false);
             if(bullet){
                 bullet.reset(slider.x, slider.y + 8);
                 bullet.body.velocity.y = -400;
+                Firedbullets.push(bullet)
             }
     }
 
@@ -607,14 +622,20 @@ window.onload = function()
     }
 
     function bulletHitBrick (bullet, obj) {
-        resetBullet(bullet);
-        var killTween = game.add.tween(obj.scale);
-        killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
-        killTween.onComplete.addOnce(()=>{
-            obj.kill();
-        },this)
+        console.log('bullet hit brick')
+        if(obj.key == 'hitOne' || obj.key == 'hitTwo'){
+            resetBullet(bullet)
+        }
+        else{
+            resetBullet(bullet);
+            var killTween = game.add.tween(obj.scale);
+            killTween.to({x:0,y:0},200,Phaser.Easing.Linear.None);
+            killTween.onComplete.addOnce(()=>{
+                obj.kill();
+            },this)
 
-        killTween.start();
+            killTween.start();
+        }
     }
 };
 </script>
