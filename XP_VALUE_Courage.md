@@ -64,6 +64,7 @@ We will adopt changes whenever they happen.
 * We do stand up meetigs as a part of scrum. We discuss previously done, upcoming goals and blockers as a practice. 
 * In burn down chart each team member puts daily log of hours and item in github is divided in tasks.
 
+
 ### Week: 7
 
 * Each person in the team has implemented own section of a functionality design pattern. 
@@ -71,3 +72,11 @@ We will adopt changes whenever they happen.
 * Most of the features of a breakout game are ready and integrated. Some of the object images and UI may be updated.
 * Some of the bugs will be fixed and whole team will do final testing.
 * Our team has decided to implement as many design patterns as we can and also code optimization with code refactoring done.
+
+
+### Week: 8
+* Each person has completed his/her part of design pattern and successfully integrated all the code. 
+* Now onwards various game features testing and bug find and finxing process will take place.
+* Code refactoring and finalization of code with various bug fixes. Make sure that all features working properly and any change does not effect existing features.
+* Whole team will do their features testing and solve bugs if exist in their area. So overall web based game development with PhaseJS game engine in Java Script and implementation of Design Patterns have successfully completed.
+* Thorugh out 8 weeks of game development in Kanban and Scrum way, we have followed one of the most important XP value Courage and it was one of the best mindset to successfully complete the game development in deadline.
