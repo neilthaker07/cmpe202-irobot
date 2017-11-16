@@ -1,8 +1,6 @@
-var addBonusBall = function(game, isBonusBallLive, bonusBall, slider)
+var addBonusBall = function(game, bonusBall, slider)
 {
     bonusBall = initializeBonusBall(game, bonusBall, slider);
-
-    isBonusBallLive = true;
 
     bonusBall.body.velocity.y = -300;
     bonusBall.body.velocity.x = -75;

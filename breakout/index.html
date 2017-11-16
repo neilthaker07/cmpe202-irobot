@@ -195,7 +195,8 @@ window.onload = function()
                     if(tempDualBall)
                     {
                         dualBallIsActive = true;
-                        bonusBall = addBonusBall(game, isBonusBallLive, bonusBall, slider);
+                        isBonusBallLive = true;
+                        bonusBall = addBonusBall(game, bonusBall, slider);
                         bonusBall.events.onOutOfBounds.add(ballLost, this);
                     }
                     if(powerUpCases[2]){
@@ -389,6 +390,7 @@ window.onload = function()
             gameOverOrNextChance();
 	        
         } else {
+        	dualBallIsActive = false;
         	isBonusBallLive = false;
         }
     }
