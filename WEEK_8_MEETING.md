@@ -10,7 +10,7 @@ Aditya:
 
 Afreen: 
 
-Neil: 
+Neil: I have tested many side scenarios. Bug fixes and code refactoring. Final verification of a game.
 
 Purvesh: 
 
@@ -22,7 +22,7 @@ Aditya:
 
 Afreen: 
 
-Neil: 
+Neil: Retrospective for the completed sprint. Finalize the game.
 
 Purvesh: 
 
@@ -34,7 +34,7 @@ Aditya:
 
 Afreen: 
 
-Neil: 
+Neil: No blockers
 
 Purvesh: 
 
