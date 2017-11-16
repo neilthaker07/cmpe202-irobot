@@ -150,7 +150,7 @@ window.onload = function()
         bullets = game.add.group();
         bullets.enableBody = true;
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
-        bullets.createMultiple(30, 'bullet');
+        bullets.createMultiple(20, 'bullet');
         bullets.setAll('anchor.x', 0.5);
         bullets.setAll('anchor.y', 1);
         bullets.setAll('outOfBoundsKill', true);
@@ -285,8 +285,9 @@ window.onload = function()
         ball.body.bounce.set(1);
 
         ball.animations.add('spin', [ 'ball_1.png', 'ball_2.png', 'ball_3.png', 'ball_4.png', 'ball_5.png' ], 50, true, false);
-
+        
         ball.events.onOutOfBounds.add(ballLost, this);
+        console.log(ball);
     }
 
 	function addSoundButton(){
@@ -383,6 +384,7 @@ window.onload = function()
 
     function ballLost ()
     {
+        console.log('inside ball lost')
     	if(isBonusBallLive == false)
         {
     		theBallSubject.setState("dead");
@@ -484,8 +486,8 @@ window.onload = function()
             break;
             case 4:{
                 if(!dualBallIsActive){
-                    object = factory.createPowerUp(game,posX,posY,'DualBall');
                     dualBallIsActive = true;
+                    object = factory.createPowerUp(game,posX,posY,'DualBall');
                 }
             }
             break;
@@ -501,10 +503,11 @@ window.onload = function()
             default:
                 break;
         }
-
 		game.physics.enable(object, Phaser.Physics.ARCADE);
 		//Set gravity
-        object.body.gravity.y += 50;
+        object.body.gravity.y = 20 + Math.random() * 100;
+        object.checkWorldBounds = true;
+        object.events.onOutOfBounds.add(powerUpLost, this);
         PowerUps.push(object);
         numberOfPowerUpsGenerated++;
 	}
@@ -599,7 +602,16 @@ window.onload = function()
         //clearWorld=true, clearCache=false
         game.state.restart(true, false);
     }
-
+    function powerUpLost(object){
+        console.log('inside power up lost');
+        console.log(object.type);
+        if(object.type == 'DualBall'){
+            dualBallIsActive = false;
+        }
+        if(object.type == 'BulletsPowerUp'){
+            limitBulletPower++;
+        }
+    }
     //new power up
     var bulletPowerUP = ()=>{
         console.log('inside bullet power up')
