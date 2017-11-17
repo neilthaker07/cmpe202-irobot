@@ -605,6 +605,7 @@ window.onload = function()
         //clearWorld=true, clearCache=false
         game.state.restart(true, false);
     }
+
     function powerUpLost(object){
         console.log('inside power up lost');
         console.log(object.type);
@@ -615,6 +616,7 @@ window.onload = function()
             limitBulletPower++;
         }
     }
+
     //new power up
     var bulletPowerUP = ()=>{
         console.log('inside bullet power up')
@@ -662,6 +664,5 @@ window.onload = function()
     }
 };
 </script>
-
 </body>
 </html>

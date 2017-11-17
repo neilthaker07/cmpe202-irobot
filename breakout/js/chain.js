@@ -5,7 +5,7 @@ function SliderIncreaseSizeHandler(next){
 SliderIncreaseSizeHandler.prototype = {
     handleRequest: function(request, slider){
       if(request === 'Slider+'){
-        slider.scale.setTo(1,1);
+        slider.scale.setTo(1.2,0.8);
         setTimeout(function(){ slider.scale.setTo(0.8,0.8); }, 5000);
         speedUp = false;
         dualBallIsActive = false;
@@ -35,7 +35,7 @@ function SliderDecreaseSizeHandler(next){
 SliderDecreaseSizeHandler.prototype = {
     handleRequest: function(request, slider){
       if(request === 'Slider-'){
-        slider.scale.setTo(0.45,0.45);
+        slider.scale.setTo(0.4,0.8);
         setTimeout(function(){ slider.scale.setTo(0.8,0.8); }, 5000);
         speedUp = false;
         dualBallIsActive = false;
