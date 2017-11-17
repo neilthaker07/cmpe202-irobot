@@ -49,6 +49,7 @@ window.onload = function()
 
 	// music
 	var collisionSound;
+    var gunshotSound;
 	var backgroundMusic;
 	var isBackgroundMusicOn = true;
 	var soundButton;
@@ -105,6 +106,7 @@ window.onload = function()
         game.load.image('volumeButton','img/volume.png');
 
 		game.load.audio('collisionSound', 'sound/collision.mp3');
+        game.load.audio('gunshotSound','sound/gunshot.mp3');
         game.load.audio('backgroundMusic', 'sound/gameplay.mp3');
 
         //pattern Images
@@ -140,7 +142,8 @@ window.onload = function()
         game.physics.arcade.checkCollision.down = false;
 
         collisionSound = game.add.audio('collisionSound');
-        backgroundMusic = game.sound.play('backgroundMusic', 0.1, true);
+        gunshotSound = game.add.audio('gunshotSound', 0.1);
+        backgroundMusic = game.sound.play('backgroundMusic', 0.3, true);
 
         bricks = game.add.group();
         bricks.enableBody = true;
@@ -632,7 +635,8 @@ window.onload = function()
             if(bullet){
                 bullet.reset(slider.x, slider.y + 8);
                 bullet.body.velocity.y = -400;
-                Firedbullets.push(bullet)
+                Firedbullets.push(bullet);
+                gunshotSound.play();
             }
     }
 
