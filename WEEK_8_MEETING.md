@@ -8,7 +8,7 @@ Sprint Task Sheet: https://docs.google.com/a/sjsu.edu/spreadsheets/d/1fLLk9UpbLo
 
 Aditya: 
 
-Afreen: 
+Afreen: Done game testing.
 
 Neil: I have tested many side scenarios. Bug fixes and code refactoring. Final verification of a game.
 
@@ -20,7 +20,7 @@ Rahil:
 
 Aditya: 
 
-Afreen: 
+Afreen: Creating test scenarios.
 
 Neil: Retrospective for the completed sprint. Finalize the game.
 
@@ -32,7 +32,7 @@ Rahil:
 
 Aditya: 
 
-Afreen: 
+Afreen: No blockers.
 
 Neil: No blockers
 
