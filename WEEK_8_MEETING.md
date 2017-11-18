@@ -14,7 +14,7 @@ Neil: I have tested many side scenarios. Bug fixes and code refactoring. Final v
 
 Purvesh: 
 
-Rahil: 
+Rahil: I performed testing of my module as well as whole game and solved issued of my module. Also final verification of a game.
 
 ## What is the team going to do next week?
 
@@ -26,7 +26,7 @@ Neil: Retrospective for the completed sprint. Finalize the game.
 
 Purvesh: 
 
-Rahil: 
+Rahil: Prepare presentation, video demo of the game and retrospective of the completed sprint.
 
 ## What are the current blockers/challenges the team is facing?
 
@@ -38,4 +38,4 @@ Neil: No blockers
 
 Purvesh: 
 
-Rahil: 
+Rahil: No challenges.
