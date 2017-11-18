@@ -87,6 +87,7 @@ window.onload = function()
     var bulletPowerUpInterval;
     var bulletTime = 200;
     var limitBulletPower = 1; 
+    var waitTime = true;
 
 
     // preloading components
@@ -195,7 +196,7 @@ window.onload = function()
                     var powerUpCases = chain.powerUpHitSlider(object, slider, speedUp, dualBallIsActive);
                     speedUp = powerUpCases[0];
                     var tempDualBall = powerUpCases[1];
-                    if(tempDualBall)
+                    if(tempDualBall && !isGameOver())
                     {
                         dualBallIsActive = true;
                         isBonusBallLive = true;
@@ -207,10 +208,7 @@ window.onload = function()
                         updateScore();
                     }
                     //new power up bullets
-                    if(powerUpCases[3]){
-                        console.log('checkking..');
-                        isBulletPowerCreated = false;
-                        isBulletPowerCollected = true;
+                    if(powerUpCases[3] && !isGameOver()){
                         bulletPowerUP();
                     }
                     tempDualBall = false;
@@ -340,15 +338,16 @@ window.onload = function()
         {
             game.physics.arcade.collide(ball, slider, ballHitSlider, null, this);
             game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
-
+        }
+        if(isBonusBallLive){
             game.physics.arcade.collide(bonusBall, slider, ballHitSlider, null, this);
             game.physics.arcade.collide(bonusBall, bricks, ballHitBrick, null, this);
-            
-            //new power up bullets
-            Firedbullets.forEach((bullet)=>{
-                game.physics.arcade.collide(bullet, bricks, bulletHitBrick, null, this);
-            })
         }
+        //new power up bullets
+        Firedbullets.forEach((bullet)=>{
+            game.physics.arcade.collide(bullet, bricks, bulletHitBrick, null, this);
+        })
+
     }
 
     function updateBallVelocity()
@@ -398,6 +397,10 @@ window.onload = function()
         	dualBallIsActive = false;
         	isBonusBallLive = false;
         }
+    }
+
+    var isGameOver =  () =>{
+        return lifeObserver.getObserverState() === 0 ? true : false;
     }
 
     function gameOverOrNextChance()
@@ -456,11 +459,7 @@ window.onload = function()
         var typeSelector;
         if(limitPowerUpsPerLevel > numberOfPowerUpsGenerated)
         {
-            typeSelector = Math.floor((Math.random() * 20) + 1);
-            if(typeSelector == 6){
-                console.log(typeSelector);
-                console.log(limitBulletPower)
-            }
+            typeSelector = Math.floor((Math.random() * 25) + 1);
             if(typeSelector == 6 && (limitBulletPower != 1)){
                 typeSelector = Number.MAX_VALUE;
             }
@@ -471,8 +470,6 @@ window.onload = function()
     }
     
     function createDynamicObject(posX, posY,type){
-
-        console.log('inside createObject');
         console.log(type);
         switch(type){
             case 1:{
@@ -533,16 +530,12 @@ window.onload = function()
         if(obj.key=='hitOne')
         {
              brick_img=bricks.create(obj.x, obj.y, 'hitTwo');
-             brick_img.scale.setTo(.08, .08);
-             brick_img.body.bounce.set(1);
-             brick_img.body.immovable = true;
+             setBrickImageProperties(brick_img);
         }
         else if(obj.key=='hitTwo')
         {
              brick_img=bricks.create(obj.x, obj.y, images[image1]);
-             brick_img.scale.setTo(.08, .08);
-             brick_img.body.bounce.set(1);
-             brick_img.body.immovable = true;
+             setBrickImageProperties(brick_img);
         }
 		else
         {
@@ -552,13 +545,20 @@ window.onload = function()
             if(!isLevelFinish()){
                 let type = checkToCreatePowerUp();
                 if(type <= 6){
-                    createDynamicObject(obj.x,obj.y,type); //need to change for the case if the hit object was last.
+                    createDynamicObject(obj.x,obj.y,type); 
                 }
             }else{
                 resetToNextLevel();
             }
         }
 
+    }
+
+    function setBrickImageProperties(brick_img){
+        console.log('inside image properties setter');
+        brick_img.scale.setTo(.08, .08);
+        brick_img.body.bounce.set(1);
+        brick_img.body.immovable = true;
     }
 
     function updateScore(){
@@ -587,6 +587,7 @@ window.onload = function()
         loadNewLevel();
     }
 
+    //loads next level
     function loadNewLevel(){
         setTimeout(()=>{
             addPatterns();
@@ -594,6 +595,7 @@ window.onload = function()
         }, 2500);
     }
 
+    //restart game 
 	function restartGame(){
 
     	backgroundMusic.destroy();
@@ -631,7 +633,7 @@ window.onload = function()
         setTimeout(removeBulletPower,2000);
     }
     //new power up
-    function fireBullet () {
+    var fireBullet = () => {
          //  Grab the first bullet we can from the pool
             var bullet = bullets.getFirstExists(false);
             if(bullet){
@@ -642,11 +644,13 @@ window.onload = function()
             }
     }
 
-    function resetBullet (bullet) {
+    //function to reset bullet
+    var resetBullet = (bullet) => {
         bullet.kill();
     }
 
-    function bulletHitBrick (bullet, obj) {
+    //function for when bullet hit the brick
+    var bulletHitBrick =  (bullet, obj) => {
         console.log('bullet hit brick')
         if(obj.key == 'hitOne' || obj.key == 'hitTwo'){
             resetBullet(bullet)
