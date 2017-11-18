@@ -71,3 +71,10 @@ As of now, I am not facing any challenges in my task.
 * We discussed which other patterns can be implemented in the game and extra features can be added to the game. Patterns like state pattern for the type of bricks, volume mute and unmute, etc and features like bonus point and bullet powerup.
 * Each member will perform testing of their functionality, fix the issues and code refactoring.
 * Most of the features of the game are implemented and integrated. So we can start testing as a whole game from the next week.
+
+## Week 8 (12th November to 18th November): MOM
+* Everyone shared the status, progress and blockers of their task in the meeting.
+* Everyone has successfully completed their assigned tasks like design pattern, game fetures development, etc and integrated with the game.
+* In this week, we will perform code refactoring, validation of the game and resolve the issues without affecting exicting modules.
+* In last 8 weeks, we used software development practicies Kanban and Scrum for the game development by keeping one of the XP value Simplicity in the mindset and successfully developed a game within timelimits.
+
