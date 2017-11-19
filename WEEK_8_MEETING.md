@@ -6,7 +6,7 @@ Sprint Task Sheet: https://docs.google.com/a/sjsu.edu/spreadsheets/d/1fLLk9UpbLo
 
 ## What did the team do the past week?
 
-Aditya: 
+Aditya: Perform Testing. Report the Bug.
 
 Afreen: Done game testing.
 
@@ -18,7 +18,7 @@ Rahil: I performed testing of my module as well as whole game and solved issued 
 
 ## What is the team going to do next week?
 
-Aditya: 
+Aditya: Working on Demo, Presentation and finalize the game.
 
 Afreen: Creating test scenarios.
 
@@ -30,7 +30,7 @@ Rahil: Prepare presentation, video demo of the game and retrospective of the com
 
 ## What are the current blockers/challenges the team is facing?
 
-Aditya: 
+Aditya: No blockers.
 
 Afreen: No blockers.
 
