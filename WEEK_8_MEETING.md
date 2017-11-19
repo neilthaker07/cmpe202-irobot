@@ -12,7 +12,7 @@ Afreen: Done game testing.
 
 Neil: I have tested many side scenarios. Bug fixes and code refactoring. Final verification of a game.
 
-Purvesh: 
+Purvesh: I worked on fixing the bugs reported by other team members. I fixed bugs of bonus ball power ups and the lives in the game and also tested the game with updated code.
 
 Rahil: I performed testing of my module as well as whole game and solved issued of my module. Also final verification of a game.
 
@@ -24,7 +24,7 @@ Afreen: Creating test scenarios.
 
 Neil: Retrospective for the completed sprint. Finalize the game.
 
-Purvesh: 
+Purvesh: I will work on preparing the User Story with Happy and Error scenarios and work on preparing the final project presentation.
 
 Rahil: Prepare presentation, video demo of the game and retrospective of the completed sprint.
 
@@ -36,6 +36,6 @@ Afreen: No blockers.
 
 Neil: No blockers
 
-Purvesh: 
+Purvesh: No blockers/challenges.
 
 Rahil: No challenges.
