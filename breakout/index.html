@@ -61,7 +61,7 @@ window.onload = function()
   	//Bonus Ball Power Up
     var bonusBall;
     var isBonusBallLive = false;
-    var allowBonusBallPowerCreation = false;
+    var allowBonusBallPowerCreation = true;
 
     var scoreText;
     var livesText;
@@ -203,6 +203,7 @@ window.onload = function()
                         isBonusBallLive = true;
                         bonusBall = addBonusBall(game, bonusBall, slider);
                         bonusBall.events.onOutOfBounds.add(ballLost, this);
+                        allowBonusBallPowerCreation = false;
                     }
                     if(powerUpCases[2]){
                         scoreObserver.addBonusScore();
