@@ -662,7 +662,8 @@ window.onload = function()
             killTween.onComplete.addOnce(()=>{
                 obj.kill();
             },this)
-
+			scoreObserver.addBulletHitBrickScore();
+            updateScore();
             killTween.start();
         }
     }

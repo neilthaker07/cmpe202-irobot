@@ -53,7 +53,11 @@ var Score = function() {
     }
 
     this.addBonusScore = function(){
-        observerState += 50;
+        observerState = observerState + 50;
+    }
+
+    this.addBulletHitBrickScore = function(){
+        observerState = observerState + 5;
     }
 };
 
