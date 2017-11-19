@@ -61,6 +61,7 @@ window.onload = function()
   	//Bonus Ball Power Up
     var bonusBall;
     var isBonusBallLive = false;
+    var allowBonusBallPowerCreation = false;
 
     var scoreText;
     var livesText;
@@ -339,10 +340,10 @@ window.onload = function()
             game.physics.arcade.collide(ball, slider, ballHitSlider, null, this);
             game.physics.arcade.collide(ball, bricks, ballHitBrick, null, this);
         }
-        if(isBonusBallLive){
-            game.physics.arcade.collide(bonusBall, slider, ballHitSlider, null, this);
-            game.physics.arcade.collide(bonusBall, bricks, ballHitBrick, null, this);
-        }
+        
+        game.physics.arcade.collide(bonusBall, slider, ballHitSlider, null, this);
+        game.physics.arcade.collide(bonusBall, bricks, ballHitBrick, null, this);
+        
         //new power up bullets
         Firedbullets.forEach((bullet)=>{
             game.physics.arcade.collide(bullet, bricks, bulletHitBrick, null, this);
@@ -384,9 +385,12 @@ window.onload = function()
         ball.body.velocity.x /= 1.25;
     }
 
-    function ballLost ()
+    function ballLost (_obj)
     {
-        console.log('inside ball lost')
+    	if(_obj.customKey == "bonusBall"){
+            allowBonusBallPowerCreation = true;
+        }
+    	
     	if(isBonusBallLive == false)
         {
     		theBallSubject.setState("dead");

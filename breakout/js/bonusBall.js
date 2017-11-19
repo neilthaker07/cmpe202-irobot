@@ -13,6 +13,7 @@ function initializeBonusBall(game, bonusBall, slider)
 {
     // Ball
     bonusBall = game.add.sprite(game.world.centerX, slider.y - 16, 'breakout', 'ball_1.png');
+    bonusBall.customKey = "bonusBall";
     bonusBall.anchor.set(0.5);
     bonusBall.checkWorldBounds = true;
 
