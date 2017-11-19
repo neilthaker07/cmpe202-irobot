@@ -468,6 +468,11 @@ window.onload = function()
             if(typeSelector == 6 && (limitBulletPower != 1)){
                 typeSelector = Number.MAX_VALUE;
             }
+            if(typeSelector == 4 && !allowBonusBallPowerCreation){
+                console.log('only bonus ball active and type 4 powerup created')
+                typeSelector = Number.MAX_VALUE;
+                console.log(typeSelector)
+            }
         }else{
             typeSelector = Number.MAX_VALUE;
         }
