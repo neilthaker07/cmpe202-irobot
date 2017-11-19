@@ -38,3 +38,10 @@ Feedback is a way of determining the current state of the system, product, or pr
 * Also, team members gave their feedback on the design patterns implemented in the game. Based on the feedback, we were able to figure out couple of more design patterns and decided to add those patterns in the game.
 * Team members gave their feedback on the UI of the game and some members suggested to update the icons for the power up features. So, we decided to fine tune the UI as well.
 
+## Week-8
+* As this was the last week, our main focus on testing the game as intensively as possible and find out the bugs in the game so that we can get the feedback from the testing and fix the issues.
+* Couple of team members were focused on testing the game and reporting the issues. 
+* We internally discussed the issues and got the feedback from the team members who developed those features so that we can fix the issues quickly.
+* At the end of the week, we were able to fix all the issues that were reported.
+* After completion, team members used the game and overall gave their feedback on how we can improvise the game in the future.
+
